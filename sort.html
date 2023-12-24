@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,45 +17,33 @@
         }
 
         th, td {
-            border: 1px solid #dddddd;
+            border: 1px solid #ddd;
+            padding: 12px;
             text-align: left;
-            padding: 8px;
         }
 
         th {
             background-color: #f2f2f2;
         }
 
-        h1 {
-            text-align: center;
-        }
-
-        .highlight {
-            animation: blink 2s infinite;
-        }
-
-        @keyframes blink {
-            0% {
-                background-color: #ffe100; /* Highlight color */
-            }
-            50% {
-                background-color: rgba(255, 225, 0, 0.5); /* Semi-transparent color */
-            }
-            100% {
-                background-color: #ffe100; /* Highlight color */
-            }
+        tr.current {
+            background-color: #cfe2f3; /* Highlight color for the currently playing program */
         }
     </style>
 </head>
-
 <body>
-    <h1>Radio Station Program Timetable</h1>
-    <table id="programTable">
+
+<h1>Radio Station Program Timetable</h1>
+
+<table>
+    <thead>
         <tr>
             <th>Time</th>
             <th>Program</th>
             <th>Presenter</th>
         </tr>
+    </thead>
+    <tbody>
         <tr>
             <td>00:00 AM - 03:00 AM</td>
             <td>Midnight Mix</td>
@@ -93,43 +80,29 @@
             <td>Omumbejja Ssanyu</td>
         </tr>
         <tr>
-            <td>09:00 PM - 12:00 AM</td>
+            <td>09:00 PM - 00:00 AM</td>
             <td>Night Sessions</td>
             <td>Mbaziira Tonny</td>
         </tr>
-    </table>
+    </tbody>
+</table>
 
-    <script>
-        // Get the current hour and minute
-        var now = new Date();
-        var currentHour = now.getHours();
-        var currentMinute = now.getMinutes();
+<script>
+    // Highlight the currently playing program based on the current time
+    var currentTime = new Date().getHours();
+    var table = document.querySelector('table');
+    var rows = table.getElementsByTagName('tr');
 
-        // Convert current time to minutes for easier comparison
-        var currentTimeInMinutes = currentHour * 60 + currentMinute;
+    for (var i = 1; i < rows.length; i++) {
+        var timeRange = rows[i].getElementsByTagName('td')[0].textContent;
+        var startHour = parseInt(timeRange.split(':')[0]);
 
-        // Iterate through table rows and highlight the one that corresponds to the current time
-        var table = document.getElementById("programTable");
-        var rows = table.getElementsByTagName("tr");
-
-        for (var i = 1; i < rows.length; i++) { // Start from 1 to skip header row
-            var row = rows[i];
-            var timeRange = row.cells[0].innerText.split(" - ");
-            var startTime = convertTimeToMinutes(timeRange[0]);
-            var endTime = convertTimeToMinutes(timeRange[1]);
-
-            if (currentTimeInMinutes >= startTime && currentTimeInMinutes <= endTime) {
-                row.classList.add("highlight");
-                break; // Highlighted the current program, no need to check further
-            }
+        if (currentTime >= startHour && currentTime < startHour + 3) {
+            rows[i].classList.add('current');
+            break;
         }
+    }
+</script>
 
-        // Function to convert time to minutes
-        function convertTimeToMinutes(time) {
-            var parts = time.split(":");
-            return parseInt(parts[0]) * 60 + parseInt(parts[1]);
-        }
-    </script>
 </body>
-
 </html>
