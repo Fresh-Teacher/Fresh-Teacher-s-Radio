@@ -376,13 +376,17 @@
         }
 
         @keyframes blink {
-            from {
-                background-color: #000000; /* Blinking color for the currently playing program */
-            }
-            to {
-                background-color: #7f8c8d; /* Gray color for all rows */
-            }
-        }
+    0% {
+        background-color: #ffe100; /* Highlight color */
+    }
+    50% {
+        background-color: rgba(255, 225, 0, 0.5); /* Semi-transparent color */
+    }
+    100% {
+        background-color: #ffe100; /* Highlight color */
+    }
+}
+
     
 </style>
 </head>
