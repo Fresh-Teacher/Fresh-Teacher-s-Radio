@@ -343,146 +343,133 @@
     <meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress." />
     <noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }
     </style></noscript></head>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
 
-        h1 {
-            color: #3498db;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    th, td {
+        border: 1px solid #eeff31;
+        text-align: left;
+        padding: 8px;
+    }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
+    th {
+        background-color: #ffc400;
+    }
 
-        th {
-            background-color: #3498db;
-            color: white;
-        }
+    h1 {
+        text-align: center;
+    }
 
-        /* Style for all rows */
-        tr {
-            background-color: #7f8c8d; /* Gray color for all rows */
-            color: white;
-        }
+    .highlight {
+        animation: blink 2s infinite;
+    }
 
-        /* Style for the currently playing program with blinking effect */
-        tr.current-program {
-            animation: blink 1s infinite alternate; /* Blinking animation */
+    @keyframes blink {
+        0% {
+            background-color: #ffe100; /* Highlight color */
         }
-
-        @keyframes blink {
-            from {
-                background-color: #000000; /* Blinking color for the currently playing program */
-            }
-            to {
-                background-color: #7f8c8d; /* Gray color for all rows */
-            }
+        50% {
+            background-color: rgba(255, 225, 0, 0.5); /* Semi-transparent color */
         }
-    </style>
-<body class="home page-template page-template-page-home page-template-page-home-php page page-id-237 wp-embed-responsive theiaPostSlider_body wpb-js-composer js-comp-ver-7.3 vc_responsive">
-    <h1>Fresh FM 📻</h1>
-
-    <table id="programTable">
-        <thead>
-            <tr>
-                <th>Time</th>
-                <th>Program</th>
-                <th>Presenter</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="current-program">
-                <td>00:00 AM - 03:00 AM</td>
-                <td>Midnight Mix</td>
-                <td>DJ Sserudigo</td>
-            </tr>
-            <tr>
-                <td>03:00 AM - 06:00 AM</td>
-                <td>Early Vibes</td>
-                <td>Omulangira Ndausi</td>
-            </tr>
-            <tr>
-                <td>06:00 AM - 09:00 AM</td>
-                <td>Morning Breeze</td>
-                <td>Natasha Nats</td>
-            </tr>
-            <tr>
-                <td>09:00 AM - 12:00 PM</td>
-                <td>Nsaba Nkuwe</td>
-                <td>MC Kats</td>
-            </tr>
-            <tr>
-                <td>12:00 PM - 03:00 PM</td>
-                <td>Lunchtime Beats</td>
-                <td>Mix Master Max</td>
-            </tr>
-            <tr>
-                <td>03:00 PM - 06:00 PM</td>
-                <td>AfterLunch Groove</td>
-                <td>Chill Master Chris</td>
-            </tr>
-            <tr>
-                <td>06:00 PM - 09:00 PM</td>
-                <td>Work Break</td>
-                <td>Omumbejja Ssanyu</td>
-            </tr>
-            <tr>
-                <td>09:00 PM - 12:00 AM</td>
-                <td>Night Sessions</td>
-                <td>Mbaziira Tonny</td>
-            </tr>
-        </tbody>
-    </table>
+        100% {
+            background-color: #ffe100; /* Highlight color */
+        }
+    }
     
+</style>
+</head>
 
-    <script>
-        // Get the current time in the user's timezone
-        const currentTime = new Date().toLocaleTimeString('en-US', { timeZone: 'Africa/Kampala' });
+<body>
+<h1>Fresh Radio 📻</h1>
+<table id="programTable">
+    <tr>
+        <th>Time</th>
+        <th>Program</th>
+        <th>Presenter</th>
+    </tr>
+    <tr>
+        <td>00:00 AM - 03:00 AM</td>
+        <td>Midnight Mix</td>
+        <td>DJ Sserudigo</td>
+    </tr>
+    <tr>
+        <td>03:00 AM - 06:00 AM</td>
+        <td>Early Vibes</td>
+        <td>Omulangira Ndausi</td>
+    </tr>
+    <tr>
+        <td>06:00 AM - 09:00 AM</td>
+        <td>Morning Breeze</td>
+        <td>Natasha Nats</td>
+    </tr>
+    <tr>
+        <td>09:00 AM - 12:00 PM</td>
+        <td>Nsaba Nkuwe</td>
+        <td>MC Kats</td>
+    </tr>
+    <tr>
+        <td>12:00 PM - 03:00 PM</td>
+        <td>Lunchtime Beats</td>
+        <td>Mix Master Max</td>
+    </tr>
+    <tr>
+        <td>03:00 PM - 06:00 PM</td>
+        <td>AfterLunch Groove</td>
+        <td>Chill Master Chris</td>
+    </tr>
+    <tr>
+        <td>06:00 PM - 09:00 PM</td>
+        <td>Work Break</td>
+        <td>Omumbejja Ssanyu</td>
+    </tr>
+    <tr>
+        <td>09:00 PM - 12:00 AM</td>
+        <td>Night Sessions</td>
+        <td>Mbaziira Tonny</td>
+    </tr>
+</table>
 
-        // Define the program schedule
-        const programSchedule = [
-            { startTime: '00:00 AM', endTime: '03:00 AM', program: 'Program 1' },
-            { startTime: '03:00 AM', endTime: '06:00 AM', program: 'Program 2' },
-            { startTime: '06:00 AM', endTime: '09:00 AM', program: 'Program 3' },
-            { startTime: '09:00 AM', endTime: '12:00 PM', program: 'Program 4' },
-            { startTime: '12:00 PM', endTime: '03:00 PM', program: 'Program 5' },
-            { startTime: '03:00 PM', endTime: '06:00 PM', program: 'Program 6' },
-            { startTime: '06:00 PM', endTime: '09:00 PM', program: 'Program 7' },
-            { startTime: '09:00 PM', endTime: '12:00 AM', program: 'Program 8' }
-        ];
+<script>
+    // Get the current hour and minute
+    var now = new Date();
+    var currentHour = now.getHours();
+    var currentMinute = now.getMinutes();
 
-        // Determine the currently playing program based on the current time
-        const currentlyPlayingProgram = programSchedule.find(program => {
-            const programStartTime = new Date(`2023-01-01 ${program.startTime}`).toLocaleTimeString('en-US', { timeZone: 'Africa/Kampala' });
-            const programEndTime = new Date(`2023-01-01 ${program.endTime}`).toLocaleTimeString('en-US', { timeZone: 'Africa/Kampala' });
+    // Convert current time to minutes for easier comparison
+    var currentTimeInMinutes = currentHour * 60 + currentMinute;
 
-            return currentTime >= programStartTime && currentTime < programEndTime;
-        });
+    // Iterate through table rows and highlight the one that corresponds to the current time
+    var table = document.getElementById("programTable");
+    var rows = table.getElementsByTagName("tr");
 
-        // Highlight the row of the currently playing program
-        if (currentlyPlayingProgram) {
-            const table = document.getElementById('programTable');
-            const rows = table.getElementsByTagName('tr');
+    for (var i = 1; i < rows.length; i++) { // Start from 1 to skip header row
+        var row = rows[i];
+        var timeRange = row.cells[0].innerText.split(" - ");
+        var startTime = convertTimeToMinutes(timeRange[0]);
+        var endTime = convertTimeToMinutes(timeRange[1]);
 
-            for (let i = 0; i < rows.length; i++) {
-                const programName = rows[i].getElementsByTagName('td')[1].textContent;
-                if (programName === currentlyPlayingProgram.program) {
-                    rows[i].classList.add('current-program');
-                }
-            }
+        if (currentTimeInMinutes >= startTime && currentTimeInMinutes <= endTime) {
+            row.classList.add("highlight");
+            break; // Highlighted the current program, no need to check further
         }
-    </script>
+    }
+
+    // Function to convert time to minutes
+    function convertTimeToMinutes(time) {
+        var parts = time.split(":");
+        return parseInt(parts[0]) * 60 + parseInt(parts[1]);
+    }
+</script>
+    
    
                                         <script>
                                             jQuery(function() {
@@ -746,7 +733,7 @@
             <div id="lbg_audio5_html5_shoutcast_1">
                 <div class="xaudioplaylist">
                     <ul>
-                        <li class="xradiostream">https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3</li>
+                        <li class="xradiostream">https://a3.asurahosting.com:7060/radio.mp3</li>
                         <li class="xassociatedpageurl"></li>
                         <li class="xstation">Fresh FM</li>
                     </ul>
