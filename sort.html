@@ -33,16 +33,25 @@
       width: 80%;
       margin: 20px auto;
       border-collapse: collapse;
+      border: 1px solid #ddd; /* Add border to the whole table */
+      border-radius: 8px; /* Optional: Add border-radius for a rounded appearance */
     }
 
     th, td {
       padding: 10px;
       text-align: left;
-      border-bottom: 1px solid #ddd;
+      border: 1px solid #ddd; /* Add cell borders */
     }
 
     .current-program {
       background-color: yellow;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        background-color: transparent;
+      }
     }
   </style>
 </head>
@@ -104,6 +113,7 @@
     </tbody>
   </table>
 
+
   <script>
     function updateTimeAndProgram() {
       const eatTimeZone = 'Africa/Kampala'; // East Africa Time (EAT) timezone
@@ -153,3 +163,4 @@
   </script>
 </body>
 </html>
+y
