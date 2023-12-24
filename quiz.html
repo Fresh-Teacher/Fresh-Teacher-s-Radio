@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quiz Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #question-container {
+            background-color: #f8f8f8;
+            padding: 10px;
+            margin: 20px 0;
+        }
+
+        #answers-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .answer-btn {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #score-container {
+            margin-top: 20px;
+        }
+
+        #start-btn {
+            background-color: #2196F3;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Square Root Game</h1>
+        <div id="question-container">
+            <p id="question"></p>
+            <p id="question-status"></p>
+        </div>
+        <div id="answers-container">
+            <button class="answer-btn" onclick="checkAnswer(this)"></button>
+            <button class="answer-btn" onclick="checkAnswer(this)"></button>
+            <button class="answer-btn" onclick="checkAnswer(this)"></button>
+            <button class="answer-btn" onclick="checkAnswer(this)"></button>
+        </div>
+        <div id="score-container">
+            <p>Score: <span id="score">0</span></p>
+        </div>
+        <button id="start-btn" onclick="startGame()">Start Game</button>
+        <audio id="correctAudio" src="correct.mp3"></audio>
+        <audio id="incorrectAudio" src="incorrect.mp3"></audio>
+        <audio id="triedAudio" src="tried.mp3"></audio>
+        <audio id="congratulationsAudio" src="congratulations.mp3"></audio>
+    </div>
+    <script>
+        const questions = [
+            { question: '√0.25', answers: ['0.5', '0.75', '1', '1.5'], correct: '0.5' },
+            { question: '√0.64', answers: ['0.4', '0.6', '0.8', '1'], correct: '0.8' },
+            { question: '√0.09', answers: ['0.3', '0.6', '0.9', '1.2'], correct: '0.3' },
+            { question: '√0.16', answers: ['0.2', '0.4', '0.8', '1'], correct: '0.4' },
+            // Add more questions here
+            { question: '√0.36', answers: ['0.4', '0.6', '0.8', '1'], correct: '0.6' },
+            { question: '√0.49', answers: ['0.5', '0.7', '0.9', '1.1'], correct: '0.7' },
+            { question: '√0.81', answers: ['0.9', '1.1', '1.3', '1.5'], correct: '0.9' },
+            { question: '√0.64', answers: ['0.6', '0.8', '1', '1.2'], correct: '0.8' },
+            { question: '√0.01', answers: ['0.1', '0.3', '0.5', '0.7'], correct: '0.1' },
+            { question: '√0.09', answers: ['0.3', '0.6', '0.9', '1.2'], correct: '0.3' },
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function startGame() {
+            currentQuestionIndex = 0;
+            score = 0;
+            showQuestion();
+        }
+
+        function showQuestion() {
+            if (currentQuestionIndex < questions.length) {
+                const questionElement = document.getElementById('question');
+                const questionStatusElement = document.getElementById('question-status');
+                const answersContainer = document.getElementById('answers-container');
+                const question = questions[currentQuestionIndex];
+
+                questionElement.textContent = question.question;
+                questionStatusElement.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+                question.answers.forEach((answer, index) => {
+                    const answerButton = answersContainer.children[index];
+                    answerButton.textContent = answer;
+                    answerButton.style.backgroundColor = ''; // Reset button color
+                });
+
+                document.getElementById('score').textContent = score;
+            } else {
+                setTimeout(() => {
+                    if (score >= 6 && score <= 10) {
+                        document.getElementById('congratulationsAudio').play();
+                    } else if (score >= 1 && score <= 5) {
+                        document.getElementById('triedAudio').play();
+                    }
+
+                    alert(`Game Over! Your score is ${score}`);
+                    startGame();
+                }, 2000); // 2-second delay
+            }
+        }
+
+        function checkAnswer(button) {
+            const selectedAnswer = button.textContent;
+            const question = questions[currentQuestionIndex];
+
+            if (selectedAnswer === question.correct) {
+                score++;
+                document.getElementById('correctAudio').play();
+            } else {
+                button.style.backgroundColor = 'red';
+                document.getElementById('incorrectAudio').play();
+            }
+
+            currentQuestionIndex++;
+            showQuestion();
+        }
+
+        // Initial setup
+        startGame();
+    </script>
+</body>
+</html>
