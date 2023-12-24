@@ -369,27 +369,26 @@
         text-align: center;
     }
 
-    .highlight {
-        animation: blink 2s infinite;
-    }
 
-    @keyframes blink {
-        0% {
-            background-color: #ffe100; /* Highlight color */
+            /* Style for the currently playing program with blinking effect */
+            tr.current-program {
+            animation: blink 1s infinite alternate; /* Blinking animation */
         }
-        50% {
-            background-color: rgba(255, 225, 0, 0.5); /* Semi-transparent color */
+
+        @keyframes blink {
+            from {
+                background-color: #000000; /* Blinking color for the currently playing program */
+            }
+            to {
+                background-color: #7f8c8d; /* Gray color for all rows */
+            }
         }
-        100% {
-            background-color: #ffe100; /* Highlight color */
-        }
-    }
     
 </style>
 </head>
 
 <body>
-<h1>Fresh Radio 📻</h1>
+<h1>Freshy Radio 📻</h1>
 <table id="programTable">
     <tr>
         <th>Time</th>
@@ -458,7 +457,7 @@
         var endTime = convertTimeToMinutes(timeRange[1]);
 
         if (currentTimeInMinutes >= startTime && currentTimeInMinutes <= endTime) {
-            row.classList.add("highlight");
+            row.classList.add("current-program");
             break; // Highlighted the current program, no need to check further
         }
     }
