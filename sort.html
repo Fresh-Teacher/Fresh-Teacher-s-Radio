@@ -1,108 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radio Station Program Timetable</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EAT Time</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+    }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
+    #eat-time {
+      font-size: 24px;
+      font-weight: bold;
+    }
 
-        th {
-            background-color: #f2f2f2;
-        }
+    #program {
+      font-size: 18px;
+      margin-top: 10px;
+    }
 
-        tr.current {
-            background-color: #cfe2f3; /* Highlight color for the currently playing program */
-        }
-    </style>
+    table {
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .current-program {
+      background-color: yellow;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div id="eat-time"></div>
+    <div id="program"></div>
+  </header>
 
-<h1>Radio Station Program Timetable</h1>
-
-<table>
+  <table id="programTable">
     <thead>
-        <tr>
-            <th>Time</th>
-            <th>Program</th>
-            <th>Presenter</th>
-        </tr>
+      <tr>
+        <th>Time</th>
+        <th>Program</th>
+        <th>Presenter</th>
+      </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>00:00 AM - 03:00 AM</td>
-            <td>Midnight Mix</td>
-            <td>DJ Sserudigo</td>
-        </tr>
-        <tr>
-            <td>03:00 AM - 06:00 AM</td>
-            <td>Early Vibes</td>
-            <td>Omulangira Ndausi</td>
-        </tr>
-        <tr>
-            <td>06:00 AM - 09:00 AM</td>
-            <td>Morning Breeze</td>
-            <td>Natasha Nats</td>
-        </tr>
-        <tr>
-            <td>09:00 AM - 12:00 PM</td>
-            <td>Nsaba Nkuwe</td>
-            <td>MC Kats</td>
-        </tr>
-        <tr>
-            <td>12:00 PM - 03:00 PM</td>
-            <td>Lunchtime Beats</td>
-            <td>Mix Master Max</td>
-        </tr>
-        <tr>
-            <td>03:00 PM - 06:00 PM</td>
-            <td>AfterLunch Groove</td>
-            <td>Chill Master Chris</td>
-        </tr>
-        <tr>
-            <td>06:00 PM - 09:00 PM</td>
-            <td>Work Break</td>
-            <td>Omumbejja Ssanyu</td>
-        </tr>
-        <tr>
-            <td>09:00 PM - 00:00 AM</td>
-            <td>Night Sessions</td>
-            <td>Mbaziira Tonny</td>
-        </tr>
+      <tr data-start="00:00" data-end="00:08">
+        <td>00:00 AM - 00:08 AM</td>
+        <td>Midnight Mix</td>
+        <td>DJ Sserudigo</td>
+      </tr>
+      <tr data-start="00:08" data-end="06:00">
+        <td>00:08 AM - 06:00 AM</td>
+        <td>Early Vibes</td>
+        <td>Omulangira Ndausi</td>
+      </tr>
+      <tr data-start="06:00" data-end="09:00">
+        <td>06:00 AM - 09:00 AM</td>
+        <td>Morning Breeze</td>
+        <td>Natasha Nats</td>
+      </tr>
+      <tr data-start="09:00" data-end="12:00">
+        <td>09:00 AM - 12:00 PM</td>
+        <td>Nsaba Nkuwe</td>
+        <td>MC Kats</td>
+      </tr>
+      <tr data-start="12:00" data-end="15:00">
+        <td>12:00 PM - 03:00 PM</td>
+        <td>Lunchtime Beats</td>
+        <td>Mix Master Max</td>
+      </tr>
+      <tr data-start="15:00" data-end="18:00">
+        <td>03:00 PM - 06:00 PM</td>
+        <td>AfterLunch Groove</td>
+        <td>Chill Master Chris</td>
+      </tr>
+      <tr data-start="18:00" data-end="21:00">
+        <td>06:00 PM - 09:00 PM</td>
+        <td>Work Break</td>
+        <td>Omumbejja Ssanyu</td>
+      </tr>
+      <tr data-start="21:00" data-end="00:00">
+        <td>09:00 PM - 12:00 AM</td>
+        <td>Night Sessions</td>
+        <td>Mbaziira Tonny</td>
+      </tr>
     </tbody>
-</table>
+  </table>
 
-<script>
-    // Highlight the currently playing program based on the current time
-    var currentTime = new Date().getHours();
-    var table = document.querySelector('table');
-    var rows = table.getElementsByTagName('tr');
+  <script>
+    function updateTimeAndProgram() {
+      const eatTimeZone = 'Africa/Kampala'; // East Africa Time (EAT) timezone
+      const currentEATTime = new Date().toLocaleTimeString('en-US', { timeZone: eatTimeZone, hour12: true, timeStyle: 'medium' });
+      document.getElementById('eat-time').textContent = `EAT Time: ${currentEATTime}`;
 
-    for (var i = 1; i < rows.length; i++) {
-        var timeRange = rows[i].getElementsByTagName('td')[0].textContent;
-        var startHour = parseInt(timeRange.split(':')[0]);
+      const currentTime = new Date().toLocaleTimeString('en-US', { timeZone: 'Africa/Nairobi', hour12: true, timeStyle: 'short' });
 
-        if (currentTime >= startHour && currentTime < startHour + 3) {
-            rows[i].classList.add('current');
-            break;
+      let program;
+      let highlightedRow = null;
+
+      const tableRows = document.querySelectorAll('#programTable tbody tr');
+
+      tableRows.forEach((row) => {
+        const startTime = row.getAttribute('data-start');
+        const endTime = row.getAttribute('data-end');
+
+        if (isTimeBetween(currentTime, startTime, endTime)) {
+          program = `${row.children[1].textContent} by ${row.children[2].textContent}`;
+          highlightedRow = row;
         }
-    }
-</script>
+      });
 
+      document.getElementById('program').textContent = `Currently playing program: ${program}`;
+
+      // Remove highlight from all rows
+      tableRows.forEach((row) => {
+        row.classList.remove('current-program');
+      });
+
+      // Highlight the currently playing program
+      if (highlightedRow) {
+        highlightedRow.classList.add('current-program');
+      }
+    }
+
+    // Check if a given time is between two time values
+    function isTimeBetween(currentTime, startTime, endTime) {
+      return currentTime >= startTime && currentTime < endTime;
+    }
+
+    // Update time and program every second
+    setInterval(updateTimeAndProgram, 1000);
+
+    // Initial update
+    updateTimeAndProgram();
+  </script>
 </body>
 </html>
