@@ -79,19 +79,19 @@
             <td class="upcoming">Upcoming</td>
         </tr>
         <tr>
-            <td>09:00 AM - 09:50 AM</td>
+            <td>10:00 AM - 10:17 AM</td>
             <td>Lunchtime Beats</td>
             <td>Mix Master Max</td>
             <td class="upcoming">Upcoming</td>
         </tr>
         <tr>
-            <td>09:50 AM - 09:55 AM</td>
+            <td>10:17 AM - 10:19 AM</td>
             <td>AfterLunch Groove</td>
             <td>Chill Master Chris</td>
             <td class="upcoming">Upcoming</td>
         </tr>
         <tr>
-            <td>09:55 AM - 09:57 AM</td>
+            <td>10:19 AM - 10:21 AM</td>
             <td>Work Break</td>
             <td>Omumbejja Ssanyu</td>
             <td class="upcoming">Upcoming</td>
@@ -147,16 +147,21 @@
 
     // Call the function to initialize audio elements
     initializeAudioElements();
+    
+var currentProgram = ""; // Keep track of the current playing program
 
     // Function to update the sticky player source and controls
     function updateStickyPlayer(programName) {
         var audioPlayer = document.getElementById("audioPlayer");
         var audio = audioElements[programName];
 
-        audioPlayer.pause(); // Pause the currently playing audio
-        audioPlayer.src = audio.src; // Set the source for the sticky player
-        audioPlayer.load(); // Reload the audio player with the new source
-        audioPlayer.play(); // Start playing the audio
+        if (currentProgram !== programName) {
+            audioPlayer.pause(); // Pause the currently playing audio
+            audioPlayer.src = audio.src; // Set the source for the sticky player
+            audioPlayer.load(); // Reload the audio player with the new source
+            audioPlayer.play(); // Start playing the audio
+            currentProgram = programName; // Update the current program
+        }
 
         // Update player controls
         document.getElementById("stickyPlayer").style.display = "block"; // Show the sticky player
