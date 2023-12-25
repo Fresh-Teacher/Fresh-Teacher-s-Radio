@@ -3,164 +3,137 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EAT Time</title>
+  <title>Airport Schedule</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
-
-    header {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 15px;
-    }
-
-    #eat-time {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    #program {
-      font-size: 18px;
-      margin-top: 10px;
-    }
-
     table {
-      width: 80%;
-      margin: 20px auto;
+      width: 100%;
       border-collapse: collapse;
-      border: 1px solid #ddd; /* Add border to the whole table */
-      border-radius: 8px; /* Optional: Add border-radius for a rounded appearance */
+      margin-top: 20px;
     }
 
     th, td {
-      padding: 10px;
+      padding: 12px;
       text-align: left;
-      border: 1px solid #ddd; /* Add cell borders */
+      border-bottom: 1px solid #ddd;
     }
 
-    .current-program {
-      background-color: yellow;
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .finished {
+      background-color: #dff0d8;
+    }
+
+    .current {
+      background-color: #fcf8e3;
       animation: blink 1s infinite;
+    }
+
+    .coming {
+      background-color: #d9edf7;
     }
 
     @keyframes blink {
       50% {
-        background-color: transparent;
+        opacity: 0;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div id="eat-time"></div>
-    <div id="program"></div>
-  </header>
 
-  <table id="programTable">
+  <h1>Airport Schedule</h1>
+
+  <table>
     <thead>
       <tr>
-        <th>Time</th>
-        <th>Program</th>
-        <th>Presenter</th>
+        <th>Flight Status</th>
+        <th>Departure</th>
+        <th>Destination</th>
+        <th>Departure Time</th>
       </tr>
     </thead>
     <tbody>
-      <tr data-start="00:00" data-end="00:08">
-        <td>00:00 AM - 00:08 AM</td>
-        <td>Midnight Mix</td>
-        <td>DJ Sserudigo</td>
+      <tr class="finished">
+        <td>Finished</td>
+        <td>Entebbe</td>
+        <td>London</td>
+        <td>12:00 PM</td>
       </tr>
-      <tr data-start="00:08" data-end="06:00">
-        <td>00:08 AM - 06:00 AM</td>
-        <td>Early Vibes</td>
-        <td>Omulangira Ndausi</td>
+      <tr class="current">
+        <td>Current</td>
+        <td>Kampala</td>
+        <td>Dubai</td>
+        <td>3:00 PM</td>
       </tr>
-      <tr data-start="06:00" data-end="09:00">
-        <td>06:00 AM - 09:00 AM</td>
-        <td>Morning Breeze</td>
-        <td>Natasha Nats</td>
+      <tr class="coming">
+        <td>Coming</td>
+        <td>Nairobi</td>
+        <td>Paris</td>
+        <td>6:00 PM</td>
       </tr>
-      <tr data-start="09:00" data-end="12:00">
-        <td>09:00 AM - 12:00 PM</td>
-        <td>Nsaba Nkuwe</td>
-        <td>MC Kats</td>
+      <!-- Add 7 more flights -->
+      <!-- Example: -->
+      <tr class="finished">
+        <td>Finished</td>
+        <td>City1</td>
+        <td>City2</td>
+        <td>2:30 PM</td>
       </tr>
-      <tr data-start="12:00" data-end="15:00">
-        <td>12:00 PM - 03:00 PM</td>
-        <td>Lunchtime Beats</td>
-        <td>Mix Master Max</td>
+      <tr class="coming">
+        <td>Coming</td>
+        <td>City3</td>
+        <td>City4</td>
+        <td>5:30 PM</td>
       </tr>
-      <tr data-start="15:00" data-end="18:00">
-        <td>03:00 PM - 06:00 PM</td>
-        <td>AfterLunch Groove</td>
-        <td>Chill Master Chris</td>
-      </tr>
-      <tr data-start="18:00" data-end="21:00">
-        <td>06:00 PM - 09:00 PM</td>
-        <td>Work Break</td>
-        <td>Omumbejja Ssanyu</td>
-      </tr>
-      <tr data-start="21:00" data-end="00:00">
-        <td>09:00 PM - 12:00 AM</td>
-        <td>Night Sessions</td>
-        <td>Mbaziira Tonny</td>
-      </tr>
+      <!-- Repeat similar rows for additional flights -->
     </tbody>
   </table>
 
-
   <script>
-    function updateTimeAndProgram() {
-      const eatTimeZone = 'Africa/Kampala'; // East Africa Time (EAT) timezone
-      const currentEATTime = new Date().toLocaleTimeString('en-US', { timeZone: eatTimeZone, hour12: true, timeStyle: 'medium' });
-      document.getElementById('eat-time').textContent = `EAT Time: ${currentEATTime}`;
+  // Function to calculate time difference in minutes
+  function getTimeDifferenceInMinutes(departureTime) {
+    const now = new Date();
+    
+    // Set the UTC offset for Kampala (EAT)
+    const kampalaOffset = 3; // UTC+3
 
-      const currentTime = new Date().toLocaleTimeString('en-US', { timeZone: 'Africa/Nairobi', hour12: true, timeStyle: 'short' });
+    const departure = new Date(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate(),
+      ...departureTime.split(':')
+    );
+    
+    // Adjust departure time for Kampala's UTC offset
+    departure.setUTCHours(departure.getUTCHours() - kampalaOffset);
 
-      let program;
-      let highlightedRow = null;
+    const differenceInMilliseconds = departure - now;
+    return Math.floor(differenceInMilliseconds / (60 * 1000));
+  }
 
-      const tableRows = document.querySelectorAll('#programTable tbody tr');
+  // Function to update the blinking effect based on time difference
+  function updateBlinkingEffect() {
+    const rows = document.querySelectorAll('tr.current');
+    rows.forEach(row => {
+      const departureTime = row.querySelector('td:last-child').textContent;
+      const timeDifference = getTimeDifferenceInMinutes(departureTime);
 
-      tableRows.forEach((row) => {
-        const startTime = row.getAttribute('data-start');
-        const endTime = row.getAttribute('data-end');
-
-        if (isTimeBetween(currentTime, startTime, endTime)) {
-          program = `${row.children[1].textContent} by ${row.children[2].textContent}`;
-          highlightedRow = row;
-        }
-      });
-
-      document.getElementById('program').textContent = `Currently playing program: ${program}`;
-
-      // Remove highlight from all rows
-      tableRows.forEach((row) => {
-        row.classList.remove('current-program');
-      });
-
-      // Highlight the currently playing program
-      if (highlightedRow) {
-        highlightedRow.classList.add('current-program');
+      if (timeDifference >= 0 && timeDifference <= 30) {
+        row.classList.add('blinking');
+      } else {
+        row.classList.remove('blinking');
       }
-    }
+    });
+  }
 
-    // Check if a given time is between two time values
-    function isTimeBetween(currentTime, startTime, endTime) {
-      return currentTime >= startTime && currentTime < endTime;
-    }
+  // Initial update on page load
+  updateBlinkingEffect();
 
-    // Update time and program every second
-    setInterval(updateTimeAndProgram, 1000);
+  // Update blinking effect every minute
+  setInterval(updateBlinkingEffect, 60000);
+</script>
 
-    // Initial update
-    updateTimeAndProgram();
-  </script>
 </body>
 </html>
-y
