@@ -90,24 +90,50 @@
       <!-- Repeat similar rows for additional flights -->
     </tbody>
   </table>
-
 <script>
   // Function to calculate time difference in minutes
-  function getTimeDifferenceInMinutes(departureTime) {
+  function getTimeDifferenceInMinutes(departureTime, arrivalTime) {
     const now = new Date();
-    const departure = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...departureTime.split(':'));
+    
+    // Set the UTC offset for Kampala (EAT)
+    const kampalaOffset = 3; // UTC+3
+
+    const departure = new Date(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate(),
+      ...departureTime.split(':')
+    );
+    
+    const arrival = new Date(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate(),
+      ...arrivalTime.split(':')
+    );
+
+    // Adjust departure and arrival time for Kampala's UTC offset
+    departure.setUTCHours(departure.getUTCHours() - kampalaOffset);
+    arrival.setUTCHours(arrival.getUTCHours() - kampalaOffset);
+
     const differenceInMilliseconds = departure - now;
-    return Math.floor(differenceInMilliseconds / (60 * 1000));
+    const isWithinTimeSlot = now >= departure && now <= arrival;
+
+    return {
+      differenceInMinutes: Math.floor(differenceInMilliseconds / (60 * 1000)),
+      isWithinTimeSlot,
+    };
   }
 
   // Function to update the blinking effect based on time difference
   function updateBlinkingEffect() {
     const rows = document.querySelectorAll('tr.current');
     rows.forEach(row => {
-      const departureTime = row.querySelector('td:last-child').textContent;
-      const timeDifference = getTimeDifferenceInMinutes(departureTime);
+      const departureTime = row.querySelector('td:nth-child(4)').textContent;
+      const arrivalTime = row.querySelector('td:nth-child(5)').textContent;
+      const { differenceInMinutes, isWithinTimeSlot } = getTimeDifferenceInMinutes(departureTime, arrivalTime);
 
-      if (timeDifference >= 0 && timeDifference <= 30) {
+      if (isWithinTimeSlot) {
         row.classList.add('blinking');
       } else {
         row.classList.remove('blinking');
@@ -121,6 +147,7 @@
   // Update blinking effect every minute
   setInterval(updateBlinkingEffect, 60000);
 </script>
+
 
 
 </body>
