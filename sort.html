@@ -103,7 +103,7 @@
             <td class="upcoming">Upcoming</td>
         </tr>
         <tr>
-            <td>10:53 AM - 10:55 AM</td>
+            <td>10:53 AM - 11:02 AM</td>
             <td>Night Sessions</td>
             <td>Mbaziira Tonny</td>
             <td class="upcoming">Upcoming</td>
@@ -209,16 +209,7 @@ var currentProgram = ""; // Keep track of the current playing program
         hideStickyPlayer();
     }
 
-    // Add a click event to pause the sticky player when the user clicks the pause button
-    document.getElementById("audioPlayer").addEventListener("pause", function () {
-        hideStickyPlayer();
-    });
-
-    // Add a change event to update the volume when the user adjusts the volume slider
-    document.getElementById("audioPlayer").addEventListener("volumechange", function () {
-        var volume = document.getElementById("audioPlayer").volume;
-        setVolume(volume);
-    });
+    
 
     function updateProgramStatus() {
         var table = document.getElementById("programTable");
