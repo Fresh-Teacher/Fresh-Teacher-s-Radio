@@ -39,11 +39,6 @@
             color: blue;
             text-decoration: underline;
         }
-
-        .contact-label {
-            margin-top: 10px;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
@@ -57,16 +52,14 @@
             if (data.type === 'Employee') {
                 card.innerHTML = `
                     <h2>${data.type}</h2>
-                    <p class="contact-label"><strong>Contact:</strong></p>
-                    <p><span class="contact-info">${data.contact}</span></p>
+                    <p><strong>Contact: <span class="contact-info">${data.contact}</span></strong></p>
                     <p>${data.message}</p>
                     <p class="show-contact-button">Show Contact</p>
                 `;
             } else if (data.type === 'Employer') {
                 card.innerHTML = `
                     <h2>${data.type}</h2>
-                    <p class="contact-label"><strong>Contact:</strong></p>
-                    <p><span class="contact-info">${data.contact}</span></p>
+                    <p><strong>Contact: <span class="contact-info">${data.contact}</span></strong></p>
                     <p>${data.message}</p>
                     <p class="show-contact-button">Show Contact</p>
                 `;
