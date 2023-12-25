@@ -45,7 +45,7 @@
         </tr>
         <tr id="match1">
             <td>Kampala FC</td>
-            <td>7:30 AM - 9:30 AM</td>
+            <td>8:00 AM - 9:30 AM</td>
             <td class="upcoming">Upcoming</td>
         </tr>
         <tr id="match2">
@@ -83,8 +83,8 @@
                 var statusCell = row.cells[2];
 
                 var matchTime = timeCell.innerText.split(' - ');
-                var startTime = new Date(new Date().toLocaleDateString() + " " + matchTime[0]);
-                var endTime = new Date(new Date().toLocaleDateString() + " " + matchTime[1]);
+                var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + matchTime[0]);
+                var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + matchTime[1]);
                 var currentTime = new Date();
 
                 if (currentTime < startTime) {
