@@ -26,10 +26,20 @@
 
         .current {
             background-color: #81c784;
+            animation: blink 2s infinite; /* Add blinking animation */
         }
 
         .upcoming {
             background-color: #64b5f6;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -112,13 +122,13 @@
                 var currentTime = new Date();
 
                 if (currentTime < startTime) {
-                    statusCell.className = "upcoming";
+                    row.className = "upcoming";
                     statusCell.innerText = "Upcoming";
                 } else if (currentTime >= startTime && currentTime <= endTime) {
-                    statusCell.className = "current";
+                    row.className = "current";
                     statusCell.innerText = "Currently On Air";
                 } else {
-                    statusCell.className = "finished";
+                    row.className = "finished";
                     statusCell.innerText = "Finished";
                 }
             }
