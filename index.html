@@ -24,6 +24,15 @@
     background-color: inherit;
 }
 
+header {
+            background-color: #333; /* Set background color for header */
+            color: white; /* Set text color for header */
+            padding: 0.5px; /* Add padding to header */
+            text-align: center; /* Center align text */
+            position: fixed; /* Make header fixed at the top */
+            width: 100%; /* Full width */
+            top: 0; /* Stick to the top */
+        }
 
         .finished {
             background-color: #e57373; /* Red for finished */
@@ -46,14 +55,76 @@
                 opacity: 0;
             }
         }
+
+            #stickyPlayer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #333; /* Change the background color as needed */
+            padding: 10px; /* Add padding for better visibility */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Style the audio player container */
+        #audioPlayerContainer {
+            width: 100%; /* Full width */
+            background-color: #333; /* Set background color for the player container */
+            padding: 0.5px; /* Add padding to the player container */
+            text-align: center; /* Center align text */
+            border-radius: 10px; /* Add border-radius for a rounded look */
+        }
+
+        /* Style the audio player */
+        #audioPlayer {
+            width: 80%; /* Adjust width as needed */
+            background-color: #555; /* Set background color for the player */
+            color: white; /* Set text color for the player */
+            padding: 15px; /* Add padding to the player */
+            text-align: center; /* Center align text */
+            border: none; /* Remove default border */
+            outline: none; /* Remove outline on focus */
+            appearance: none; /* Remove default appearance */
+            -webkit-appearance: none; /* Remove default appearance for WebKit browsers */
+            border-radius: 8px; /* Add border-radius for a rounded look */
+        }
+
+        /* Style the custom play/pause button */
+        #playPauseButton {
+            width: 80px; /* Fixed width for the button */
+            background-color: #ff4081; /* Set background color for the button */
+            color: white; /* Set text color for the button */
+            padding: 10px; /* Add padding to the button */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            margin-top: 10px; /* Add some spacing between the player and the button */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Add border-radius for a rounded look */
+        }
+
+        /* Add a hover effect for the button */
+        #playPauseButton:hover {
+            background-color: #ff66b2; /* Adjust the color for the hover effect */
+        }
+
+        /* Adjustments for responsive design */
+        @media screen and (max-width: 600px) {
+            header, footer {
+                font-size: 14px; /* Adjust font size for smaller screens */
+            }
+        }
         
     </style>
 </head>
 <body>
 
-    <h1>Fresh Radio 📻</h1>
+   
+    <header>
+        <h1>Fresh Radio 📻</h1>
+    </header><br><br>
 
     <table id="programTable">
+        <br><br>
         <tr>
             <th>Time</th>
             <th>Program</th>
@@ -151,14 +222,31 @@
 
     </table>
 
-    <!-- Add this div at the bottom of your body section for the sticky audio player -->
-<div id="stickyPlayer">
-    <audio id="audioPlayer" controls autoplay>
-        <!-- No source element here -->
-    </audio>
-</div>
+    <div id="stickyPlayer">
+        <div id="audioPlayerContainer">
+            <audio id="audioPlayer" autoplay>
+                <!-- No source element here -->
+            </audio>
+        </div>
+        <button id="playPauseButton" onclick="togglePlayPause()">Play ▶️</button>
+    </div>
 
 <script>
+
+  // Function to toggle play/pause
+  function togglePlayPause() {
+            var audioPlayer = document.getElementById("audioPlayer");
+            var playPauseButton = document.getElementById("playPauseButton");
+
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playPauseButton.innerText = "Play ▶️";
+            } else {
+                audioPlayer.pause();
+                playPauseButton.innerText = "Pause ⏸️";
+            }
+        }
+
     // Define an array to store audio elements for each program
     var audioElements = {};
     var audioPath = ""; // Update this path based on your project structure
@@ -274,7 +362,7 @@ var currentProgram = ""; // Keep track of the current playing program
                 statusCell.innerText = "Upcoming";
             } else if (currentTime >= startTime && currentTime <= endTime) {
                 row.className = "current";
-                statusCell.innerText = "Live On Air";
+                statusCell.innerText = "LIVE";
             } else {
                 row.className = "finished";
                 statusCell.innerText = "Ended";
