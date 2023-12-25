@@ -1,154 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Airport Schedule</title>
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ugandan Sports Betting Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-    th, td {
-      padding: 12px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
+        h1 {
+            text-align: center;
+        }
 
-    th {
-      background-color: #f2f2f2;
-    }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
 
-    .finished {
-      background-color: #dff0d8;
-    }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
 
-    .current {
-      background-color: #fcf8e3;
-      animation: blink 1s infinite;
-    }
+        th {
+            background-color: #f2f2f2;
+        }
 
-    .coming {
-      background-color: #d9edf7;
-    }
+        .finished {
+            background-color: #d1ffd1;
+        }
 
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
-    }
-  </style>
+        .current {
+            background-color: #ffffcc;
+        }
+
+        .upcoming {
+            background-color: #c2f0c2;
+        }
+    </style>
 </head>
 <body>
+    <h1>Matches of the Day</h1>
+    <table id="matchesTable">
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table rows will be dynamically added here -->
+        </tbody>
+    </table>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            updateMatches();
+            setInterval(updateMatches, 1000); // Update every second
+        });
 
-  <h1>Airport Schedule</h1>
+        function updateMatches() {
+            const now = new Date();
+            const table = document.getElementById("matchesTable");
 
-  <table>
-    <thead>
-      <tr>
-        <th>Flight Status</th>
-        <th>Departure</th>
-        <th>Destination</th>
-        <th>Departure Time</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="finished">
-        <td>Finished</td>
-        <td>Entebbe</td>
-        <td>London</td>
-        <td>12:00 PM</td>
-      </tr>
-      <tr class="current">
-        <td>Current</td>
-        <td>Kampala</td>
-        <td>Dubai</td>
-        <td>3:00 PM</td>
-      </tr>
-      <tr class="coming">
-        <td>Coming</td>
-        <td>Nairobi</td>
-        <td>Paris</td>
-        <td>6:00 PM</td>
-      </tr>
-      <!-- Add 7 more flights -->
-      <!-- Example: -->
-      <tr class="finished">
-        <td>Finished</td>
-        <td>City1</td>
-        <td>City2</td>
-        <td>2:30 PM</td>
-      </tr>
-      <tr class="coming">
-        <td>Coming</td>
-        <td>City3</td>
-        <td>City4</td>
-        <td>5:30 PM</td>
-      </tr>
-      <!-- Repeat similar rows for additional flights -->
-    </tbody>
-  </table>
-<script>
-  // Function to calculate time difference in minutes
-  function getTimeDifferenceInMinutes(departureTime, arrivalTime) {
-    const now = new Date();
-    
-    // Set the UTC offset for Kampala (EAT)
-    const kampalaOffset = 3; // UTC+3
+            // Sample data, replace it with your actual match data
+            const matches = [
+                { team: "Match A", startTime: new Date("2023-12-25T08:00:00Z"), endTime: new Date("2023-12-25T10:00:00Z") },
+                { team: "Match B", startTime: new Date("2023-12-25T10:30:00Z"), endTime: new Date("2023-12-25T12:30:00Z") },
+                { team: "Match C", startTime: new Date("2023-12-25T14:00:00Z"), endTime: new Date("2023-12-25T16:00:00Z") },
+                { team: "Match D", startTime: new Date("2023-12-25T18:00:00Z"), endTime: new Date("2023-12-25T20:00:00Z") },
+            ];
 
-    const departure = new Date(
-      now.getUTCFullYear(),
-      now.getUTCMonth(),
-      now.getUTCDate(),
-      ...departureTime.split(':')
-    );
-    
-    const arrival = new Date(
-      now.getUTCFullYear(),
-      now.getUTCMonth(),
-      now.getUTCDate(),
-      ...arrivalTime.split(':')
-    );
+            // Clear existing rows
+            table.querySelector("tbody").innerHTML = "";
 
-    // Adjust departure and arrival time for Kampala's UTC offset
-    departure.setUTCHours(departure.getUTCHours() - kampalaOffset);
-    arrival.setUTCHours(arrival.getUTCHours() - kampalaOffset);
+            matches.forEach(match => {
+                const row = table.insertRow();
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
 
-    const differenceInMilliseconds = departure - now;
-    const isWithinTimeSlot = now >= departure && now <= arrival;
+                cell1.textContent = match.team;
 
-    return {
-      differenceInMinutes: Math.floor(differenceInMilliseconds / (60 * 1000)),
-      isWithinTimeSlot,
-    };
-  }
+                if (now > match.endTime) {
+                    row.classList.add("finished");
+                } else if (now >= match.startTime && now <= match.endTime) {
+                    row.classList.add("current");
+                } else {
+                    row.classList.add("upcoming");
+                }
 
-  // Function to update the blinking effect based on time difference
-  function updateBlinkingEffect() {
-    const rows = document.querySelectorAll('tr.current');
-    rows.forEach(row => {
-      const departureTime = row.querySelector('td:nth-child(4)').textContent;
-      const arrivalTime = row.querySelector('td:nth-child(5)').textContent;
-      const { differenceInMinutes, isWithinTimeSlot } = getTimeDifferenceInMinutes(departureTime, arrivalTime);
+                // Format time as HH:mm
+                const startTimeStr = match.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
+                const endTimeStr = match.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
 
-      if (isWithinTimeSlot) {
-        row.classList.add('blinking');
-      } else {
-        row.classList.remove('blinking');
-      }
-    });
-  }
-
-  // Initial update on page load
-  updateBlinkingEffect();
-
-  // Update blinking effect every minute
-  setInterval(updateBlinkingEffect, 60000);
-</script>
-
-
-
+                cell2.textContent = `${startTimeStr} to ${endTimeStr}`;
+            });
+        }
+    </script>
 </body>
 </html>
