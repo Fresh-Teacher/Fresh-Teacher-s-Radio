@@ -102,7 +102,88 @@
             font-size: 25px; /* Adjust font size as needed */
         }
 
-            
+                  /* Teacher Adverts Section Styles */
+                  .container {
+            max-width: 800px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card-title {
+            color: #0400fe; /* Shouting blue */
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .card-text {
+            color: #f0f2f3;
+        }
+
+                /* New styles for teacher adverts section */
+                #teacherAdverts {
+            padding: 30px 0;
+            background-color: #f8f9fa;
+        }
+
+        #teacherAdverts h2 {
+            text-align: center;
+            color: #343a40;
+        }
+
+        .adverts-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .advert-card {
+            max-width: 300px;
+            margin: 15px;
+            background-color: #fff;
+            border: none; /* No border */
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s ease-in-out;
+        }
+
+        .advert-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .advert-card .card-body {
+            padding: 15px;
+        }
+
+        .advert-card h5 {
+            color: #0400fe; /* Shouting blue */
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .advert-card p {
+            color: #f0f2f3;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .advert-card {
+                max-width: calc(50% - 30px);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .advert-card {
+                max-width: calc(100% - 30px);
+            }
+        }
         </style>
     </head>
     <br><br><br>
@@ -210,6 +291,7 @@
             <!-- Add more programs as needed -->
     
         </table>
+        
         <br><br><br><br><br>
        <div id="stickyPlayer">
             <audio id="audioPlayer" controls autoplay>
@@ -217,7 +299,68 @@
             </audio>
         </div>
     
-    <script>
+<!-- Job Posts Section -->
+<div class="container mt-4 text-center">
+    <h1 class="text-center text-danger">Advertisements</h1>
+    <div id="jobPosts" class="row mt-4"></div>
+</div>
+<br><br><br><br><br>
+
+<!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    var jobData = [
+        {
+            "type": "employer",
+            "message": "We are looking for teachers to teach. Apply now!"
+        },
+        {
+            "type": "employee",
+            "message": "I am a teacher looking for a job. Experienced in Mathematics and Science."
+        },
+        // Add more job posts as needed
+    ];
+
+  // Function to render job posts dynamically
+function renderJobPosts() {
+    var jobPostsContainer = document.getElementById('jobPosts');
+
+    jobData.forEach(function (job) {
+        var cardDiv = document.createElement('div');
+        cardDiv.className = 'col-md-6 mb-4';
+        cardDiv.style.backgroundColor = '#343a40'; // Replace '#your-color' with your desired color code
+
+        var card = document.createElement('div');
+        card.className = 'card bg-success';
+
+        var cardBody = document.createElement('div');
+        cardBody.className = 'card-body';
+
+        var cardTitle = document.createElement('h5');
+        cardTitle.className = 'card-title';
+        cardTitle.textContent = (job.type === 'employer') ? 'Employer' : 'Employee';
+
+        var cardText = document.createElement('p');
+        cardText.className = 'card-text card-message'; // Added class for styling
+        cardText.textContent = job.message;
+
+        cardBody.appendChild(cardTitle);
+        cardBody.appendChild(cardText);
+
+        card.appendChild(cardBody);
+        cardDiv.appendChild(card);
+
+        jobPostsContainer.appendChild(cardDiv);
+    });
+}
+
+// Call the function to render job posts
+renderJobPosts();
+
+
         // Function to update the current time in 12-hour format in EAT zone
         function updateTime() {
             var currentTimeElement = document.getElementById("currentTime");
