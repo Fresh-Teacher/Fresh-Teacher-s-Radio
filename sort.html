@@ -45,17 +45,17 @@
         </tr>
         <tr id="match1">
             <td>Kampala FC</td>
-            <td>7:00 AM - 7:42 AM</td>
+            <td>6:00 AM - 7:30 AM</td>
             <td class="upcoming">Upcoming</td>
         </tr>
         <tr id="match2">
             <td>Jinja United</td>
-            <td>10:00 AM - 11:30 AM</td>
+            <td>7:30 AM - 7:48 AM</td>
             <td class="upcoming">Upcoming</td>
         </tr>
         <tr id="match3">
             <td>Mbarara City</td>
-            <td>1:00 PM - 2:30 PM</td>
+            <td>7:48 AM - 2:30 PM</td>
             <td class="upcoming">Upcoming</td>
         </tr>
         <tr id="match4">
@@ -65,7 +65,7 @@
         </tr>
         <tr id="match5">
             <td>Lira Lions</td>
-            <td>7:44 AM - 6:30 PM</td>
+            <td>5:00 PM - 6:30 PM</td>
             <td class="upcoming">Upcoming</td>
         </tr>
         <!-- Add more matches as needed -->
@@ -100,8 +100,8 @@
             }
         }
 
-        // Update match status every minute
-        setInterval(updateMatchStatus, 60000);
+        // Update match status every 10 seconds
+        setInterval(updateMatchStatus, 10000);
 
         // Initial update
         updateMatchStatus();
