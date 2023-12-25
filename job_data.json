@@ -1,0 +1,20 @@
+[
+    {
+        "type": "Employee",
+        "contact": "0783577292",
+        "message": "Hello, my name is Justine, and I am an experienced teacher actively seeking a position..."
+    },
+    {
+        "type": "Employer",
+        "school": "Lubaga Junior School",
+        "location": "Kampala",
+        "contact": "lubagajunior@gmail.com",
+        "positions": [
+            "3 Primary School Teachers",
+            "2 Mathematics Teachers",
+            "1 English Teacher",
+            "1 Social Studies Teacher"
+        ],
+        "message": "Lubaga Junior School is looking to fill multiple teaching positions as soon as possible. If you are a qualified and passionate educator..."
+    }
+]

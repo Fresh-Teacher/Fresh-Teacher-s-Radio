@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Job Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .job-card {
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .job-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-info {
+            font-style: italic;
+            margin-top: 10px;
+            display: none; /* Initially hide the contact info */
+        }
+
+        .show-contact-button {
+            margin-top: 10px;
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+
+        .contact-label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        // Function to create job cards
+        function createJobCard(data) {
+            const card = document.createElement('div');
+            card.classList.add('job-card');
+
+            if (data.type === 'Employee') {
+                card.innerHTML = `
+                    <h2>${data.type}</h2>
+                    <p class="contact-label"><strong>Contact:</strong></p>
+                    <p><span class="contact-info">${data.contact}</span></p>
+                    <p>${data.message}</p>
+                    <p class="show-contact-button">Show Contact</p>
+                `;
+            } else if (data.type === 'Employer') {
+                card.innerHTML = `
+                    <h2>${data.type}</h2>
+                    <p class="contact-label"><strong>Contact:</strong></p>
+                    <p><span class="contact-info">${data.contact}</span></p>
+                    <p>${data.message}</p>
+                    <p class="show-contact-button">Show Contact</p>
+                `;
+            }
+
+            document.body.appendChild(card);
+
+            // Add click event to the "Show Contact" button
+            const showContactButton = card.querySelector('.show-contact-button');
+            const contactInfo = card.querySelector('.contact-info');
+            
+            showContactButton.addEventListener('click', function() {
+                // Toggle the display of contact info
+                contactInfo.style.display = contactInfo.style.display === 'none' ? 'inline' : 'none';
+                // Toggle the button text
+                showContactButton.textContent = contactInfo.style.display === 'none' ? 'Show Contact' : 'Hide Contact';
+            });
+        }
+
+        // Fetch JSON data and create job cards
+        fetch('job_data.json')
+            .then(response => response.json())
+            .then(data => data.forEach(createJobCard))
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+
+</body>
+</html>
