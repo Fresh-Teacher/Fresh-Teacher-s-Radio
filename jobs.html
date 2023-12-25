@@ -2,89 +2,102 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Education Job Board</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Teacher Jobs Board</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+            background-color: #f8f9fa;
         }
 
-        .job-card {
-            width: 300px;
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin: 10px;
-            border-radius: 8px;
+        .container {
+            max-width: 800px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease-in-out;
+            transition: transform 0.3s;
         }
 
-        .job-card:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        .card:hover {
+            transform: scale(1.03);
         }
 
-        .contact-info {
-            font-style: italic;
-            margin-top: 10px;
-            display: none; /* Initially hide the contact info */
+        .card-title {
+            color: #0400fe; /* Shouting blue */
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
-        .show-contact-button {
-            margin-top: 10px;
-            cursor: pointer;
-            color: blue;
-            text-decoration: underline;
+        .card-text {
+            color: #f0f2f3;
         }
     </style>
 </head>
 <body>
 
-    <script>
-        // Function to create job cards
-        function createJobCard(data) {
-            const card = document.createElement('div');
-            card.classList.add('job-card');
+<div class="container mt-4">
+    <h1 class="text-center text-danger">Teacher Jobs Board</h1>
+    <div id="jobPosts" class="row mt-4"></div>
+</div>
 
-            if (data.type === 'Employee') {
-                card.innerHTML = `
-                    <h2>${data.type}</h2>
-                    <p><strong>Contact: <span class="contact-info">${data.contact}</span></strong></p>
-                    <p>${data.message}</p>
-                    <p class="show-contact-button">Show Contact</p>
-                `;
-            } else if (data.type === 'Employer') {
-                card.innerHTML = `
-                    <h2>${data.type}</h2>
-                    <p><strong>Contact: <span class="contact-info">${data.contact}</span></strong></p>
-                    <p>${data.message}</p>
-                    <p class="show-contact-button">Show Contact</p>
-                `;
-            }
+<!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-            document.body.appendChild(card);
+<script>
+    // Sample JSON data
+    var jobData = [
+        {
+            "type": "employer",
+            "message": "We are looking for teachers to teach. Apply now!"
+        },
+        {
+            "type": "employee",
+            "message": "I am a teacher looking for a job. Experienced in Mathematics and Science."
+        },
+        // Add more job posts as needed
+    ];
 
-            // Add click event to the "Show Contact" button
-            const showContactButton = card.querySelector('.show-contact-button');
-            const contactInfo = card.querySelector('.contact-info');
-            
-            showContactButton.addEventListener('click', function() {
-                // Toggle the display of contact info
-                contactInfo.style.display = contactInfo.style.display === 'none' ? 'inline' : 'none';
-                // Toggle the button text
-                showContactButton.textContent = contactInfo.style.display === 'none' ? 'Show Contact' : 'Hide Contact';
-            });
-        }
+    // Function to render job posts dynamically
+    function renderJobPosts() {
+        var jobPostsContainer = document.getElementById('jobPosts');
 
-        // Fetch JSON data and create job cards
-        fetch('job_data.json')
-            .then(response => response.json())
-            .then(data => data.forEach(createJobCard))
-            .catch(error => console.error('Error fetching data:', error));
-    </script>
+        jobData.forEach(function (job) {
+            var cardDiv = document.createElement('div');
+            cardDiv.className = 'col-md-6 mb-4';
+
+            var card = document.createElement('div');
+            card.className = 'card bg-success'; 
+
+            var cardBody = document.createElement('div');
+            cardBody.className = 'card-body';
+
+            var cardTitle = document.createElement('h5');
+            cardTitle.className = 'card-title';
+            cardTitle.textContent = (job.type === 'employer') ? 'EMPLOYER' : 'EMPLOYEE';
+
+            var cardText = document.createElement('p');
+            cardText.className = 'card-text';
+            cardText.textContent = job.message;
+
+            cardBody.appendChild(cardTitle);
+            cardBody.appendChild(cardText);
+
+            card.appendChild(cardBody);
+            cardDiv.appendChild(card);
+
+            jobPostsContainer.appendChild(cardDiv);
+        });
+    }
+
+    // Call the function to render job posts
+    renderJobPosts();
+</script>
 
 </body>
 </html>
