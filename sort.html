@@ -79,7 +79,7 @@
             <td class="upcoming">Upcoming</td>
         </tr>
         <tr>
-            <td>12:00 PM - 03:00 PM</td>
+            <td>09:00 AM - 03:00 PM</td>
             <td>Lunchtime Beats</td>
             <td>Mix Master Max</td>
             <td class="upcoming">Upcoming</td>
@@ -109,7 +109,7 @@
     <!-- Add this div at the bottom of your body section for the sticky audio player -->
 <div id="stickyPlayer">
     <audio id="audioPlayer" controls>
-        <source src="" type="audio/mp3" id="audioSource">
+        <source src="https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3" type="audio/mp3" id="audioSource">
     </audio>
 </div>
 
@@ -202,8 +202,11 @@
             }
         }
 
-        // Update program status every 10 seconds
-        setInterval(updateProgramStatus, 10000);
+        // Update program status and sticky player controls every 10 seconds
+setInterval(function () {
+    updateProgramStatus();
+    updateStickyPlayerControls();
+}, 10000);
 
         // Initial update
         updateProgramStatus();
