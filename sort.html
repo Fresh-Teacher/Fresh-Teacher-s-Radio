@@ -20,13 +20,17 @@
             background-color: #f2f2f2;
         }
 
-        .finished, .current, .upcoming {
-            background-color: #64b5f6; /* Blue color for uniformity */
-            color: #000; /* Text color for uniformity */
+        .finished {
+            background-color: #e57373; /* Red for finished */
         }
 
         .current {
+            background-color: #81c784; /* Green for currently on air */
             animation: blink 2s infinite; /* Add blinking animation */
+        }
+
+        .upcoming {
+            background-color: #64b5f6; /* Blue for upcoming */
         }
 
         @keyframes blink {
@@ -96,7 +100,7 @@
             <td>09:00 PM - 12:00 AM</td>
             <td>Night Sessions</td>
             <td>Mbaziira Tonny</td>
-            <td class="upcoming">Upcoming</td>
+            <td class="finished">Finished</td>
         </tr>
         <!-- Add more programs as needed -->
 
