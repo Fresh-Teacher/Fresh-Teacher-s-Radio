@@ -106,7 +106,75 @@
 
     </table>
 
+    <!-- Add this div at the bottom of your body section for the sticky audio player -->
+<div id="stickyPlayer">
+    <audio id="audioPlayer" controls>
+        <source src="" type="audio/mp3" id="audioSource">
+    </audio>
+</div>
+
     <script>
+
+    // Function to update the sticky player source and controls
+    function updateStickyPlayer(programName, audioSource) {
+        var audioPlayer = document.getElementById("audioPlayer");
+        var audioSourceElement = document.getElementById("audioSource");
+
+        audioSourceElement.src = audioSource;
+        audioPlayer.load(); // Reload the audio player with the new source
+        audioPlayer.play(); // Start playing the audio
+
+        // Update player controls
+        document.getElementById("stickyPlayer").style.display = "block"; // Show the sticky player
+    }
+
+    // Function to hide the sticky player when no program is playing
+    function hideStickyPlayer() {
+        document.getElementById("stickyPlayer").style.display = "none";
+    }
+
+    // Function to set the volume of the audio player
+    function setVolume(volume) {
+        var audioPlayer = document.getElementById("audioPlayer");
+        audioPlayer.volume = volume;
+    }
+
+    // Update sticky player controls and visibility based on the program status
+    function updateStickyPlayerControls(programName, audioSource) {
+        var table = document.getElementById("programTable");
+        var rows = table.getElementsByTagName("tr");
+
+        for (var i = 1; i < rows.length; i++) {
+            var row = rows[i];
+            var timeCell = row.cells[0];
+            var audio = row.cells[4].querySelector('audio'); // Select the <audio> element
+
+            var programTime = timeCell.innerText.split(' - ');
+            var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
+            var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
+            var currentTime = new Date();
+
+            if (currentTime >= startTime && currentTime <= endTime) {
+                updateStickyPlayer(programName, audioSource);
+                return;
+            }
+        }
+
+        // If no program is currently playing, hide the sticky player
+        hideStickyPlayer();
+    }
+
+    // Add a click event to pause the sticky player when the user clicks the pause button
+    document.getElementById("audioPlayer").addEventListener("pause", function () {
+        hideStickyPlayer();
+    });
+
+    // Add a change event to update the volume when the user adjusts the volume slider
+    document.getElementById("audioPlayer").addEventListener("volumechange", function () {
+        var volume = document.getElementById("audioPlayer").volume;
+        setVolume(volume);
+    });
+
         function updateProgramStatus() {
             var table = document.getElementById("programTable");
             var rows = table.getElementsByTagName("tr");
