@@ -35,56 +35,80 @@
 </head>
 <body>
 
-    <h1>Ugandan Sports Betting Platform</h1>
+    <h1>Radio Station Program Timetable</h1>
 
-    <table id="matchesTable">
+    <table id="programTable">
         <tr>
-            <th>Team</th>
             <th>Time</th>
+            <th>Program</th>
+            <th>Presenter</th>
             <th>Status</th>
         </tr>
-        <tr id="match1">
-            <td>Kampala FC</td>
-            <td>6:00 AM - 7:30 AM</td>
+        <tr>
+            <td>00:00 AM - 03:00 AM</td>
+            <td>Midnight Mix</td>
+            <td>DJ Sserudigo</td>
             <td class="upcoming">Upcoming</td>
         </tr>
-        <tr id="match2">
-            <td>Jinja United</td>
-            <td>7:30 AM - 7:48 AM</td>
+        <tr>
+            <td>03:00 AM - 06:00 AM</td>
+            <td>Early Vibes</td>
+            <td>Omulangira Ndausi</td>
             <td class="upcoming">Upcoming</td>
         </tr>
-        <tr id="match3">
-            <td>Mbarara City</td>
-            <td>7:48 AM - 2:30 PM</td>
+        <tr>
+            <td>06:00 AM - 09:00 AM</td>
+            <td>Morning Breeze</td>
+            <td>Natasha Nats</td>
             <td class="upcoming">Upcoming</td>
         </tr>
-        <tr id="match4">
-            <td>Entebbe Stars</td>
-            <td>3:00 PM - 4:30 PM</td>
+        <tr>
+            <td>09:00 AM - 12:00 PM</td>
+            <td>Nsaba Nkuwe</td>
+            <td>MC Kats</td>
             <td class="upcoming">Upcoming</td>
         </tr>
-        <tr id="match5">
-            <td>Lira Lions</td>
-            <td>5:00 PM - 6:30 PM</td>
+        <tr>
+            <td>12:00 PM - 03:00 PM</td>
+            <td>Lunchtime Beats</td>
+            <td>Mix Master Max</td>
             <td class="upcoming">Upcoming</td>
         </tr>
-        <!-- Add more matches as needed -->
+        <tr>
+            <td>03:00 PM - 06:00 PM</td>
+            <td>AfterLunch Groove</td>
+            <td>Chill Master Chris</td>
+            <td class="upcoming">Upcoming</td>
+        </tr>
+        <tr>
+            <td>06:00 PM - 09:00 PM</td>
+            <td>Work Break</td>
+            <td>Omumbejja Ssanyu</td>
+            <td class="upcoming">Upcoming</td>
+        </tr>
+        <tr>
+            <td>09:00 PM - 12:00 AM</td>
+            <td>Night Sessions</td>
+            <td>Mbaziira Tonny</td>
+            <td class="upcoming">Upcoming</td>
+        </tr>
+        <!-- Add more programs as needed -->
 
     </table>
 
     <script>
-        function updateMatchStatus() {
-            var table = document.getElementById("matchesTable");
+        function updateProgramStatus() {
+            var table = document.getElementById("programTable");
             var rows = table.getElementsByTagName("tr");
 
             for (var i = 1; i < rows.length; i++) {
                 var row = rows[i];
-                var timeCell = row.cells[1];
-                var statusCell = row.cells[2];
+                var timeCell = row.cells[0];
+                var statusCell = row.cells[3];
 
-                var matchTime = timeCell.innerText.split(' - ');
-                var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + matchTime[0]);
-                var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + matchTime[1]);
+                var programTime = timeCell.innerText.split(' - ');
+                var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
+                var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
                 var currentTime = new Date();
 
                 if (currentTime < startTime) {
@@ -92,7 +116,7 @@
                     statusCell.innerText = "Upcoming";
                 } else if (currentTime >= startTime && currentTime <= endTime) {
                     statusCell.className = "current";
-                    statusCell.innerText = "Currently Playing";
+                    statusCell.innerText = "Currently On Air";
                 } else {
                     statusCell.className = "finished";
                     statusCell.innerText = "Finished";
@@ -100,11 +124,11 @@
             }
         }
 
-        // Update match status every 10 seconds
-        setInterval(updateMatchStatus, 10000);
+        // Update program status every 10 seconds
+        setInterval(updateProgramStatus, 10000);
 
         // Initial update
-        updateMatchStatus();
+        updateProgramStatus();
     </script>
 
 </body>
