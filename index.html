@@ -24,6 +24,15 @@
     background-color: inherit;
 }
 
+header {
+            background-color: #333; /* Set background color for header */
+            color: white; /* Set text color for header */
+            padding: 0.1px; /* Add padding to header */
+            text-align: center; /* Center align text */
+            position: fixed; /* Make header fixed at the top */
+            width: 100%; /* Full width */
+            top: 0; /* Stick to the top */
+        }
 
         .finished {
             background-color: #e57373; /* Red for finished */
@@ -52,16 +61,24 @@
     bottom: 0;
     width: 100%;
     background-color: #333; /* Change the background color as needed */
-    padding: 10px; /* Add padding for better visibility */
+    padding: 0.1px; /* Add padding for better visibility */
 }
 
+        /* Adjustments for responsive design */
+        @media screen and (max-width: 600px) {
+            header, footer {
+                font-size: 14px; /* Adjust font size for smaller screens */
+            }
+        }
         
     </style>
 </head>
 <body>
 
-    <h1>Fresh Radio 📻</h1>
-
+    <header>
+        <h1>Fresh Radio 📻</h1>
+    </header>
+<br><br><br><br><br><br><br>
     <table id="programTable">
         <tr>
             <th>Time</th>
