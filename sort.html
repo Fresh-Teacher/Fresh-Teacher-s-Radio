@@ -73,7 +73,6 @@
     </table>
 
     <script>
-        // Function to update match status based on current time
         function updateMatchStatus() {
             var table = document.getElementById("matchesTable");
             var rows = table.getElementsByTagName("tr");
@@ -84,8 +83,8 @@
                 var statusCell = row.cells[2];
 
                 var matchTime = timeCell.innerText.split(' - ');
-                var startTime = new Date("2023-12-25 " + matchTime[0]);
-                var endTime = new Date("2023-12-25 " + matchTime[1]);
+                var startTime = new Date(new Date().toLocaleDateString() + " " + matchTime[0]);
+                var endTime = new Date(new Date().toLocaleDateString() + " " + matchTime[1]);
                 var currentTime = new Date();
 
                 if (currentTime < startTime) {
