@@ -1,349 +1,370 @@
 
     <!DOCTYPE html>
-<html lang="en-US" prefix="og: https://ogp.me/ns#">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-    <link rel="shortcut icon" href="logo.png" />
-    <link rel="pingback" href="https://nara24fm.com/xmlrpc.php" />
-    <meta property="og:description" content="Entertainment 24/7" />
-
-    <!-- Search Engine Optimization by Rank Math PRO - https://rankmath.com/ -->
-    <title>Fresh FM </title>
-    <meta name="description" content="Fresh fm, #1 destination for the latest news and events, as well as exciting sports coverage. Stream your favorite songs all day and all night long" />
-    <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
-    <link rel="canonical" href="https://fresh-fm.vercel.app" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Fresh FM - The Online Teachers' Radio" />
-    <meta property="og:description" content="Developed by Fresh Teacher" />
-    <meta property="og:url" content="https://fresh-fm.vercel.app" />
-    <meta property="og:site_name" content="Nara24 FM" />
-    <meta property="og:updated_time" content="2023-12-20T14:32:07+03:00" />
-    <meta property="og:image" content="https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png" />
-    <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="nara24 fm" />
-    <meta property="og:image:type" content="image/png" />
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #95ff00;
-            text-align: left;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #95ff00;
-        }
-
-        td.upcoming, td.current, td.finished {
-    background-color: inherit;
-}
-
-header {
-    background-color: rgb(0, 176, 65); /* Change the background color as needed */
-            color: white; /* Set text color for header */
-            padding: 0.1px; /* Add padding to header */
-            text-align: center; /* Center align text */
-            position: fixed; /* Make header fixed at the top */
-            width: 100%; /* Full width */
-            top: 0; /* Stick to the top */
-        }
-
-        .finished {
-            background-color: #e57373; /* Red for finished */
-        }
-
-        .current {
-            background-color: #81c784; /* Green for currently on air */
-            animation: blink 2s infinite; /* Add blinking animation */
-        }
-
-        .upcoming {
-            background-color: #64b5f6; /* Grey for upcoming */
-        }
-
-        @keyframes blink {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
-        }
-
-        #stickyPlayer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: rgb(0, 176, 65); /* Change the background color as needed */
-    padding: 5px; /* Add padding for better visibility */
-}
-
-        /* Adjustments for responsive design */
-        @media screen and (max-width: 600px) {
-            header, footer {
-                font-size: 14px; /* Adjust font size for smaller screens */
-            }
-        }
-        
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Fresh Teacher's Radio 📻</h1>
-    </header>
-<br><br><br>
-    <table id="programTable">
-        <tr>
-            <th>Time</th>
-            <th>Program</th>
-            <th>Presenter</th>
-            <th>Status</th>
-        </tr>
-        <tr>
-            <td>12:00 AM - 06:00 AM</td>
-            <td>Xmas Muzic</td>
-            <td>DJ Sserudigo</td>
-            <td class="upcoming">Upcoming</td>
-        </tr>
-        <tr>
-            <td>06:00 AM - 08:00 AM</td>
-            <td>Wake Up</td>
-            <td>Omulangira Ndausi</td>
-            <td class="upcoming">Upcoming</td>
-        </tr>
-        <tr>
-            <td>08:00 AM - 08:30 AM</td>
-            <td>News</td>
-            <td>Natasha Nats</td>
-            <td class="upcoming">Upcoming</td>
-        </tr>
-        <tr>
-            <td>08:30 AM - 09:30 AM</td>
-            <td>Advertisements</td>
-            <td>Omulongo Kato</td>
-            <td class="upcoming">Upcoming</td>
-        </tr>
-        <tr>
-            <td>09:30 AM - 1:00 PM</td>
-            <td>Church Service</td>
-            <td>Reverend Kimuli Bob</td>
-            <td class="upcoming">Upcoming</td>
-        </tr>
-        <tr>
-            <td>01:00 PM - 01:30 PM</td>
-            <td>News</td>
-            <td>Wamala Balunabba</td>
-            <td class="upcoming">Upcoming</td>
-        </tr>
-        <tr>
-            <td>01:30 PM - 02:30 PM</td>
-            <td>Lunch Hour</td>
-            <td>DJ Binyanyanyanya</td>
-            <td class="upcoming">Upcoming</td>
-        </tr>
-        <tr>
-            <td>02:30 PM - 04:30 PM</td>
-            <td>Xmas Extra</td>
-            <td>Fresh Teacher</td>
-            <td class="upcoming">Upcoming</td>
-        </tr>
-        <tr>
-            <td>04:30 PM - 05:30 PM</td>
-            <td>Xmas Vibes</td>
-            <td>Selector Kiwa</td>
-            <td class="upcoming">Upcoming</td>
-        </tr>
-        <tr>
-            <td>05:30 PM - 08:0 PM</td>
-            <td>Song Request</td>
-            <td>Dj Jesse Paul</td>
-            <td class="upcoming">Upcoming</td>
-        </tr>
-        <tr>
-            <td>08:00 PM - 08:30 PM</td>
-            <td>News Hour</td>
-            <td>Kimuli Bob</td>
-            <td class="upcoming">Upcoming</td>
-        </tr>
-        <tr>
-            <td>08:30 PM - 09:30 PM</td>
-            <td>Advertisements</td>
-            <td>Fresh Teacher</td>
-            <td class="upcoming">Upcoming</td>
-        </tr> 
-               <tr>
-            <td>09:30 PM - 10:30 PM</td>
-            <td>Christmas Wishes</td>
-            <td>MC Jose</td>
-            <td class="upcoming">Upcoming</td>
-        </tr>
-        <tr>
-            <td>10:30 PM - 12:00 AM</td>
-            <td>Gospel Music</td>
-            <td>Dj Kabaalu</td>
-            <td class="upcoming">Upcoming</td>
-        </tr>
-        
-        
-        
-        <!-- Add more programs as needed -->
-
-    </table>
-    <br><br><br><br><br>
-   <div id="stickyPlayer">
-        <audio id="audioPlayer" controls autoplay>
-            <!-- No source element here -->
-        </audio>
-    </div>
-
-<script>
-    // Define an array to store audio elements for each program
-    var audioElements = {};
-    var audioPath = ""; // Update this path based on your project structure
-
-    // Map each program to its corresponding audio file
-    var programAudioMap = {
-        "AfterLunch Groove": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
-        "Work Break": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/congratulations.mp3",
-        "Night Sessions": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
-        "Church Service": "https://s5.voscast.com:9905/EMMANDUSO",
-        "Xmas Vibes": "Nonstop.mp3",
-        "Song Request": "Nonstop.mp3"
-
-        // Add mappings for other programs
-    };
-
-    // Function to initialize audio elements for each program
-    function initializeAudioElements() {
-        var table = document.getElementById("programTable");
-        var rows = table.getElementsByTagName("tr");
-
-        for (var i = 1; i < rows.length; i++) {
-            var row = rows[i];
-            var programName = row.cells[1].innerText;
-            var audioFileName = programAudioMap[programName];
-            var audioSource = audioPath + audioFileName;
-
-            var audio = new Audio();
-            audio.src = audioSource;
-
-            // Store each audio element in the array
-            audioElements[programName] = audio;
-        }
-    }
-
-    // Call the function to initialize audio elements
-    initializeAudioElements();
+    <html lang="en-US" prefix="og: https://ogp.me/ns#">
     
-var currentProgram = ""; // Keep track of the current playing program
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="logo.png" />
+        <link rel="pingback" href="https://nara24fm.com/xmlrpc.php" />
+        <meta property="og:description" content="Entertainment 24/7" />
+    
+        <!-- Search Engine Optimization by Rank Math PRO - https://rankmath.com/ -->
+        <title>Fresh FM </title>
+        <meta name="description" content="Fresh fm, #1 destination for the latest news and events, as well as exciting sports coverage. Stream your favorite songs all day and all night long" />
+        <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
+        <link rel="canonical" href="https://fresh-fm.vercel.app" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Fresh FM - The Online Teachers' Radio" />
+        <meta property="og:description" content="Developed by Fresh Teacher" />
+        <meta property="og:url" content="https://fresh-fm.vercel.app" />
+        <meta property="og:site_name" content="Nara24 FM" />
+        <meta property="og:updated_time" content="2023-12-20T14:32:07+03:00" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png" />
+        <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="nara24 fm" />
+        <meta property="og:image:type" content="image/png" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+    
+            th, td {
+                border: 1px solid #95ff00;
+                text-align: left;
+                padding: 8px;
+            }
+    
+            th {
+                background-color: #95ff00;
+            }
+    
+            td.upcoming, td.current, td.finished {
+        background-color: inherit;
+    }
+    
+    header {
+        background-color: rgb(0, 176, 65); /* Change the background color as needed */
+                color: white; /* Set text color for header */
+                padding: 0.1px; /* Add padding to header */
+                text-align: center; /* Center align text */
+                position: fixed; /* Make header fixed at the top */
+                width: 100%; /* Full width */
+                top: 0; /* Stick to the top */
+            }
+    
+            .finished {
+                background-color: #e57373; /* Red for finished */
+            }
+    
+            .current {
+                background-color: #81c784; /* Green for currently on air */
+                animation: blink 2s infinite; /* Add blinking animation */
+            }
+    
+            .upcoming {
+                background-color: #64b5f6; /* Grey for upcoming */
+            }
+    
+            @keyframes blink {
+                0%, 100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0;
+                }
+            }
+    
+            #stickyPlayer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(0, 176, 65); /* Change the background color as needed */
+        padding: 5px; /* Add padding for better visibility */
+    }
+    
+            /* Adjustments for responsive design */
+            @media screen and (max-width: 600px) {
+                header, footer {
+                    font-size: 14px; /* Adjust font size for smaller screens */
+                }
+            }
+            
+        </style>
+    </head>
+    <br><br><br>
+    <body>
+    
+        <header>
+            <h1>Fresh Teacher's Radio 📻</h1>
+            <div id="currentTime"></div>
+        </header>
+    
+        <br><br><table id="programTable">
+            <tr>
+                <th>Time</th>
+                <th>Program</th>
+                <th>Presenter</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>12:00 AM - 06:00 AM</td>
+                <td>Xmas Muzic</td>
+                <td>DJ Sserudigo</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>06:00 AM - 08:00 AM</td>
+                <td>Wake Up</td>
+                <td>Omulangira Ndausi</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>08:00 AM - 08:30 AM</td>
+                <td>News</td>
+                <td>Natasha Nats</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>08:30 AM - 09:30 AM</td>
+                <td>Advertisements</td>
+                <td>Omulongo Kato</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>09:30 AM - 1:00 PM</td>
+                <td>Church Service</td>
+                <td>Reverend Kimuli Bob</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>01:00 PM - 01:30 PM</td>
+                <td>News</td>
+                <td>Wamala Balunabba</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>01:30 PM - 02:30 PM</td>
+                <td>Lunch Hour</td>
+                <td>DJ Binyanyanyanya</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>02:30 PM - 04:30 PM</td>
+                <td>Xmas Extra</td>
+                <td>Fresh Teacher</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>04:30 PM - 05:30 PM</td>
+                <td>Xmas Vibes</td>
+                <td>Selector Kiwa</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>05:30 PM - 08:0 PM</td>
+                <td>Song Request</td>
+                <td>Dj Jesse Paul</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>08:00 PM - 08:30 PM</td>
+                <td>News Hour</td>
+                <td>Kimuli Bob</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>08:30 PM - 09:30 PM</td>
+                <td>Advertisements</td>
+                <td>Fresh Teacher</td>
+                <td class="upcoming">Upcoming</td>
+            </tr> 
+                   <tr>
+                <td>09:30 PM - 10:30 PM</td>
+                <td>Christmas Wishes</td>
+                <td>MC Jose</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>10:30 PM - 12:00 AM</td>
+                <td>Gospel Music</td>
+                <td>Dj Kabaalu</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            
+            
+            
+            <!-- Add more programs as needed -->
+    
+        </table>
+        <br><br><br><br><br>
+       <div id="stickyPlayer">
+            <audio id="audioPlayer" controls autoplay>
+                <!-- No source element here -->
+            </audio>
+        </div>
+    
+    <script>
+        // Function to update the current time in 12-hour format in EAT zone
+        function updateTime() {
+            var currentTimeElement = document.getElementById("currentTime");
+            var currentTime = new Date();
+            
+            // Set the time zone to East Africa Time (EAT)
+            var options = { timeZone: 'Africa/Kampala' };
+            var formattedTime = currentTime.toLocaleTimeString('en-US', options);
 
-    // Function to update the sticky player source and controls
-    function updateStickyPlayer(programName) {
-        var audioPlayer = document.getElementById("audioPlayer");
-        var audio = audioElements[programName];
+            // Update the content of the element
+            currentTimeElement.innerText = "Current Time ~ " + formattedTime;
 
-        if (currentProgram !== programName) {
-            audioPlayer.pause(); // Pause the currently playing audio
-            audioPlayer.src = audio.src; // Set the source for the sticky player
-            audioPlayer.load(); // Reload the audio player with the new source
-            audioPlayer.play(); // Start playing the audio
-            currentProgram = programName; // Update the current program
+            // Update every second
+            setTimeout(updateTime, 1000);
         }
 
-        // Update player controls
-        document.getElementById("stickyPlayer").style.display = "block"; // Show the sticky player
-    }
+        // Initial call to start the timer
+        updateTime();
 
-    // Function to hide the sticky player when no program is playing
-    function hideStickyPlayer() {
-        document.getElementById("stickyPlayer").style.display = "none";
-    }
-
-    // Function to set the volume of the audio player
-    function setVolume(volume) {
-        var audioPlayer = document.getElementById("audioPlayer");
-        audioPlayer.volume = volume;
-    }
-
-    // Update sticky player controls and visibility based on the program status
-    function updateStickyPlayerControls(programName) {
-        var table = document.getElementById("programTable");
-        var rows = table.getElementsByTagName("tr");
-
-        for (var i = 1; i < rows.length; i++) {
-            var row = rows[i];
-            var timeCell = row.cells[0];
-
-            var programTime = timeCell.innerText.split(' - ');
-            var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
-            var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
-            var currentTime = new Date();
-
-            if (currentTime >= startTime && currentTime <= endTime) {
+        // Define an array to store audio elements for each program
+        var audioElements = {};
+        var audioPath = ""; // Update this path based on your project structure
+    
+        // Map each program to its corresponding audio file
+        var programAudioMap = {
+            "AfterLunch Groove": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
+            "Work Break": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/congratulations.mp3",
+            "Night Sessions": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
+            "Church Service": "https://s5.voscast.com:9905/EMMANDUSO",
+            "Xmas Vibes": "Nonstop.mp3",
+            "Song Request": "Nonstop.mp3"
+    
+            // Add mappings for other programs
+        };
+    
+        // Function to initialize audio elements for each program
+        function initializeAudioElements() {
+            var table = document.getElementById("programTable");
+            var rows = table.getElementsByTagName("tr");
+    
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
                 var programName = row.cells[1].innerText;
-                updateStickyPlayer(programName);
-                return;
-            }
-        }
-
-        // If no program is currently playing, hide the sticky player
-        hideStickyPlayer();
-    }
-
+                var audioFileName = programAudioMap[programName];
+                var audioSource = audioPath + audioFileName;
     
-
-    function updateProgramStatus() {
-        var table = document.getElementById("programTable");
-        var rows = table.getElementsByTagName("tr");
-
-        for (var i = 1; i < rows.length; i++) {
-            var row = rows[i];
-            var timeCell = row.cells[0];
-            var statusCell = row.cells[3];
-
-            var programName = row.cells[1].innerText;
-            var programTime = timeCell.innerText.split(' - ');
-            var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
-            var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
-            var currentTime = new Date();
-
-            if (currentTime < startTime) {
-                row.className = "upcoming";
-                statusCell.innerText = "Upcoming";
-            } else if (currentTime >= startTime && currentTime <= endTime) {
-                row.className = "current";
-                statusCell.innerText = "LIVE";
-            } else {
-                row.className = "finished";
-                statusCell.innerText = "Ended";
+                var audio = new Audio();
+                audio.src = audioSource;
+    
+                // Store each audio element in the array
+                audioElements[programName] = audio;
             }
         }
-    }
-
-    // Update program status and sticky player controls every 10 seconds
-    setInterval(function () {
+    
+        // Call the function to initialize audio elements
+        initializeAudioElements();
+        
+    var currentProgram = ""; // Keep track of the current playing program
+    
+        // Function to update the sticky player source and controls
+        function updateStickyPlayer(programName) {
+            var audioPlayer = document.getElementById("audioPlayer");
+            var audio = audioElements[programName];
+    
+            if (currentProgram !== programName) {
+                audioPlayer.pause(); // Pause the currently playing audio
+                audioPlayer.src = audio.src; // Set the source for the sticky player
+                audioPlayer.load(); // Reload the audio player with the new source
+                audioPlayer.play(); // Start playing the audio
+                currentProgram = programName; // Update the current program
+            }
+    
+            // Update player controls
+            document.getElementById("stickyPlayer").style.display = "block"; // Show the sticky player
+        }
+    
+        // Function to hide the sticky player when no program is playing
+        function hideStickyPlayer() {
+            document.getElementById("stickyPlayer").style.display = "none";
+        }
+    
+        // Function to set the volume of the audio player
+        function setVolume(volume) {
+            var audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.volume = volume;
+        }
+    
+        // Update sticky player controls and visibility based on the program status
+        function updateStickyPlayerControls(programName) {
+            var table = document.getElementById("programTable");
+            var rows = table.getElementsByTagName("tr");
+    
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var timeCell = row.cells[0];
+    
+                var programTime = timeCell.innerText.split(' - ');
+                var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
+                var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
+                var currentTime = new Date();
+    
+                if (currentTime >= startTime && currentTime <= endTime) {
+                    var programName = row.cells[1].innerText;
+                    updateStickyPlayer(programName);
+                    return;
+                }
+            }
+    
+            // If no program is currently playing, hide the sticky player
+            hideStickyPlayer();
+        }
+    
+        
+    
+        function updateProgramStatus() {
+            var table = document.getElementById("programTable");
+            var rows = table.getElementsByTagName("tr");
+    
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var timeCell = row.cells[0];
+                var statusCell = row.cells[3];
+    
+                var programName = row.cells[1].innerText;
+                var programTime = timeCell.innerText.split(' - ');
+                var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
+                var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
+                var currentTime = new Date();
+    
+                if (currentTime < startTime) {
+                    row.className = "upcoming";
+                    statusCell.innerText = "Upcoming";
+                } else if (currentTime >= startTime && currentTime <= endTime) {
+                    row.className = "current";
+                    statusCell.innerText = "LIVE";
+                } else {
+                    row.className = "finished";
+                    statusCell.innerText = "Ended";
+                }
+            }
+        }
+    
+        // Update program status and sticky player controls every 10 seconds
+        setInterval(function () {
+            updateProgramStatus();
+            updateStickyPlayerControls();
+        }, 10000);
+    
+        // Initial update
         updateProgramStatus();
-        updateStickyPlayerControls();
-    }, 10000);
-
-    // Initial update
-    updateProgramStatus();
-</script>
-
-
-</body>
-</html>
+    </script>
+    
+    
+    </body>
+    </html>
