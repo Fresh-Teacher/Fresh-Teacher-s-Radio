@@ -20,17 +20,13 @@
             background-color: #f2f2f2;
         }
 
-        .finished {
-            background-color: #e57373;
+        .finished, .current, .upcoming {
+            background-color: #64b5f6; /* Blue color for uniformity */
+            color: #000; /* Text color for uniformity */
         }
 
         .current {
-            background-color: #81c784;
             animation: blink 2s infinite; /* Add blinking animation */
-        }
-
-        .upcoming {
-            background-color: #64b5f6;
         }
 
         @keyframes blink {
@@ -88,7 +84,7 @@
             <td>03:00 PM - 06:00 PM</td>
             <td>AfterLunch Groove</td>
             <td>Chill Master Chris</td>
-            <td class="upcoming">Upcoming</td>
+            <td class="current">Currently On Air</td>
         </tr>
         <tr>
             <td>06:00 PM - 09:00 PM</td>
