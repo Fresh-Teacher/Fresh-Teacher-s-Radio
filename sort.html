@@ -79,19 +79,19 @@
             <td class="upcoming">Upcoming</td>
         </tr>
         <tr>
-            <td>09:00 AM - 03:00 PM</td>
+            <td>09:00 AM - 09:50 AM</td>
             <td>Lunchtime Beats</td>
             <td>Mix Master Max</td>
             <td class="upcoming">Upcoming</td>
         </tr>
         <tr>
-            <td>03:00 PM - 06:00 PM</td>
+            <td>09:50 AM - 09:02 AM</td>
             <td>AfterLunch Groove</td>
             <td>Chill Master Chris</td>
             <td class="upcoming">Upcoming</td>
         </tr>
         <tr>
-            <td>06:00 PM - 09:00 PM</td>
+            <td>09:02 AM - 09:05 AM</td>
             <td>Work Break</td>
             <td>Omumbejja Ssanyu</td>
             <td class="upcoming">Upcoming</td>
@@ -109,19 +109,52 @@
     <!-- Add this div at the bottom of your body section for the sticky audio player -->
 <div id="stickyPlayer">
     <audio id="audioPlayer" controls autoplay>
-        <source src="https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3" type="audio/mp3" id="audioSource">
+        <!-- No source element here -->
     </audio>
 </div>
 
+<script>
+    // Define an array to store audio elements for each program
+    var audioElements = {};
+    var audioPath = ""; // Update this path based on your project structure
 
-    <script>
+    // Map each program to its corresponding audio file
+    var programAudioMap = {
+        "AfterLunch Groove": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
+        "Work Break": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/congratulations.mp3",
+        "Lunchtime Beats": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
+        // Add mappings for other programs
+    };
+
+    // Function to initialize audio elements for each program
+    function initializeAudioElements() {
+        var table = document.getElementById("programTable");
+        var rows = table.getElementsByTagName("tr");
+
+        for (var i = 1; i < rows.length; i++) {
+            var row = rows[i];
+            var programName = row.cells[1].innerText;
+            var audioFileName = programAudioMap[programName];
+            var audioSource = audioPath + audioFileName;
+
+            var audio = new Audio();
+            audio.src = audioSource;
+
+            // Store each audio element in the array
+            audioElements[programName] = audio;
+        }
+    }
+
+    // Call the function to initialize audio elements
+    initializeAudioElements();
 
     // Function to update the sticky player source and controls
-    function updateStickyPlayer(programName, audioSource) {
+    function updateStickyPlayer(programName) {
         var audioPlayer = document.getElementById("audioPlayer");
-        var audioSourceElement = document.getElementById("audioSource");
+        var audio = audioElements[programName];
 
-        audioSourceElement.src = audioSource;
+        audioPlayer.pause(); // Pause the currently playing audio
+        audioPlayer.src = audio.src; // Set the source for the sticky player
         audioPlayer.load(); // Reload the audio player with the new source
         audioPlayer.play(); // Start playing the audio
 
@@ -141,14 +174,13 @@
     }
 
     // Update sticky player controls and visibility based on the program status
-    function updateStickyPlayerControls(programName, audioSource) {
+    function updateStickyPlayerControls(programName) {
         var table = document.getElementById("programTable");
         var rows = table.getElementsByTagName("tr");
 
         for (var i = 1; i < rows.length; i++) {
             var row = rows[i];
             var timeCell = row.cells[0];
-            var audio = row.cells[4].querySelector('audio'); // Select the <audio> element
 
             var programTime = timeCell.innerText.split(' - ');
             var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
@@ -156,7 +188,8 @@
             var currentTime = new Date();
 
             if (currentTime >= startTime && currentTime <= endTime) {
-                updateStickyPlayer(programName, audioSource);
+                var programName = row.cells[1].innerText;
+                updateStickyPlayer(programName);
                 return;
             }
         }
@@ -176,48 +209,44 @@
         setVolume(volume);
     });
 
-        function updateProgramStatus() {
-            var table = document.getElementById("programTable");
-            var rows = table.getElementsByTagName("tr");
+    function updateProgramStatus() {
+        var table = document.getElementById("programTable");
+        var rows = table.getElementsByTagName("tr");
 
-            for (var i = 1; i < rows.length; i++) {
-                var row = rows[i];
-                var timeCell = row.cells[0];
-                var statusCell = row.cells[3];
+        for (var i = 1; i < rows.length; i++) {
+            var row = rows[i];
+            var timeCell = row.cells[0];
+            var statusCell = row.cells[3];
 
-                var programTime = timeCell.innerText.split(' - ');
-                var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
-                var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
-                var currentTime = new Date();
+            var programName = row.cells[1].innerText;
+            var programTime = timeCell.innerText.split(' - ');
+            var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
+            var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
+            var currentTime = new Date();
 
-                if (currentTime < startTime) {
-                    row.className = "upcoming";
-                    statusCell.innerText = "Upcoming";
-                } else if (currentTime >= startTime && currentTime <= endTime) {
-                    row.className = "current";
-                    statusCell.innerText = "Currently On Air";
-                } else {
-                    row.className = "finished";
-                    statusCell.innerText = "Finished";
-                }
+            if (currentTime < startTime) {
+                row.className = "upcoming";
+                statusCell.innerText = "Upcoming";
+            } else if (currentTime >= startTime && currentTime <= endTime) {
+                row.className = "current";
+                statusCell.innerText = "Currently On Air";
+            } else {
+                row.className = "finished";
+                statusCell.innerText = "Finished";
             }
         }
+    }
 
-        // Update program status and sticky player controls every 10 seconds
-setInterval(function () {
-    updateProgramStatus();
-    updateStickyPlayerControls();
-}, 10000);
-
-        // Initial update
+    // Update program status and sticky player controls every 10 seconds
+    setInterval(function () {
         updateProgramStatus();
+        updateStickyPlayerControls();
+    }, 10000);
 
-        document.addEventListener("DOMContentLoaded", function () {
-    var audioPlayer = document.getElementById("audioPlayer");
-    audioPlayer.play();
-});
+    // Initial update
+    updateProgramStatus();
+</script>
 
-    </script>
 
 </body>
 </html>
