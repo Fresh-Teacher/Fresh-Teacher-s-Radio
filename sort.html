@@ -91,24 +91,11 @@
     </tbody>
   </table>
 
-  <script>
+<script>
   // Function to calculate time difference in minutes
   function getTimeDifferenceInMinutes(departureTime) {
     const now = new Date();
-    
-    // Set the UTC offset for Kampala (EAT)
-    const kampalaOffset = 3; // UTC+3
-
-    const departure = new Date(
-      now.getUTCFullYear(),
-      now.getUTCMonth(),
-      now.getUTCDate(),
-      ...departureTime.split(':')
-    );
-    
-    // Adjust departure time for Kampala's UTC offset
-    departure.setUTCHours(departure.getUTCHours() - kampalaOffset);
-
+    const departure = new Date(now.getFullYear(), now.getMonth(), now.getDate(), ...departureTime.split(':'));
     const differenceInMilliseconds = departure - now;
     return Math.floor(differenceInMilliseconds / (60 * 1000));
   }
@@ -134,6 +121,7 @@
   // Update blinking effect every minute
   setInterval(updateBlinkingEffect, 60000);
 </script>
+
 
 </body>
 </html>
