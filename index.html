@@ -108,6 +108,45 @@
             <td>Fresh Teacher</td>
             <td class="upcoming">Upcoming</td>
         </tr>
+        <tr>
+            <td>04:30 PM - 06:00 PM</td>
+            <td>Hit after Hit</td>
+            <td>Selector Jeff</td>
+            <td class="upcoming">Upcoming</td>
+        </tr>
+        <tr>
+            <td>06:00 PM - 08:00 PM</td>
+            <td>Evening Rush</td>
+            <td>Dj Sserudigo</td>
+            <td class="upcoming">Upcoming</td>
+        </tr>
+        <tr>
+            <td>08:00 PM - 08:30 PM</td>
+            <td>News Hour</td>
+            <td>Fresh Teacher</td>
+            <td class="upcoming">Upcoming</td>
+        </tr>
+        <tr>
+            <td>08:30 PM - 09:30 PM</td>
+            <td>Advertisements</td>
+            <td>Fresh Teacher</td>
+            <td class="upcoming">Upcoming</td>
+        </tr> 
+               <tr>
+            <td>09:30 PM - 10:30 PM</td>
+            <td>Christmas Wishes</td>
+            <td>MC Jose</td>
+            <td class="upcoming">Upcoming</td>
+        </tr>
+        <tr>
+            <td>10:30 PM - 12:00 AM</td>
+            <td>Gospel Music</td>
+            <td>Dj Kabaalu</td>
+            <td class="upcoming">Upcoming</td>
+        </tr>
+        
+        
+        
         <!-- Add more programs as needed -->
 
     </table>
@@ -235,10 +274,10 @@ var currentProgram = ""; // Keep track of the current playing program
                 statusCell.innerText = "Upcoming";
             } else if (currentTime >= startTime && currentTime <= endTime) {
                 row.className = "current";
-                statusCell.innerText = "Currently On Air";
+                statusCell.innerText = "Live On Air";
             } else {
                 row.className = "finished";
-                statusCell.innerText = "Finished";
+                statusCell.innerText = "Ended";
             }
         }
     }
