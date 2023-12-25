@@ -66,10 +66,13 @@
             <td class="upcoming">Upcoming</td>
         </tr>
         <tr>
-            <td>03:00 AM - 06:00 AM</td>
+            <td>09:00 AM - 09:30 AM</td>
             <td>Early Vibes</td>
             <td>Omulangira Ndausi</td>
             <td class="upcoming">Upcoming</td>
+            <td>
+        <audio id="earlyVibesAudio" src="https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3"></audio>
+            </td>
         </tr>
         <tr>
             <td>06:00 AM - 08:35 AM</td>
@@ -111,40 +114,45 @@
 
     </table>
 
-    <script>
-        function updateProgramStatus() {
-            var table = document.getElementById("programTable");
-            var rows = table.getElementsByTagName("tr");
+<script>
+    function updateProgramStatus() {
+        var table = document.getElementById("programTable");
+        var rows = table.getElementsByTagName("tr");
 
-            for (var i = 1; i < rows.length; i++) {
-                var row = rows[i];
-                var timeCell = row.cells[0];
-                var statusCell = row.cells[3];
+        for (var i = 1; i < rows.length; i++) {
+            var row = rows[i];
+            var timeCell = row.cells[0];
+            var statusCell = row.cells[3];
+            var audio = row.cells[4].querySelector('audio'); // Select the <audio> element
 
-                var programTime = timeCell.innerText.split(' - ');
-                var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
-                var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
-                var currentTime = new Date();
+            var programTime = timeCell.innerText.split(' - ');
+            var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
+            var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
+            var currentTime = new Date();
 
-                if (currentTime < startTime) {
-                    row.className = "upcoming";
-                    statusCell.innerText = "Upcoming";
-                } else if (currentTime >= startTime && currentTime <= endTime) {
-                    row.className = "current";
-                    statusCell.innerText = "Currently On Air";
-                } else {
-                    row.className = "finished";
-                    statusCell.innerText = "Finished";
-                }
+            if (currentTime < startTime) {
+                row.className = "upcoming";
+                statusCell.innerText = "Upcoming";
+                audio.pause(); // Pause the audio for upcoming programs
+            } else if (currentTime >= startTime && currentTime <= endTime) {
+                row.className = "current";
+                statusCell.innerText = "Currently On Air";
+                audio.play(); // Play the audio for the current program
+            } else {
+                row.className = "finished";
+                statusCell.innerText = "Finished";
+                audio.pause(); // Pause the audio for finished programs
             }
         }
+    }
 
-        // Update program status every 10 seconds
-        setInterval(updateProgramStatus, 10000);
+    // Update program status every 10 seconds
+    setInterval(updateProgramStatus, 10000);
 
-        // Initial update
-        updateProgramStatus();
-    </script>
+    // Initial update
+    updateProgramStatus();
+</script>
+
 
 </body>
 </html>
