@@ -3,26 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ugandan Sports Betting Platform</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
         table {
-            width: 80%;
-            margin: 20px auto;
+            width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
 
         th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+            border: 1px solid #dddddd;
             text-align: left;
+            padding: 8px;
         }
 
         th {
@@ -30,74 +21,72 @@
         }
 
         .finished {
-            background-color: #d1ffd1;
+            background-color: #e57373;
         }
 
         .current {
-            background-color: #ffffcc;
+            background-color: #81c784;
         }
 
         .upcoming {
-            background-color: #c2f0c2;
+            background-color: #64b5f6;
         }
     </style>
 </head>
 <body>
-    <h1>Matches of the Day</h1>
+
+    <h1>Ugandan Sports Betting Platform</h1>
+
     <table id="matchesTable">
-        <thead>
-            <tr>
-                <th>Team</th>
-                <th>Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Table rows will be dynamically added here -->
-        </tbody>
+        <tr>
+            <th>Team</th>
+            <th>Time</th>
+            <th>Status</th>
+        </tr>
+        <tr id="match1">
+            <td>Kampala FC</td>
+            <td>4:00 PM - 5:30 PM</td>
+            <td class="upcoming">Upcoming</td>
+        </tr>
+        <!-- Add more matches as needed -->
+
     </table>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            updateMatches();
-            setInterval(updateMatches, 1000); // Update every second
-        });
+        // Function to update match status based on current time
+        function updateMatchStatus() {
+            var table = document.getElementById("matchesTable");
+            var rows = table.getElementsByTagName("tr");
 
-        function updateMatches() {
-            const now = new Date();
-            const table = document.getElementById("matchesTable");
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var timeCell = row.cells[1];
+                var statusCell = row.cells[2];
 
-            // Sample data, replace it with your actual match data
-            const matches = [
-                { team: "Match A", startTime: new Date("2023-12-25T08:00:00Z"), endTime: new Date("2023-12-25T10:00:00Z") },
-                { team: "Match B", startTime: new Date("2023-12-25T10:30:00Z"), endTime: new Date("2023-12-25T12:30:00Z") },
-                { team: "Match C", startTime: new Date("2023-12-25T14:00:00Z"), endTime: new Date("2023-12-25T16:00:00Z") },
-                { team: "Match D", startTime: new Date("2023-12-25T18:00:00Z"), endTime: new Date("2023-12-25T20:00:00Z") },
-            ];
+                var matchTime = timeCell.innerText.split(' - ');
+                var startTime = new Date("2023-12-25 " + matchTime[0]);
+                var endTime = new Date("2023-12-25 " + matchTime[1]);
+                var currentTime = new Date();
 
-            // Clear existing rows
-            table.querySelector("tbody").innerHTML = "";
-
-            matches.forEach(match => {
-                const row = table.insertRow();
-                const cell1 = row.insertCell(0);
-                const cell2 = row.insertCell(1);
-
-                cell1.textContent = match.team;
-
-                if (now > match.endTime) {
-                    row.classList.add("finished");
-                } else if (now >= match.startTime && now <= match.endTime) {
-                    row.classList.add("current");
+                if (currentTime < startTime) {
+                    statusCell.className = "upcoming";
+                    statusCell.innerText = "Upcoming";
+                } else if (currentTime >= startTime && currentTime <= endTime) {
+                    statusCell.className = "current";
+                    statusCell.innerText = "Currently Playing";
                 } else {
-                    row.classList.add("upcoming");
+                    statusCell.className = "finished";
+                    statusCell.innerText = "Finished";
                 }
-
-                // Format time as HH:mm
-                const startTimeStr = match.startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
-                const endTimeStr = match.endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' });
-
-                cell2.textContent = `${startTimeStr} to ${endTimeStr}`;
-            });
+            }
         }
+
+        // Update match status every minute
+        setInterval(updateMatchStatus, 60000);
+
+        // Initial update
+        updateMatchStatus();
     </script>
+
 </body>
 </html>
