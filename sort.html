@@ -1,852 +1,662 @@
-<!DOCTYPE html>
-<html lang="en-US" prefix="og: https://ogp.me/ns#">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-    <link rel="shortcut icon" href="logo.png" />
-    <link rel="pingback" href="https://nara24fm.com/xmlrpc.php" />
-    <meta property="og:description" content="Entertainment 24/7" />
-
-    <!-- Search Engine Optimization by Rank Math PRO - https://rankmath.com/ -->
-    <title>Fresh FM </title>
-    <meta name="description" content="Fresh fm, #1 destination for the latest news and events, as well as exciting sports coverage. Stream your favorite songs all day and all night long" />
-    <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
-    <link rel="canonical" href="https://fresh-fm.vercel.app" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Fresh FM - The Online Teachers' Radio" />
-    <meta property="og:description" content="Developed by Fresh Teacher" />
-    <meta property="og:url" content="https://fresh-fm.vercel.app" />
-    <meta property="og:site_name" content="Nara24 FM" />
-    <meta property="og:updated_time" content="2023-12-20T14:32:07+03:00" />
-    <meta property="og:image" content="https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png" />
-    <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="nara24 fm" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="article:published_time" content="2016-12-07T21:55:02+03:00" />
-    <meta property="article:modified_time" content="2023-12-20T14:32:07+03:00" />
-    <!-- <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Nara24 FM &raquo; Entertainment 24/7" />
-    <meta name="twitter:description" content="Nara24 fm, #1 destination for the latest news and events, as well as exciting sports coverage. Stream your favorite songs all day and all night long" />
-    <meta name="twitter:site" content="@nara24fm_com" />
-    <meta name="twitter:creator" content="@nara24fm_com" />
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png" />
-    <meta name="twitter:label1" content="Written by" />
-    <meta name="twitter:data1" content="smogcoders" />
-    <meta name="twitter:label2" content="Time to read" />
-    <meta name="twitter:data2" content="Less than a minute" /> -->
-    <script type="application/ld+json" class="rank-math-schema-pro">
-        {
-            "@context": "https://schema.org",
-            "@graph": [{
-                "@type": "Place",
-                "@id": "https://nara24fm.com/#place",
-                "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "Kampala Kawaala Road",
-                    "addressLocality": "Kampala",
-                    "addressRegion": "Central Region",
-                    "postalCode": "00256",
-                    "addressCountry": "Uganda"
-                }
-            }, {
-                "@type": ["RadioStation", "Organization"],
-                "@id": "https://nara24fm.com/#organization",
-                "name": "Nara24 FM",
-                "url": "https://nara24fm.com",
-                "sameAs": ["https://www.facebook.com/p/Nara24fm-online-radio-100077430017569/", "https://twitter.com/nara24fm_com"],
-                "email": "smoggrafton@gmail.com",
-                "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "Kampala Kawaala Road",
-                    "addressLocality": "Kampala",
-                    "addressRegion": "Central Region",
-                    "postalCode": "00256",
-                    "addressCountry": "Uganda"
-                },
-                "logo": {
-                    "@type": "ImageObject",
-                    "@id": "https://nara24fm.com/#logo",
-                    "url": "https://nara24fm.com/wp-content/uploads/2023/12/nadd.jpg",
-                    "contentUrl": "https://nara24fm.com/wp-content/uploads/2023/12/nadd.jpg",
-                    "caption": "Nara24 FM",
-                    "inLanguage": "en-US",
-                    "width": "500",
-                    "height": "500"
-                },
-                "openingHours": ["Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday 09:00-17:00"],
-                "location": {
-                    "@id": "https://nara24fm.com/#place"
-                },
-                "image": {
-                    "@id": "https://nara24fm.com/#logo"
-                }
-            }, {
-                "@type": "WebSite",
-                "@id": "https://nara24fm.com/#website",
-                "url": "https://nara24fm.com",
-                "name": "Nara24 FM",
-                "alternateName": "Nara24",
-                "publisher": {
-                    "@id": "https://nara24fm.com/#organization"
-                },
-                "inLanguage": "en-US",
-                "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": "https://nara24fm.com/?s={search_term_string}",
-                    "query-input": "required name=search_term_string"
-                }
-            }, {
-                "@type": "ImageObject",
-                "@id": "https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png",
-                "url": "https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png",
-                "width": "1200",
-                "height": "630",
-                "inLanguage": "en-US"
-            }, {
-                "@type": "WebPage",
-                "@id": "https://nara24fm.com/#webpage",
-                "url": "https://nara24fm.com/",
-                "name": "Fresh FM &raquo; The Teacher's Radio",
-                "datePublished": "2016-12-07T21:55:02+03:00",
-                "dateModified": "2023-12-20T14:32:07+03:00",
-                "about": {
-                    "@id": "https://nara24fm.com/#organization"
-                },
-                "isPartOf": {
-                    "@id": "https://nara24fm.com/#website"
-                },
-                "primaryImageOfPage": {
-                    "@id": "https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png"
-                },
-                "inLanguage": "en-US"
-            }, {
-                "@type": "Person",
-                "@id": "https://nara24fm.com/author/smogcoders/",
-                "name": "smogcoders",
-                "url": "https://nara24fm.com/author/smogcoders/",
-                "image": {
-                    "@type": "ImageObject",
-                    "@id": "https://secure.gravatar.com/avatar/1eb542672f610f494b305f6571ee4476?s=96&amp;d=mm&amp;r=g",
-                    "url": "https://secure.gravatar.com/avatar/1eb542672f610f494b305f6571ee4476?s=96&amp;d=mm&amp;r=g",
-                    "caption": "smogcoders",
-                    "inLanguage": "en-US"
-                },
-                "sameAs": ["https://smogcoders.com"],
-                "worksFor": {
-                    "@id": "https://nara24fm.com/#organization"
-                }
-            }, {
-                "@type": "NewsArticle",
-                "headline": "Fresh FM &raquo; The Teachers' Radio",
-                "keywords": "nara24 fm",
-                "datePublished": "2016-12-07T21:55:02+03:00",
-                "dateModified": "2023-12-20T14:32:07+03:00",
-                "author": {
-                    "@id": "https://nara24fm.com/author/smogcoders/",
-                    "name": "smogcoders"
-                },
-                "publisher": {
-                    "@id": "https://nara24fm.com/#organization"
-                },
-                "description": "Nara24 fm, #1 destination for the latest news and events, as well as exciting sports coverage. Stream your favorite songs all day and all night long",
-                "copyrightYear": "2023",
-                "copyrightHolder": {
-                    "@id": "https://nara24fm.com/#organization"
-                },
-                "name": "Fresh FM &raquo; The Teachers' Radio",
-                "@id": "https://nara24fm.com/#richSnippet",
-                "isPartOf": {
-                    "@id": "https://nara24fm.com/#webpage"
-                },
-                "image": {
-                    "@id": "https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png"
-                },
-                "inLanguage": "en-US",
-                "mainEntityOfPage": {
-                    "@id": "https://nara24fm.com/#webpage"
-                }
-            }]
-        }
-    </script>
-    <!-- /Rank Math WordPress SEO plugin -->
-
-    <link rel='dns-prefetch' href='//nara24fm.com' />
-    <link rel='dns-prefetch' href='//fonts.googleapis.com' />
-    <link rel="alternate" type="application/rss+xml" title="Nara24 FM &raquo; Feed" href="https://nara24fm.com/feed/" />
-    <link rel="alternate" type="application/rss+xml" title="Nara24 FM &raquo; Comments Feed" href="https://nara24fm.com/comments/feed/" />
-    <script type="text/javascript">
-        /* <![CDATA[ */
-        window._wpemojiSettings = {
-            "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/",
-            "ext": ".png",
-            "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/",
-            "svgExt": ".svg",
-            "source": {
-                "concatemoji": "https:\/\/nara24fm.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.4.2"
+    <!DOCTYPE html>
+    <html lang="en-US" prefix="og: https://ogp.me/ns#">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="logo.png" />
+        <link rel="pingback" href="https://nara24fm.com/xmlrpc.php" />
+        <meta property="og:description" content="Entertainment 24/7" />
+    
+        <!-- Search Engine Optimization by Rank Math PRO - https://rankmath.com/ -->
+        <title>Fresh FM </title>
+        <meta name="description" content="Fresh fm, #1 destination for the latest news and events, as well as exciting sports coverage. Stream your favorite songs all day and all night long" />
+        <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
+        <link rel="canonical" href="https://fresh-fm.vercel.app" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Fresh FM - The Online Teachers' Radio" />
+        <meta property="og:description" content="Developed by Fresh Teacher" />
+        <meta property="og:url" content="https://fresh-fm.vercel.app" />
+        <meta property="og:site_name" content="Nara24 FM" />
+        <meta property="og:updated_time" content="2023-12-20T14:32:07+03:00" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png" />
+        <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="nara24 fm" />
+        <meta property="og:image:type" content="image/png" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
             }
-        };
-        /*! This file is auto-generated */
-        ! function(i, n) {
-            var o, s, e;
-
-            function c(e) {
-                try {
-                    var t = {
-                        supportTests: e,
-                        timestamp: (new Date).valueOf()
-                    };
-                    sessionStorage.setItem(o, JSON.stringify(t))
-                } catch (e) {}
+    
+            th, td {
+                border: 1px solid #3d6800;
+                text-align: left;
+                padding: 8px;
             }
-
-            function p(e, t, n) {
-                e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(t, 0, 0);
-                var t = new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data),
-                    r = (e.clearRect(0, 0, e.canvas.width, e.canvas.height), e.fillText(n, 0, 0), new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data));
-                return t.every(function(e, t) {
-                    return e === r[t]
-                })
+    
+            th {
+                background-color: #95ff00;
             }
-
-            function u(e, t, n) {
-                switch (t) {
-                    case "flag":
-                        return n(e, "\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f", "\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f") ? !1 : !n(e, "\ud83c\uddfa\ud83c\uddf3", "\ud83c\uddfa\u200b\ud83c\uddf3") && !n(e, "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");
-                    case "emoji":
-                        return !n(e, "\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff", "\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff")
-                }
-                return !1
-            }
-
-            function f(e, t, n) {
-                var r = "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? new OffscreenCanvas(300, 150) : i.createElement("canvas"),
-                    a = r.getContext("2d", {
-                        willReadFrequently: !0
-                    }),
-                    o = (a.textBaseline = "top", a.font = "600 32px Arial", {});
-                return e.forEach(function(e) {
-                    o[e] = t(a, e, n)
-                }), o
-            }
-
-            function t(e) {
-                var t = i.createElement("script");
-                t.src = e, t.defer = !0, i.head.appendChild(t)
-            }
-            "undefined" != typeof Promise && (o = "wpEmojiSettingsSupports", s = ["flag", "emoji"], n.supports = {
-                everything: !0,
-                everythingExceptFlag: !0
-            }, e = new Promise(function(e) {
-                i.addEventListener("DOMContentLoaded", e, {
-                    once: !0
-                })
-            }), new Promise(function(t) {
-                var n = function() {
-                    try {
-                        var e = JSON.parse(sessionStorage.getItem(o));
-                        if ("object" == typeof e && "number" == typeof e.timestamp && (new Date).valueOf() < e.timestamp + 604800 && "object" == typeof e.supportTests) return e.supportTests
-                    } catch (e) {}
-                    return null
-                }();
-                if (!n) {
-                    if ("undefined" != typeof Worker && "undefined" != typeof OffscreenCanvas && "undefined" != typeof URL && URL.createObjectURL && "undefined" != typeof Blob) try {
-                        var e = "postMessage(" + f.toString() + "(" + [JSON.stringify(s), u.toString(), p.toString()].join(",") + "));",
-                            r = new Blob([e], {
-                                type: "text/javascript"
-                            }),
-                            a = new Worker(URL.createObjectURL(r), {
-                                name: "wpTestEmojiSupports"
-                            });
-                        return void(a.onmessage = function(e) {
-                            c(n = e.data), a.terminate(), t(n)
-                        })
-                    } catch (e) {}
-                    c(n = f(s, u, p))
-                }
-                t(n)
-            }).then(function(e) {
-                for (var t in e) n.supports[t] = e[t], n.supports.everything = n.supports.everything && n.supports[t], "flag" !== t && (n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && n.supports[t]);
-                n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && !n.supports.flag, n.DOMReady = !1, n.readyCallback = function() {
-                    n.DOMReady = !0
-                }
-            }).then(function() {
-                return e
-            }).then(function() {
-                var e;
-                n.supports.everything || (n.readyCallback(), (e = n.source || {}).concatemoji ? t(e.concatemoji) : e.wpemoji && e.twemoji && (t(e.twemoji), t(e.wpemoji)))
-            }))
-        }((window, document), window._wpemojiSettings);
-        /* ]]> */
-    </script>
-    <link rel='stylesheet' id='audio5-html5_site_css-css' href='https://nara24fm.com/wp-content/plugins/lbg-audio5-html5-shoutcast_sticky/audio5_html5/audio5_html5.css?ver=6.4.2' type='text/css' media='all' />
-    <style id='wp-emoji-styles-inline-css' type='text/css'>
-        img.wp-smiley,
-        img.emoji {
-            display: inline !important;
-            border: none !important;
-            box-shadow: none !important;
-            height: 1em !important;
-            width: 1em !important;
-            margin: 0 0.07em !important;
-            vertical-align: -0.1em !important;
-            background: none !important;
-            padding: 0 !important;
-        }
-
-        /* Add the provided CSS code here */
-        @keyframes logoRotation {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        #lbg_audio5_html5_shoutcast_1 img[src*="logo.png"] {
-            /* Apply the rotation animation */
-            animation: logoRotation 5s infinite linear; /* Adjust the duration as needed */
-        }
-
-        
-    </style>
-   
-    <link rel='stylesheet' id='fontawesome-child-css' href='https://nara24fm.com/wp-content/themes/the-league-child/font-awesome/css/font-awesome.css?ver=6.4.2' type='text/css' media='all' />
-    <link rel='stylesheet' id='mvp-custom-child-style-css' href='https://nara24fm.com/wp-content/themes/the-league-child/style.css?ver=1.0.0' type='text/css' media='all' />
-    <link rel='stylesheet' id='mvp-reset-css' href='https://nara24fm.com/wp-content/themes/the-league/css/reset.css?ver=6.4.2' type='text/css' media='all' />
-    <link rel='stylesheet' id='fontawesome-css' href='https://nara24fm.com/wp-content/themes/the-league-child/font-awesome/css/font-awesome.css?ver=6.4.2' type='text/css' media='all' />
-    <link rel='stylesheet' id='mvp-fonts-css' href='//fonts.googleapis.com/css?family=Advent+Pro%3A700%7CRoboto%3A300%2C400%2C500%2C700%2C900%7COswald%3A300%2C400%2C700%7CLato%3A300%2C400%2C700%7CWork+Sans%3A200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7COpen+Sans%3A400%2C700%2C800%7CRoboto+Condensed%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7CRoboto%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7CTitillium+Web%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7CTitillium+Web%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7CTitillium+Web%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900&#038;subset=latin,latin-ext,cyrillic,cyrillic-ext,greek-ext,greek,vietnamese'
-        type='text/css' media='all' />
-    <link rel='stylesheet' id='mvp-media-queries-css' href='https://nara24fm.com/wp-content/themes/the-league/css/media-queries.css?ver=6.4.2' type='text/css' media='all' />
-    <script type="text/javascript" src="https://nara24fm.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/plugins/lbg-audio5-html5-shoutcast_sticky/audio5_html5/js/jquery.mousewheel.min.js?ver=6.4.2" id="lbg-mousewheel-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/plugins/lbg-audio5-html5-shoutcast_sticky/audio5_html5/js/jquery.touchSwipe.min.js?ver=6.4.2" id="lbg-touchSwipe-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/plugins/lbg-audio5-html5-shoutcast_sticky/audio5_html5/js/audio5_html5.js?ver=6.4.2" id="lbg-audio5_html5-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/plugins/theia-post-slider/js/balupton-history.js/jquery.history.js?ver=1.7.1" id="history.js-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/plugins/theia-post-slider/js/async.min.js?ver=14.09.2014" id="async.js-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/plugins/theia-post-slider/js/tps.js?ver=2.0.0" id="theiaPostSlider/theiaPostSlider.js-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/plugins/theia-post-slider/js/main.js?ver=2.0.0" id="theiaPostSlider/main.js-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/plugins/theia-post-slider/js/tps-transition-slide.js?ver=2.0.0" id="theiaPostSlider/transition.js-js"></script>
-    <script></script>
-    <link rel="https://api.w.org/" href="https://nara24fm.com/wp-json/" />
-    <link rel="alternate" type="application/json" href="https://nara24fm.com/wp-json/wp/v2/pages/237" />
-    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://nara24fm.com/xmlrpc.php?rsd" />
-    <meta name="generator" content="WordPress 6.4.2" />
-    <link rel='shortlink' href='https://nara24fm.com/' />
-    <link rel="alternate" type="application/json+oembed" href="https://nara24fm.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnara24fm.com%2F" />
-    <link rel="alternate" type="text/xml+oembed" href="https://nara24fm.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnara24fm.com%2F&#038;format=xml" />
-    <meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress." />
-    <noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }
-    </style></noscript></head>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        header {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 15px;
+    
+            td.upcoming, td.current, td.finished {
+        background-color: inherit;
     }
-
-    #eat-time {
-      font-size: 24px;
-      font-weight: bold;
+    
+    header {
+        background-color: rgb(0, 176, 65); /* Change the background color as needed */
+                color: white; /* Set text color for header */
+                padding: 0.1px; /* Add padding to header */
+                text-align: center; /* Center align text */
+                position: fixed; /* Make header fixed at the top */
+                width: 100%; /* Full width */
+                top: 0; /* Stick to the top */
+            }
+    
+            .finished {
+                background-color: #e57373; /* Red for finished */
+            }
+    
+            .current {
+                background-color: #81c784; /* Green for currently on air */
+                animation: blink 2s infinite; /* Add blinking animation */
+            }
+    
+            .upcoming {
+                background-color: #64b5f6; /* Grey for upcoming */
+            }
+    
+            @keyframes blink {
+                0%, 100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0;
+                }
+            }
+    
+            #stickyPlayer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(0, 176, 65); /* Change the background color as needed */
+        padding: 5px; /* Add padding for better visibility */
     }
+    
+            /* Adjustments for responsive design */
+            @media screen and (max-width: 600px) {
+                header, footer {
+                    font-size: 14px; /* Adjust font size for smaller screens */
+                }
+            }
 
-    #program {
-      font-size: 18px;
-      margin-top: 10px;
-    }
-
-        h1 {
-            color: #3498db;
+            #currentTime {
+            font-size: 25px; /* Adjust font size as needed */
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
+                  /* Teacher Adverts Section Styles */
+                  .container {
+            max-width: 800px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card-title {
+            color: #ffffff; /* Shouting blue */
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .card-text {
+            color: #f0f2f3;
+            font-size: 1.2rem; /* Adjust font size as needed */
+
+        }
+
+                /* New styles for teacher adverts section */
+                #teacherAdverts {
+            padding: 30px 0;
+            background-color: #498efe;
+        }
+
+        #teacherAdverts h2 {
+            text-align: center;
+            color: #343a40;
+        }
+
+        .adverts-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
             margin-top: 20px;
         }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
+        .advert-card {
+            max-width: 300px;
+            margin: 15px;
+            background-color: #fff;
+            border: none; /* No border */
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s ease-in-out;
         }
 
-        th {
-            background-color: #3498db;
-            color: white;
+        .advert-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        /* Style for all rows */
-        tr {
-            background-color: #7f8c8d; /* Gray color for all rows */
-            color: white;
+        .advert-card .card-body {
+            padding: 15px;
         }
 
-        /* Style for the currently playing program with blinking effect */
-        tr.current-program {
-            animation: blink 1s infinite alternate; /* Blinking animation */
+        .advert-card h5 {
+            color: #ffffff; /* Shouting blue */
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
-        @keyframes blink {
-            from {
-                background-color: #000000; /* Blinking color for the currently playing program */
+               .card-text {
+            color: #f0f2f3;
+            font-size: 1.5rem; /* Adjust font size as needed */
+        }
+
+        .advert-card p {
+            color: #f0f2f3;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .advert-card {
+                max-width: calc(50% - 30px);
             }
-            to {
-                background-color: #7f8c8d; /* Gray color for all rows */
-            }
         }
-    </style>
-<body class="home page-template page-template-page-home page-template-page-home-php page page-id-237 wp-embed-responsive theiaPostSlider_body wpb-js-composer js-comp-ver-7.3 vc_responsive">
-    <center><h1>Fresh FM 📻</h1></center>
 
-    <header>
-        <div id="eat-time"></div>
-        <div id="program"></div>
-      </header>
-    
-      
-      <table id="programTable">
-        <thead>
-          <tr>
-            <th>Time</th>
-            <th>Program</th>
-            <th>Presenter</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-start="00:00" data-end="00:08">
-            <td>00:00 AM - 00:08 AM</td>
-            <td>Midnight Mix</td>
-            <td>DJ Sserudigo</td>
-          </tr>
-          <tr data-start="00:08" data-end="06:00">
-            <td>00:08 AM - 06:00 AM</td>
-            <td>Early Vibes</td>
-            <td>Omulangira Ndausi</td>
-          </tr>
-          <tr data-start="06:00" data-end="09:00">
-            <td>06:00 AM - 09:00 AM</td>
-            <td>Morning Breeze</td>
-            <td>Natasha Nats</td>
-          </tr>
-          <tr data-start="09:00" data-end="12:00">
-            <td>09:00 AM - 12:00 PM</td>
-            <td>Nsaba Nkuwe</td>
-            <td>MC Kats</td>
-          </tr>
-          <tr data-start="12:00" data-end="15:00">
-            <td>12:00 PM - 03:00 PM</td>
-            <td>Lunchtime Beats</td>
-            <td>Mix Master Max</td>
-          </tr>
-          <tr data-start="15:00" data-end="18:00">
-            <td>03:00 PM - 06:00 PM</td>
-            <td>AfterLunch Groove</td>
-            <td>Chill Master Chris</td>
-          </tr>
-          <tr data-start="18:00" data-end="21:00">
-            <td>06:00 PM - 09:00 PM</td>
-            <td>Work Break</td>
-            <td>Omumbejja Ssanyu</td>
-          </tr>
-          <tr data-start="21:00" data-end="00:00">
-            <td>09:00 PM - 12:00 AM</td>
-            <td>Night Sessions</td>
-            <td>Mbaziira Tonny</td>
-          </tr>
-        </tbody>
-      </table>
-    
-    
-      <script>
-        function updateTimeAndProgram() {
-          const eatTimeZone = 'Africa/Kampala'; // East Africa Time (EAT) timezone
-          const currentEATTime = new Date().toLocaleTimeString('en-US', { timeZone: eatTimeZone, hour12: true, timeStyle: 'medium' });
-          document.getElementById('eat-time').textContent = `${currentEATTime}`;
-    
-          const currentTime = new Date().toLocaleTimeString('en-US', { timeZone: 'Africa/Nairobi', hour12: true, timeStyle: 'short' });
-    
-          let program;
-          let highlightedRow = null;
-    
-          const tableRows = document.querySelectorAll('#programTable tbody tr');
-    
-          tableRows.forEach((row) => {
-            const startTime = row.getAttribute('data-start');
-            const endTime = row.getAttribute('data-end');
-    
-            if (isTimeBetween(currentTime, startTime, endTime)) {
-              program = `${row.children[1].textContent} by ${row.children[2].textContent}`;
-              highlightedRow = row;
+        @media screen and (max-width: 576px) {
+            .advert-card {
+                max-width: calc(100% - 30px);
             }
-          });
+        }
+        </style>
+    </head>
+    <br><br><br>
+    <body>
     
-          document.getElementById('program').textContent = `Currently playing: ${program}`;
+        <header>
+            <h1>Fresh Teacher's Radio 📻</h1>
+            <div id="currentTime"></div>
+        </header>
     
-          // Remove highlight from all rows
-          tableRows.forEach((row) => {
-            row.classList.remove('current-program');
-          });
+        <br><br><table id="programTableDay1">
+            <tr>
+                <th>Time</th>
+                <th>Program</th>
+                <th>Presenter</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>12:00 AM - 06:00 AM</td>
+                <td>Xmas Muzic</td>
+                <td>DJ Sserudigo</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>06:00 AM - 08:00 AM</td>
+                <td>Wake Up</td>
+                <td>Omulangira Ndausi</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>08:00 AM - 08:30 AM</td>
+                <td>News</td>
+                <td>Natasha Nats</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>08:30 AM - 09:30 AM</td>
+                <td>Advertisements</td>
+                <td>Omulongo Kato</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>09:30 AM - 1:00 PM</td>
+                <td>Church Service</td>
+                <td>Reverend Kimuli Bob</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>01:00 PM - 02:30 PM</td>
+                <td>News</td>
+                <td>Joshua Musaasizi Nsubuga</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>01:30 PM - 02:30 PM</td>
+                <td>Lunch Hour</td>
+                <td>DJ Binyanyanyanya</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>02:30 PM - 04:30 PM</td>
+                <td>Xmas Extra</td>
+                <td>Fresh Teacher</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>04:30 PM - 05:30 PM</td>
+                <td>Xmas Vibes</td>
+                <td>Selector Kiwa</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>07:00 PM - 08:00PM</td>
+                <td>Song Request</td>
+                <td>Dj Jesse Paul</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>08:00 PM - 09:00 PM</td>
+                <td>News Hour</td>
+                <td>Kimuli Bob</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>09:00 PM - 10:00 PM</td>
+                <td>Advertisements</td>
+                <td>Fresh Teacher</td>
+                <td class="upcoming">Upcoming</td>
+            </tr> 
+                   <tr>
+                <td>10:00 PM - 11:00 PM</td>
+                <td>Christmas Wishes</td>
+                <td>MC Jose</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            <tr>
+                <td>11:00 PM - 12:00 AM</td>
+                <td>Gospel Music</td>
+                <td>Dj Kabaalu</td>
+                <td class="upcoming">Upcoming</td>
+            </tr>
+            
+            
+<!-- Program Table for Day 2 (Initially hidden) -->
+<table id="programTableDay2" style="display: none;">
+    <!-- ... (Day 2 programs) ... -->
+    <tr>
+        <td>12:00 AM - 06:00 AM</td>
+        <td>Midnight Mix</td>
+        <td>DJ Sserudigo</td>
+        <td class="upcoming">Upcoming</td>
+    </tr>
+    <tr>
+        <td>06:00 AM - 08:00 AM</td>
+        <td>Dawn Crew</td>
+        <td>Omulangira Ndausi</td>
+        <td class="upcoming">Upcoming</td>
+    </tr>
+    <tr>
+        <td>08:00 AM - 08:30 AM</td>
+        <td>Work Slayers</td>
+        <td>Natasha Nats</td>
+        <td class="upcoming">Upcoming</td>
+    </tr>
+    <tr>
+        <td>08:30 AM - 09:30 AM</td>
+        <td>Advertisements</td>
+        <td>Omulongo Kato</td>
+        <td class="upcoming">Upcoming</td>
+    </tr>
+    <tr>
+        <td>09:30 AM - 1:00 PM</td>
+        <td>Breakfast</td>
+        <td>Reverend Kimuli Bob</td>
+        <td class="upcoming">Upcoming</td>
+    </tr>
+    <tr>
+        <td>01:00 PM - 02:30 PM</td>
+        <td>News</td>
+        <td>Joshua Musaasizi Nsubuga</td>
+        <td class="upcoming">Upcoming</td>
+    </tr>
+    <tr>
+        <td>01:30 PM - 02:30 PM</td>
+        <td>Lunch Hour</td>
+        <td>DJ Binyanyanyanya</td>
+        <td class="upcoming">Upcoming</td>
+    </tr>
+    <tr>
+        <td>02:30 PM - 04:30 PM</td>
+        <td>Rest Extra</td>
+        <td>Fresh Teacher</td>
+        <td class="upcoming">Upcoming</td>
+    </tr>
+    <tr>
+        <td>04:30 PM - 05:30 PM</td>
+        <td>Request Hour</td>
+        <td>Selector Kiwa</td>
+        <td class="upcoming">Upcoming</td>
+    </tr>
+    <tr>
+        <td>07:00 PM - 08:00PM</td>
+        <td>Song Request</td>
+        <td>Dj Jesse Paul</td>
+        <td class="upcoming">Upcoming</td>
+    </tr>
+    <tr>
+        <td>08:00 PM - 09:00 PM</td>
+        <td>News Hour</td>
+        <td>Kimuli Bob</td>
+        <td class="upcoming">Upcoming</td>
+    </tr>
+    <tr>
+        <td>09:00 PM - 10:00 PM</td>
+        <td>Advertisements</td>
+        <td>Fresh Teacher</td>
+        <td class="upcoming">Upcoming</td>
+    </tr> 
+           <tr>
+        <td>10:00 PM - 11:00 PM</td>
+        <td> Wishes</td>
+        <td>MC Jose</td>
+        <td class="upcoming">Upcoming</td>
+    </tr>
+    <tr>
+        <td>11:00 PM - 12:00 AM</td>
+        <td> Music</td>
+        <td>Dj Kabaalu</td>
+        <td class="upcoming">Upcoming</td>
+    </tr>
+
+        </table>
+        
+        <br><br><br><br><br>
+       <div id="stickyPlayer">
+            <audio id="audioPlayer" controls autoplay>
+                <!-- No source element here -->
+            </audio>
+        </div>
     
-          // Highlight the currently playing program
-          if (highlightedRow) {
-            highlightedRow.classList.add('current-program');
-          }
+<!-- Job Posts Section -->
+<div class="container mt-4 text-center">
+    <h1 class="text-center text-danger">Advertisements</h1>
+    <div id="jobPosts" class="row mt-4"></div>
+</div>
+<br><br><br><br><br>
+
+<!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    var jobData = 
+    [
+    {
+        "message": "A very experienced Grade 3 female teacher proficient in handling English for P.1 and P.2 is seeking a vacancy. Areas of interest include Kawempe, Katooke, Bwaise, Maganjo, Wabweru, Kagoma, Wamala, Ttula, and Kazo. Contact: 0787838746, 0708360636."
+    },
+    {
+        "message": "Two teachers specializing in English need vacancies. Positions available are for a P.7 teacher and a P.1/P.2 English/Literature teacher. Contact: 0702728087. Preferably looking to work in Katooke, Lugoba, or Kawempe."
+    },
+    {
+        "message": "Available for Science and Math upper positions with 10 years of experience in Kampala. Contact: 0784582151, 0754502497."
+    }
+        // Add more job posts as needed
+    ];
+
+    
+  // Function to render job posts dynamically
+function renderJobPosts() {
+    var jobPostsContainer = document.getElementById('jobPosts');
+
+    jobData.forEach(function (job) {
+        var cardDiv = document.createElement('div');
+        cardDiv.className = 'col-md-6 mb-4';
+        cardDiv.style.backgroundColor = '#343a40'; // Replace '#your-color' with your desired color code
+
+        var card = document.createElement('div');
+        card.className = 'card bg-success';
+
+        var cardBody = document.createElement('div');
+        cardBody.className = 'card-body';
+
+        var cardTitle = document.createElement('h5');
+        cardTitle.className = 'card-title';
+
+        var cardText = document.createElement('p');
+        cardText.className = 'card-text card-message'; // Added class for styling
+        cardText.textContent = job.message;
+
+        cardBody.appendChild(cardTitle);
+        cardBody.appendChild(cardText);
+
+        card.appendChild(cardBody);
+        cardDiv.appendChild(card);
+
+        jobPostsContainer.appendChild(cardDiv);
+    });
+}
+
+// Call the function to render job posts
+renderJobPosts();
+
+// Function to check and switch to Day 2 when the last program of Day 1 ends
+function checkDayTransition() {
+    var table = document.getElementById("programTableDay1");    var rows = table.getElementsByTagName("tr");
+
+    // Get the last row (program) of Day 1
+    var lastProgramRow = rows[rows.length - 1];
+    var lastProgramTimeCell = lastProgramRow.cells[0];
+    var lastProgramEndTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Nairobi" }) + " " + lastProgramTimeCell.innerText.split(' - ')[1]);
+    var currentTime = new Date();
+
+    // Check if the last program of Day 1 has ended
+    if (currentTime > lastProgramEndTime) {
+        // Hide the table for Day 1
+        document.getElementById("programTableDay1").style.display = "none";
+
+        // Show the table for Day 2
+        document.getElementById("programTableDay2").style.display = "table";
+
+        // Initialize audio elements for Day 2 programs
+        initializeAudioElementsDay2();
+    }
+}
+
+// Function to initialize audio elements for Day 2 programs
+function initializeAudioElementsDay2() {
+    var table = document.getElementById("programTableDay2");
+    var rows = table.getElementsByTagName("tr");
+
+    for (var i = 1; i < rows.length; i++) {
+        var row = rows[i];
+        var programName = row.cells[1].innerText;
+        var audioFileName = programAudioMap[programName];
+        var audioSource = audioPath + audioFileName;
+
+        var audio = new Audio();
+        audio.src = audioSource;
+
+        // Store each audio element in the array
+        audioElements[programName] = audio;
+    }
+}
+
+// Call the function to check for Day transition
+checkDayTransition();
+
+        // Function to update the current time in 12-hour format in EAT zone
+        function updateTime() {
+            var currentTimeElement = document.getElementById("currentTime");
+            var currentTime = new Date();
+            
+            // Set the time zone to East Africa Time (EAT)
+            var options = { timeZone: 'Africa/Kampala' };
+            var formattedTime = currentTime.toLocaleTimeString('en-US', options);
+
+            // Update the content of the element
+            currentTimeElement.innerText = "Current Time ~ " + formattedTime;
+
+            // Update every second
+            setTimeout(updateTime, 1000);
+        }
+
+        // Initial call to start the timer
+        updateTime();
+
+        // Define an array to store audio elements for each program
+        var audioElements = {};
+        var audioPath = ""; // Update this path based on your project structure
+    
+        // Map each program to its corresponding audio file
+        var programAudioMap = {
+            "AfterLunch Groove": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
+            "Work Break": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/congratulations.mp3",
+            "Night Sessions": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
+            "Church Service": "https://s5.voscast.com:9905/EMMANDUSO",
+            "News": "https://s5.voscast.com:9905/EMMANDUSO",
+            "Lunch Hour": "Nonstop.mp3",
+            "Xmas Extra": "https://s5.voscast.com:9905/EMMANDUSO",
+            "Xmas Vibes": "Nonstop.mp3",
+            "News Hour": "https://s5.voscast.com:9905/EMMANDUSO",
+            "Song Request": "Nonstop.mp3",
+            "Advertisements": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
+            "Christmas Wishes": "Nonstop.mp3",
+            "Gospel Music": "https://s5.voscast.com:9905/EMMANDUSO",
+    
+            // Add mappings for other programs
+        };
+    
+        // Function to initialize audio elements for each program
+        function initializeAudioElements() {
+            var table = document.getElementById("programTableDay1");            var rows = table.getElementsByTagName("tr");
+    
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var programName = row.cells[1].innerText;
+                var audioFileName = programAudioMap[programName];
+                var audioSource = audioPath + audioFileName;
+    
+                var audio = new Audio();
+                audio.src = audioSource;
+    
+                // Store each audio element in the array
+                audioElements[programName] = audio;
+            }
         }
     
-        // Check if a given time is between two time values
-        function isTimeBetween(currentTime, startTime, endTime) {
-          return currentTime >= startTime && currentTime < endTime;
+        // Call the function to initialize audio elements
+        initializeAudioElements();
+        
+    var currentProgram = ""; // Keep track of the current playing program
+    
+        // Function to update the sticky player source and controls
+        function updateStickyPlayer(programName) {
+            var audioPlayer = document.getElementById("audioPlayer");
+            var audio = audioElements[programName];
+    
+            if (currentProgram !== programName) {
+                audioPlayer.pause(); // Pause the currently playing audio
+                audioPlayer.src = audio.src; // Set the source for the sticky player
+                audioPlayer.load(); // Reload the audio player with the new source
+                audioPlayer.play(); // Start playing the audio
+                currentProgram = programName; // Update the current program
+            }
+    
+            // Update player controls
+            document.getElementById("stickyPlayer").style.display = "block"; // Show the sticky player
         }
     
-        // Update time and program every second
-        setInterval(updateTimeAndProgram, 1000);
+        // Function to hide the sticky player when no program is playing
+        function hideStickyPlayer() {
+            document.getElementById("stickyPlayer").style.display = "none";
+        }
+    
+        // Function to set the volume of the audio player
+        function setVolume(volume) {
+            var audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.volume = volume;
+        }
+    
+        // Update sticky player controls and visibility based on the program status
+        function updateStickyPlayerControls(programName) {
+            var table = document.getElementById("programTableDay1");            var rows = table.getElementsByTagName("tr");
+    
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var timeCell = row.cells[0];
+    
+                var programTime = timeCell.innerText.split(' - ');
+                var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
+                var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
+                var currentTime = new Date();
+    
+                if (currentTime >= startTime && currentTime <= endTime) {
+                    var programName = row.cells[1].innerText;
+                    updateStickyPlayer(programName);
+                    return;
+                }
+            }
+    
+            // If no program is currently playing, hide the sticky player
+            hideStickyPlayer();
+        }
+    
+        
+    
+        function updateProgramStatus() {
+            var table = document.getElementById("programTableDay1");            var rows = table.getElementsByTagName("tr");
+    
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var timeCell = row.cells[0];
+                var statusCell = row.cells[3];
+    
+                var programName = row.cells[1].innerText;
+                var programTime = timeCell.innerText.split(' - ');
+                var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
+                var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
+                var currentTime = new Date();
+    
+                if (currentTime < startTime) {
+                    row.className = "upcoming";
+                    statusCell.innerText = "Upcoming";
+                } else if (currentTime >= startTime && currentTime <= endTime) {
+                    row.className = "current";
+                    statusCell.innerText = "LIVE";
+                } else {
+                    row.className = "finished";
+                    statusCell.innerText = "Ended";
+                }
+            }
+        }
+    
+        // Update program status and sticky player controls every 10 seconds
+        setInterval(function () {
+            updateProgramStatus();
+            updateStickyPlayerControls();
+        }, 10000);
     
         // Initial update
-        updateTimeAndProgram();
-      </script>
-    
-
-    <script>
-// Get the current hour and minute
-var now = new Date();
-var currentHour = now.getHours();
-var currentMinute = now.getMinutes();
-
-// Convert current time to minutes for easier comparison
-var currentTimeInMinutes = currentHour * 60 + currentMinute;
-
-// Assuming currentlyPlayingProgram is defined
-if (currentlyPlayingProgram) {
-    // Highlight the row of the currently playing program
-    var table = document.getElementById("programTable");
-    var rows = table.getElementsByTagName("tr");
-
-    for (var i = 1; i < rows.length; i++) {
-        var row = rows[i];
-        var timeRange = row.cells[0].innerText.split(" - ");
-        var startTime = convertTimeToMinutes(timeRange[0]);
-        var endTime = convertTimeToMinutes(timeRange[1]);
-
-        // Check if the current time is within the time range and the program matches
-        if (
-            currentTimeInMinutes >= startTime &&
-            currentTimeInMinutes <= endTime &&
-            currentlyPlayingProgram.program === row.cells[1].innerText
-        ) {
-            row.classList.add("current-program");
-            break; // Highlighted the current program, no need to check further
-        }
-    }
-} else {
-    // If there's no currently playing program, only highlight based on the current time
-    var table = document.getElementById("programTable");
-    var rows = table.getElementsByTagName("tr");
-
-    for (var i = 1; i < rows.length; i++) {
-        var row = rows[i];
-        var timeRange = row.cells[0].innerText.split(" - ");
-        var startTime = convertTimeToMinutes(timeRange[0]);
-        var endTime = convertTimeToMinutes(timeRange[1]);
-
-        // Check if the current time is within the time range
-        if (currentTimeInMinutes >= startTime && currentTimeInMinutes <= endTime) {
-            row.classList.add("current-program");
-            break; // Highlighted the current program, no need to check further
-        }
-    }
-}
-
-// Function to convert time to minutes
-function convertTimeToMinutes(time) {
-    var parts = time.split(":");
-    return parseInt(parts[0]) * 60 + parseInt(parts[1]);
-}
-
-    </script>
-    
-   
-                                        <script>
-                                            jQuery(function() {
-                                                setTimeout(function() {
-                                                    jQuery("#lbg_audio5_html5_shoutcast_1").audio5_html5({
-                                                        skin: "blackControllers",
-                                                        playerWidth: 5000,
-                                                        responsive: true,
-                                                        initialVolume: 0.8,
-                                                        autoPlay: true,
-                                                        volumeOffColor: "#454545",
-                                                        volumeOnColor: "#FFFFFF",
-                                                        songTitleColor: "#000000",
-                                                        radioStationColor: "#000000",
-                                                        frameBehindPlayerColor: "#000000",
-                                                        imageBorderWidth: 4,
-                                                        imageBorderColor: "#000000",
-                                                        showVolume: true,
-                                                        showRadioStation: false,
-                                                        showTitle: false,
-                                                        showNextPrevBut: false,
-                                                        autoHidePlayButton: true,
-                                                        showFacebookBut: true,
-                                                        facebookAppID: "",
-                                                        facebookShareTitle: "HTML5 Radio Player With Playlist - Shoutcast and Icecast",
-                                                        facebookShareDescription: "A top-notch responsive HTML5 Radio Player compatible with all major browsers and mobile devices.",
-                                                        showTwitterBut: true,
-                                                        beneathTitleBackgroundColor_VisiblePlaylist: "#e37500",
-                                                        beneathTitleBackgroundOpacity_VisiblePlaylist: 100,
-                                                        beneathTitleBackgroundColor_HiddenPlaylist: "#ff6600",
-                                                        beneathTitleBackgroundOpacity_HiddenPlaylist: 100,
-                                                        beneathTitleBackgroundBorderColor: "#000000",
-                                                        beneathTitleBackgroundBorderWidth: 3,
-                                                        translateRadioStation: "Radio Station: ",
-                                                        translateSongTitle: "Now Playing: ",
-                                                        translateReadingData: "reading data...",
-                                                        translateAllRadioStations: "ALL RADIO STATIONS",
-                                                        showPlaylistBut: false,
-                                                        showPlaylist: true,
-                                                        showPlaylistOnInit: false,
-                                                        playlistTopPos: 5,
-                                                        playlistBgColor: "#c55151",
-                                                        playlistRecordBgOffColor: "#000000",
-                                                        playlistRecordBgOnColor: "#000000",
-                                                        playlistRecordBottomBorderOffColor: "#333333",
-                                                        playlistRecordBottomBorderOnColor: "#4d4d4d",
-                                                        playlistRecordTextOffColor: "#777777",
-                                                        playlistRecordTextOnColor: "#00b4f9",
-                                                        categoryRecordBgOffColor: "#000000",
-                                                        categoryRecordBgOnColor: "#252525",
-                                                        categoryRecordBottomBorderOffColor: "#2f2f2f",
-                                                        categoryRecordBottomBorderOnColor: "#2f2f2f",
-                                                        categoryRecordTextOffColor: "#777777",
-                                                        categoryRecordTextOnColor: "#00b4f9",
-                                                        numberOfThumbsPerScreen: 7,
-                                                        playlistPadding: 18,
-                                                        firstCateg: "Nara24 FM",
-                                                        showCategories: false,
-                                                        selectedCategBg: "#n",
-                                                        selectedCategOffColor: "#FFFFFF",
-                                                        selectedCategOnColor: "#00b4f9",
-                                                        selectedCategMarginBottom: 12,
-                                                        showSearchArea: false,
-                                                        searchAreaBg: "#000000",
-                                                        searchInputText: "search...",
-                                                        searchInputBg: "#ffffff",
-                                                        searchInputBorderColor: "#333333",
-                                                        searchInputTextColor: "#333333",
-                                                        showPlaylistNumber: false,
-                                                        pathToAjaxFiles: "https://nara24fm.com/wp-content/plugins/lbg-audio5-html5-shoutcast_sticky/audio5_html5/",
-                                                        nowPlayingInterval: 35,
-                                                        grabLastFmPhoto: true,
-                                                        grabStreamnameAndGenre: true,
-                                                        noImageAvailable: "logo.png",
-                                                        showHeadphone: true,
-                                                        nextPrevAdditionalPadding: -5,
-                                                        minButtonColor: "#FFFFFF"
-                                                    });
-                                                }, 1000);
-                                            });
-                                        </script>
-                  
-    <div class="mvp-fly-fade mvp-fly-but-click">
-    </div>
-    <!--mvp-fly-fade-->
-    <div data-theiaStickySidebar-sidebarSelector='"#secondary, #sidebar, .sidebar, #primary"' data-theiaStickySidebar-options='{"containerSelector":"","additionalMarginTop":0,"additionalMarginBottom":0,"updateSidebarHeight":false,"minWidth":0,"sidebarBehavior":"modern","disableOnResponsiveLayouts":true}'></div>
-    <script type="text/javascript" src="https://nara24fm.com/wp-includes/js/jquery/ui/core.min.js?ver=1.13.2" id="jquery-ui-core-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-includes/js/jquery/ui/mouse.min.js?ver=1.13.2" id="jquery-ui-mouse-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-includes/js/jquery/ui/slider.min.js?ver=1.13.2" id="jquery-ui-slider-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-includes/js/jquery/ui/effect.min.js?ver=1.13.2" id="jquery-effects-core-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/plugins/mvp-scoreboard/js/score-script.js?ver=6.4.2" id="mvp-score-script-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/plugins/theia-sticky-sidebar/js/ResizeSensor.js?ver=1.7.0" id="theia-sticky-sidebar/ResizeSensor.js-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/plugins/theia-sticky-sidebar/js/theia-sticky-sidebar.js?ver=1.7.0" id="theia-sticky-sidebar/theia-sticky-sidebar.js-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/plugins/theia-sticky-sidebar/js/main.js?ver=1.7.0" id="theia-sticky-sidebar/main.js-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/themes/the-league/js/mvpcustom.js?ver=6.4.2" id="mvp-custom-js"></script>
-    <script type="text/javascript" id="mvp-custom-js-after">
-        /* <![CDATA[ */
-
-        jQuery(document).ready(function($) {
-            $(window).load(function() {
-                var aboveHeight = $("#mvp-top-head-wrap").outerHeight();
-                $(window).scroll(function(event) {
-                    if ($(window).scrollTop() > aboveHeight) {
-                        $("#mvp-top-head-wrap").addClass("mvp-score-up");
-                        $("#mvp-wallpaper").addClass("mvp-wall-up");
-                        $(".mvp-fly-top").addClass("mvp-to-top");
-                    } else {
-                        $("#mvp-top-head-wrap").removeClass("mvp-score-up");
-                        $("#mvp-wallpaper").removeClass("mvp-wall-up");
-                        $(".mvp-fly-top").removeClass("mvp-to-top");
-                    }
-                });
-            });
-        });
-
-
-        jQuery(document).ready(function($) {
-            // Main Menu Dropdown Toggle
-            $(".mvp-fly-nav-menu .menu-item-has-children a").click(function(event) {
-                event.stopPropagation();
-                location.href = this.href;
-            });
-
-            $(".mvp-fly-nav-menu .menu-item-has-children").click(function() {
-                $(this).addClass("toggled");
-                if ($(".menu-item-has-children").hasClass("toggled")) {
-                    $(this).children("ul").toggle();
-                    $(".mvp-fly-nav-menu").getNiceScroll().resize();
-                }
-                $(this).toggleClass("tog-minus");
-                return false;
-            });
-
-            // Main Menu Scroll
-            $(window).load(function() {
-                $(".mvp-fly-nav-menu").niceScroll({
-                    cursorcolor: "#888",
-                    cursorwidth: 7,
-                    cursorborder: 0,
-                    zindex: 999999
-                });
-            });
-        });
-
-
-        jQuery(document).ready(function($) {
-            $(".infinite-content").infinitescroll({
-                navSelector: ".mvp-nav-links",
-                nextSelector: ".mvp-nav-links a:first",
-                itemSelector: ".infinite-post",
-                errorCallback: function() {
-                    $(".mvp-inf-more-but").css("display", "none")
-                }
-            });
-            $(window).unbind(".infscr");
-            $(".mvp-inf-more-but").click(function() {
-                $(".infinite-content").infinitescroll("retrieve");
-                return false;
-            });
-            $(window).load(function() {
-                if ($(".mvp-nav-links a").length) {
-                    $(".mvp-inf-more-but").css("display", "inline-block");
-                } else {
-                    $(".mvp-inf-more-but").css("display", "none");
-                }
-            });
-        });
-
-        /* ]]> */
-    </script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/themes/the-league/js/scripts.js?ver=6.4.2" id="clickmag-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/themes/the-league/js/retina.js?ver=6.4.2" id="retina-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/themes/the-league/js/jquery.elastislide.js?ver=6.4.2" id="elastislide-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-content/themes/the-league/js/jquery.infinitescroll.min.js?ver=6.4.2" id="infinitescroll-js"></script>
-    <script type="text/javascript" src="https://nara24fm.com/wp-includes/js/comment-reply.min.js?ver=6.4.2" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
-    <script></script>
-    <script>
-        jQuery(function() {
-            setTimeout(function() {
-                jQuery("#lbg_audio5_html5_shoutcast_1").audio5_html5({
-                    skin: "blackControllers",
-                    playerWidth: 5000,
-                    responsive: true,
-                    initialVolume: 0.8,
-                    autoPlay: true,
-                    volumeOffColor: "#454545",
-                    volumeOnColor: "#FFFFFF",
-                    songTitleColor: "#000000",
-                    radioStationColor: "#000000",
-                    frameBehindPlayerColor: "#000000",
-                    imageBorderWidth: 4,
-                    imageBorderColor: "#000000",
-                    showVolume: true,
-                    showRadioStation: false,
-                    showTitle: false,
-                    showNextPrevBut: false,
-                    autoHidePlayButton: true,
-                    showFacebookBut: true,
-                    facebookAppID: "",
-                    facebookShareTitle: "HTML5 Radio Player With Playlist - Shoutcast and Icecast",
-                    facebookShareDescription: "A top-notch responsive HTML5 Radio Player compatible with all major browsers and mobile devices.",
-                    showTwitterBut: false,
-                    beneathTitleBackgroundColor_VisiblePlaylist: "#e37500",
-                    beneathTitleBackgroundOpacity_VisiblePlaylist: 100,
-                    beneathTitleBackgroundColor_HiddenPlaylist: "#ff6600",
-                    beneathTitleBackgroundOpacity_HiddenPlaylist: 100,
-                    beneathTitleBackgroundBorderColor: "#000000",
-                    beneathTitleBackgroundBorderWidth: 3,
-                    translateRadioStation: "Radio Station: ",
-                    translateSongTitle: "Now Playing: ",
-                    translateReadingData: "reading data...",
-                    translateAllRadioStations: "ALL RADIO STATIONS",
-                    showPlaylistBut: false,
-                    showPlaylist: true,
-                    showPlaylistOnInit: false,
-                    playlistTopPos: 5,
-                    playlistBgColor: "#c55151",
-                    playlistRecordBgOffColor: "#000000",
-                    playlistRecordBgOnColor: "#000000",
-                    playlistRecordBottomBorderOffColor: "#333333",
-                    playlistRecordBottomBorderOnColor: "#4d4d4d",
-                    playlistRecordTextOffColor: "#777777",
-                    playlistRecordTextOnColor: "#00b4f9",
-                    categoryRecordBgOffColor: "#000000",
-                    categoryRecordBgOnColor: "#252525",
-                    categoryRecordBottomBorderOffColor: "#2f2f2f",
-                    categoryRecordBottomBorderOnColor: "#2f2f2f",
-                    categoryRecordTextOffColor: "#777777",
-                    categoryRecordTextOnColor: "#00b4f9",
-                    numberOfThumbsPerScreen: 7,
-                    playlistPadding: 18,
-                    firstCateg: "Nara24 FM",
-                    showCategories: false,
-                    selectedCategBg: "#n",
-                    selectedCategOffColor: "#FFFFFF",
-                    selectedCategOnColor: "#00b4f9",
-                    selectedCategMarginBottom: 12,
-                    showSearchArea: false,
-                    searchAreaBg: "#000000",
-                    searchInputText: "search...",
-                    searchInputBg: "#ffffff",
-                    searchInputBorderColor: "#333333",
-                    searchInputTextColor: "#333333",
-                    showPlaylistNumber: false,
-                    pathToAjaxFiles: "https://nara24fm.com/wp-content/plugins/lbg-audio5-html5-shoutcast_sticky/audio5_html5/",
-                    nowPlayingInterval: 35,
-                    grabLastFmPhoto: true,
-                    grabStreamnameAndGenre: true,
-                    noImageAvailable: "logo.png",
-                    showHeadphone: true,
-                    nextPrevAdditionalPadding: -5,
-                    minButtonColor: "#FFFFFF"
-                });
-            }, 1000);
-        });
+        updateProgramStatus();
 
         
     </script>
-    <div class="audio5_html5_sticky">
-        <div class="audio5_html5">
-            <div id="lbg_audio5_html5_shoutcast_1">
-                <div class="xaudioplaylist">
-                    <ul>
-                        <li class="xradiostream">https://a3.asurahosting.com:7060/radio.mp3</li>
-                        <li class="xassociatedpageurl"></li>
-                        <li class="xstation">Fresh FM</li>
-                    </ul>
-                </div>
-            </div>
-        </div> <br style="clear:both;">
-    </div>
-</body>
-
-</html>
+    
+    
+    </body>
+    </html>
