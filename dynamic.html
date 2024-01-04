@@ -1,631 +1,562 @@
 
-        <!DOCTYPE html>
-        <html lang="en-US" prefix="og: https://ogp.me/ns#">
-        
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-            <link rel="shortcut icon" href="logo.png" />
-            <link rel="pingback" href="https://nara24fm.com/xmlrpc.php" />
-            <meta property="og:description" content="Entertainment 24/7" />
-        
-            <!-- Search Engine Optimization by Rank Math PRO - https://rankmath.com/ -->
-            <title>Fresh FM </title>
-            <meta name="description" content="Fresh fm, #1 destination for the latest news and events, as well as exciting sports coverage. Stream your favorite songs all day and all night long" />
-            <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
-            <link rel="canonical" href="https://fresh-fm.vercel.app" />
-            <meta property="og:locale" content="en_US" />
-            <meta property="og:type" content="website" />
-            <meta property="og:title" content="Fresh FM - The Online Teachers' Radio" />
-            <meta property="og:description" content="Developed by Fresh Teacher" />
-            <meta property="og:url" content="https://fresh-fm.vercel.app" />
-            <meta property="og:site_name" content="Nara24 FM" />
-            <meta property="og:updated_time" content="2023-12-20T14:32:07+03:00" />
-            <meta property="og:image" content="https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png" />
-            <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png" />
-            <meta property="og:image:width" content="1200" />
-            <meta property="og:image:height" content="630" />
-            <meta property="og:image:alt" content="nara24 fm" />
-            <meta property="og:image:type" content="image/png" />
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <style>
-                table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    margin-top: 20px;
-                }
-        
-                th, td {
-                    border: 1px solid #3d6800;
-                    text-align: left;
-                    padding: 8px;
-                }
-        
-                th {
-                    background-color: #95ff00;
-                }
-        
-                td.upcoming, td.current, td.finished {
-            background-color: inherit;
-        }
-        
-        header {
-            background-color: rgb(0, 176, 65); /* Change the background color as needed */
-                    color: white; /* Set text color for header */
-                    padding: 0.1px; /* Add padding to header */
-                    text-align: center; /* Center align text */
-                    position: fixed; /* Make header fixed at the top */
-                    width: 100%; /* Full width */
-                    top: 0; /* Stick to the top */
-                }
-        
-                .finished {
-                    background-color: #e57373; /* Red for finished */
-                }
-        
-                .current {
-                    background-color: #81c784; /* Green for currently on air */
-                    animation: blink 2s infinite; /* Add blinking animation */
-                }
-        
-                .upcoming {
-                    background-color: #64b5f6; /* Grey for upcoming */
-                }
-        
-                @keyframes blink {
-                    0%, 100% {
-                        opacity: 1;
-                    }
-                    50% {
-                        opacity: 0;
-                    }
-                }
-        
-                #stickyPlayer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: rgb(0, 176, 65); /* Change the background color as needed */
-            padding: 5px; /* Add padding for better visibility */
-        }
-        
-                /* Adjustments for responsive design */
-                @media screen and (max-width: 600px) {
-                    header, footer {
-                        font-size: 14px; /* Adjust font size for smaller screens */
-                    }
-                }
-
-                #currentTime {
-                font-size: 25px; /* Adjust font size as needed */
-            }
-
-                    /* Teacher Adverts Section Styles */
-                    .container {
-                max-width: 800px;
-            }
-
-            .card {
-                border: none;
-                border-radius: 15px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                transition: transform 0.3s;
-            }
-
-            .card-title {
-                color: #ffffff; /* Shouting blue */
-                font-size: 1.5rem;
-                font-weight: bold;
-            }
-
-            .card-text {
-                color: #f0f2f3;
-                font-size: 1.2rem; /* Adjust font size as needed */
-
-            }
-
-                    /* New styles for teacher adverts section */
-                    #teacherAdverts {
-                padding: 30px 0;
-                background-color: #498efe;
-            }
-
-            #teacherAdverts h2 {
-                text-align: center;
-                color: #343a40;
-            }
-
-            .adverts-container {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
+    <!DOCTYPE html>
+    <html lang="en-US" prefix="og: https://ogp.me/ns#">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+        <link rel="shortcut icon" href="logo.png" />
+        <link rel="pingback" href="https://nara24fm.com/xmlrpc.php" />
+        <meta property="og:description" content="Entertainment 24/7" />
+    
+        <!-- Search Engine Optimization by Rank Math PRO - https://rankmath.com/ -->
+        <title>Fresh FM </title>
+        <meta name="description" content="Fresh fm, #1 destination for the latest news and events, as well as exciting sports coverage. Stream your favorite songs all day and all night long" />
+        <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
+        <link rel="canonical" href="https://fresh-fm.vercel.app" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Fresh FM - The Online Teachers' Radio" />
+        <meta property="og:description" content="Developed by Fresh Teacher" />
+        <meta property="og:url" content="https://fresh-fm.vercel.app" />
+        <meta property="og:site_name" content="Nara24 FM" />
+        <meta property="og:updated_time" content="2023-12-20T14:32:07+03:00" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png" />
+        <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/Fresh-Teacher/Fresh-FM/main/logo.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="nara24 fm" />
+        <meta property="og:image:type" content="image/png" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
                 margin-top: 20px;
             }
-
-            .advert-card {
-                max-width: 300px;
-                margin: 15px;
-                background-color: #fff;
-                border: none; /* No border */
-                border-radius: 15px;
-                overflow: hidden;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                transition: transform 0.3s, box-shadow 0.3s ease-in-out;
+    
+            th, td {
+                border: 1px solid #3d6800;
+                text-align: left;
+                padding: 8px;
             }
-
-            .advert-card:hover {
-                transform: scale(1.03);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    
+            th {
+                background-color: #95ff00;
             }
-
-            .advert-card .card-body {
-                padding: 15px;
+    
+            td.upcoming, td.current, td.finished {
+        background-color: inherit;
+    }
+    
+    header {
+        background-color: rgb(0, 176, 65); /* Change the background color as needed */
+                color: white; /* Set text color for header */
+                padding: 0.1px; /* Add padding to header */
+                text-align: center; /* Center align text */
+                position: fixed; /* Make header fixed at the top */
+                width: 100%; /* Full width */
+                top: 0; /* Stick to the top */
             }
-
-            .advert-card h5 {
-                color: #ffffff; /* Shouting blue */
-                font-size: 1.5rem;
-                font-weight: bold;
+    
+            .finished {
+                background-color: #e57373; /* Red for finished */
             }
-
-                .card-text {
-                color: #f0f2f3;
-                font-size: 1.5rem; /* Adjust font size as needed */
+    
+            .current {
+                background-color: #81c784; /* Green for currently on air */
+                animation: blink 2s infinite; /* Add blinking animation */
             }
-
-            .advert-card p {
-                color: #f0f2f3;
+    
+            .upcoming {
+                background-color: #64b5f6; /* Grey for upcoming */
             }
-
-            /* Responsive adjustments */
-            @media screen and (max-width: 768px) {
-                .advert-card {
-                    max-width: calc(50% - 30px);
+    
+            @keyframes blink {
+                0%, 100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0;
+                }
+            }
+    
+            #stickyPlayer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(0, 176, 65); /* Change the background color as needed */
+        padding: 5px; /* Add padding for better visibility */
+    }
+    
+            /* Adjustments for responsive design */
+            @media screen and (max-width: 600px) {
+                header, footer {
+                    font-size: 14px; /* Adjust font size for smaller screens */
                 }
             }
 
-            @media screen and (max-width: 576px) {
-                .advert-card {
-                    max-width: calc(100% - 30px);
-                }
-            }
-            </style>
-        </head>
-        <br><br><br>
-        <body>
-        
-            <header>
-                <h1>Fresh Teacher's Radio 📻</h1>
-                <div id="currentTime"></div>
-            </header>
-        
-            <br><br><!-- New: Add a div to contain the table -->
-            <div id="programTablesContainer"></div>
-
-            <script>
-                var programData = [
-                {
-                        day: "Day 1",
-                        programs: [
-                        { time: "12:00 AM - 06:00 AM", name: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
-                { time: "06:00 AM - 08:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                { time: "08:00 AM - 11:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                                    
-                // ... other programs for Day 1
-                        ]
-                    },
-                    {
-                        day: "Day 2",
-                        programs: [
-                        { time: "12:00 AM - 06:00 AM", name: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
-                { time: "06:00 AM - 08:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                { time: "08:00 AM - 09:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                                           // ... other programs for Day 2
-                        ]
-                    },
-                    {
-                        day: "Day 3",
-                        programs: [
-                        { time: "12:00 AM - 06:00 AM", name: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
-                { time: "06:00 AM - 08:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                { time: "08:00 AM - 09:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                                           // ... other programs for Day 3
-                        ]
-                    },
-                    {
-                        day: "Day 4",
-                        programs: [
-                        { time: "12:00 AM - 06:00 AM", name: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
-                { time: "06:00 AM - 08:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                { time: "08:00 AM - 09:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                                           // ... other programs for Day 4
-                        ]
-                    },
-                    {
-                        day: "Day 5",
-                        programs: [
-                        { time: "12:00 AM - 06:00 AM", name: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
-                { time: "06:00 AM - 08:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                { time: "08:00 AM - 09:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                                           // ... name programs for Day 5
-                        ]
-                    },
-                    {
-                        day: "Day 6",
-                        programs: [
-                        { time: "12:00 AM - 06:00 AM", name: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
-                { time: "06:00 AM - 08:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                { time: "08:00 AM - 09:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                                           // ... other programs for Day 6
-                        ]
-                    },
-                    {
-                        day: "Day 7",
-                        programs: [
-                        { time: "12:00 AM - 06:00 AM", name: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
-                { time: "06:00 AM - 08:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                { time: "08:00 AM - 09:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                                           // ... other programs for Day 7
-                        ]
-                    },
-                    {
-                        day: "Day 8",
-                        programs: [
-                        { time: "12:00 AM - 06:00 AM", name: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
-                { time: "06:00 AM - 08:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                { time: "08:00 AM - 09:00 AM", name: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                                           // ... other programs for Day 8
-                        ]
-                    },
-                    // Add more days as needed
-                ];
-            
-                // Function to dynamically generate the table
-                function generateProgramTables() {
-                    var tablesContainer = document.getElementById("programTablesContainer");
-            
-                    programData.forEach(function (dayData) {
-                        var table = document.createElement("table");
-                        table.classList.add("programTable");
-            
-                        var caption = document.createElement("caption");
-                        caption.innerText = dayData.day;
-                        table.appendChild(caption);
-            
-                        var thead = document.createElement("thead");
-                        var headerRow = document.createElement("tr");
-                        ["Time", "Program", "Presenter", "Status"].forEach(function (header) {
-                            var th = document.createElement("th");
-                            th.innerText = header;
-                            headerRow.appendChild(th);
-                        });
-                        thead.appendChild(headerRow);
-                        table.appendChild(thead);
-            
-                        var tbody = document.createElement("tbody");
-                        dayData.programs.forEach(function (program) {
-                            var row = document.createElement("tr");
-                            ["time", "name", "presenter", "status"].forEach(function (property) {
-                                var td = document.createElement("td");
-                                td.innerText = program[property];
-                                row.appendChild(td);
-                            });
-                            tbody.appendChild(row);
-                        });
-                        table.appendChild(tbody);
-            
-                        tablesContainer.appendChild(table);
-                    });
-                }
-            
-                // Call the function to generate program tables
-                generateProgramTables();
-                
-            </script>
-            
-            <br><br><br><br><br>
-        <div id="stickyPlayer">
-                <audio id="audioPlayer" controls autoplay>
-                    <!-- No source element here -->
-                </audio>
-            </div>
-        
-    <!-- Job Posts Section -->
-    <div class="container mt-4 text-center">
-        <h1 class="text-center text-danger">Advertisements</h1>
-        <div id="jobPosts" class="row mt-4"></div>
-    </div>
-    <br><br><br><br><br>
-
-    <!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <script>
-        var jobData = 
-        [
-        {
-            "message": "A very experienced Grade 3 female teacher proficient in handling English for P.1 and P.2 is seeking a vacancy. Areas of interest include Kawempe, Katooke, Bwaise, Maganjo, Wabweru, Kagoma, Wamala, Ttula, and Kazo. Contact: 0787838746, 0708360636."
-        },
-        {
-            "message": "Two teachers specializing in English need vacancies. Positions available are for a P.7 teacher and a P.1/P.2 English/Literature teacher. Contact: 0702728087. Preferably looking to work in Katooke, Lugoba, or Kawempe."
-        },
-        {
-            "message": "Available for Science and Math upper positions with 10 years of experience in Kampala. Contact: 0784582151, 0754502497."
-        },
-        {
-            "message": "A teacher of English for upper classes is needed at a school in Wakiso. For more information, contact: 0702040675, 0773558865."
-        },
-        {
-            "message": "A female teacher capable of teaching Maths, Science, and IRE is searching for a job within Wakiso, Entebbe, Kampala, and Mpigi. For more information, contact: 0705698449, 0779403314."
-        },
-        {
-            "message": "Two primary school teachers specializing in English and SST, as well as Maths and Science, are urgently needed. Two nursery teachers are also required to work in Wakiso town. For more details, contact: 0705810647."
-        },
-        {
-            "message": "Two qualified and experienced teachers are urgently needed to fill existing vacancies at a primary school in Kira Municipality, Wakiso District. Positions available are for English & SST (Upper) and Nursery (over 7 years experience). Having a Diploma and leadership experience is an added advantage. Contact: 0752649519."
-        },
-        {
-            "message": "Lower primary teachers, SST, and Science teachers for upper primary are urgently needed. Salary: Upper 700k, lower 500k plus other incentives. Submit your applications, academic qualifications, and CVs. Interviews will be conducted on Mon, 18th Dec 2023, at 9:00 am. For more info, contact the director on 0701533795."
-        },
-        {
-            "message": "A Nursery and Primary school based in Luwero is looking for 2 Lower Primary Teachers to teach English, Maths, Lit B, and RE, and 2 Upper primary Teachers to teach Maths and Science. Minimum qualification Grade 3 teaching certificate. Any interested candidates, please send CVs to stphilipluweero@gmail.com or WhatsApp on 0789619479. Interviews will be held on Friday, 15th December."
-        },
-        {
-            "message": "A teacher of Science and Mathematics from Eastern is looking for a serious school in the areas of Wakiso-Gayaza, Kampala, and Mukono. For more information, reach him on 0780492753, 0701567719."
-        },
-        {
-            "message": "An upper (P:5 to P.7) teacher for Mathematics and Science with 10 years of experience in P7 teaching is looking for a teaching vacancy in 2024 in Districts of Kampala, Wakiso, Mukono, Luwero, and Mbale. Reach me on 0783861096, 0784582151, or 0754502497."
-        },
-        {
-            "message": "A teacher of Science and Mathematics is seeking a job in areas within Kampala, Wakiso, or Mukono. Reach him on 0779943506, 0758142338, 0785676840 (WhatsApp). Thanks for the cooperation."
-        },
-        {
-            "message": "Ibnu Taimia Quran Memorisation Nursery and Primary School has the following job openings:\n- Nursery teachers (3)\n- Lower primary: English, Math, Lit 1, Lit 2\n- Teacher competent in teaching two subjects for Lower Primary: Kiswahili and IRE\n- Upper primary: SST, English, Math\n- Cleaner (2)\n- Askari (2)\nFor any inquiry, WhatsApp: 0758945179 or 0783551204. Apply in advance."
-        },
-        {
-            "message": "Two primary school teachers specializing in English and SST, as well as Maths and Science, are needed to work in Wakiso town. Contact: 0705810647 for more details."
-        },
-        {
-            "message": "Two qualified and experienced teachers are urgently needed to fill existing vacancies at a primary school in Kira Municipality, Wakiso District. Positions available are for English & SST (Upper) and Nursery (over 7 years experience). Having a Diploma and leadership experience is an added advantage. Contact: 0752649519."
-        },
-        {
-            "message": "A very experienced Grade 3 female teacher proficient in handling English for P.1 and P.2 is seeking a vacancy. Areas of interest include Kawempe, Katooke, Bwaise, Maganjo, Wabweru, Kagoma, Wamala, Ttula, and Kazo. Contact: 0787838746, 0708360636."
-        },
-        {
-            "message": "The following teachers are needed to work around Wakiso: Divinity teacher, Entrepreneurship teacher. Call 0704684640."
-        },
-        {
-            "message": "Two Female Nurses are needed urgently. One at Masajja and one at Kajjansi, both on Entebbe road. Should be registered, have two years of experience. Accommodation and Feeding Provided. Salary 300,000/= per month. Interested Nurses, WhatsApp +256754135148."
-        },
-        {
-            "message": "Somebody with training skills for a guitar and keyboard, ready to train others at Wobulenzi, is highly needed. Call or inbox: 0741418285, 0782587561."
-        },
-        {
-            "message": "A mathematics upper primary result-oriented teacher is needed. The school is in the areas of Katwe Kibuye. WhatsApp 0703567160 or call 0774960449. Thanks."
-        },
-        {
-            "message": "A science upper teacher is needed to work in Wakiso. Those interested may apply now on 0706383624."
-        },
-        {
-            "message": "Good teachers are needed: Lower - 2 teachers, Upper - 4 teachers, especially in MTC, Science, and English. Attractive salary. Please contact 0774834434."
-        },
-        {
-            "message": "A new school needs teachers urgently for Nursery section and P1 to P7. Also, positions for a head teacher, bursar, secretary, matron, cooks, and cleaner. WhatsApp your details to 0701653414"
-        },
-        {
-            "message": "Blessing Nursery and Primary School is in need of a teacher who can handle P.1 & P.2. For more information, call 0789471321 or 0786428232. The school is found in Kafo, Nakasongola."
-        },
-        {
-            "message": "Two Teachers of English for upper and middle primary are needed to work in a good school in Nansana. The salary is attractive. Call the head teacher on 0701985020 for more details."
-        },
-        {
-            "message": "A science upper teacher is needed to work in Wakiso. Those interested may apply now on 0706383624."
-        },
-        {
-            "message": "Teachers needed in Kabowa Nyanama. A school is in need of the following teachers: 1. English P.3 and P.4, 2. English (upper primary), 3. SST (upper Primary). One who can competently double as DoS is encouraged to call. For P.3 and P.4, the preference is a lady. Please connect a friend. 0705686132."
+            #currentTime {
+            font-size: 25px; /* Adjust font size as needed */
         }
 
-            // Add more job posts as needed
-        ];
+                  /* Teacher Adverts Section Styles */
+                  .container {
+            max-width: 800px;
+        }
 
-        
-    // Function to render job posts dynamically
-    function renderJobPosts() {
-        var jobPostsContainer = document.getElementById('jobPosts');
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
 
-        jobData.forEach(function (job) {
-            var cardDiv = document.createElement('div');
-            cardDiv.className = 'col-md-6 mb-4';
-            cardDiv.style.backgroundColor = '#343a40'; // Replace '#your-color' with your desired color code
+        .card-title {
+            color: #ffffff; /* Shouting blue */
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
 
-            var card = document.createElement('div');
-            card.className = 'card bg-success';
+        .card-text {
+            color: #f0f2f3;
+            font-size: 1.2rem; /* Adjust font size as needed */
 
-            var cardBody = document.createElement('div');
-            cardBody.className = 'card-body';
+        }
 
-            var cardTitle = document.createElement('h5');
-            cardTitle.className = 'card-title';
+                /* New styles for teacher adverts section */
+                #teacherAdverts {
+            padding: 30px 0;
+            background-color: #498efe;
+        }
 
-            var cardText = document.createElement('p');
-            cardText.className = 'card-text card-message'; // Added class for styling
-            cardText.textContent = job.message;
+        #teacherAdverts h2 {
+            text-align: center;
+            color: #343a40;
+        }
 
-            cardBody.appendChild(cardTitle);
-            cardBody.appendChild(cardText);
+        .adverts-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
 
-            card.appendChild(cardBody);
-            cardDiv.appendChild(card);
+        .advert-card {
+            max-width: 300px;
+            margin: 15px;
+            background-color: #fff;
+            border: none; /* No border */
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s ease-in-out;
+        }
 
-            jobPostsContainer.appendChild(cardDiv);
-        });
-    }
+        .advert-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
 
-    // Call the function to render job posts
-    renderJobPosts();
+        .advert-card .card-body {
+            padding: 15px;
+        }
 
+        .advert-card h5 {
+            color: #ffffff; /* Shouting blue */
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
 
-            // Function to update the current time in 12-hour format in EAT zone
-            function updateTime() {
-                var currentTimeElement = document.getElementById("currentTime");
-                var currentTime = new Date();
-                
-                // Set the time zone to East Africa Time (EAT)
-                var options = { timeZone: 'Africa/Kampala' };
-                var formattedTime = currentTime.toLocaleTimeString('en-US', options);
+               .card-text {
+            color: #f0f2f3;
+            font-size: 1.5rem; /* Adjust font size as needed */
+        }
 
-                // Update the content of the element
-                currentTimeElement.innerText = "Current Time ~ " + formattedTime;
+        .advert-card p {
+            color: #f0f2f3;
+        }
 
-                // Update every second
-                setTimeout(updateTime, 1000);
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .advert-card {
+                max-width: calc(50% - 30px);
             }
+        }
 
-            // Initial call to start the timer
-            updateTime();
+        @media screen and (max-width: 576px) {
+            .advert-card {
+                max-width: calc(100% - 30px);
+            }
+        }
+        </style>
+    </head>
+    <br><br><br>
+    <body>
+    
+        <header>
+            <h1>Fresh Teacher's Radio 📻</h1>
+            <div id="currentTime"></div>
+        </header>
+    
+        <br><br>    <table id="programTable">
+            <tr>
+                <th>Time</th>
+                <th>Program</th>
+                <th>Presenter</th>
+                <th>Status</th>
+            </tr>
+        </table>
+        <script>
+                    // Program data
+                    var programData = [
+    { time: "12:00 AM - 06:00 AM", program: "Xmas Muzic", presenter: "DJ Sserudigo" },
+    { time: "06:00 AM - 08:00 AM", program: "Wake Up", presenter: "Omulangira Ndausi" },
+    { time: "08:00 AM - 08:30 AM", program: "News", presenter: "Natasha Nats" },
+    { time: "08:30 AM - 09:30 AM", program: "Advertisements", presenter: "Omulongo Kato" },
+    { time: "09:30 AM - 1:00 PM", program: "Church Service", presenter: "Reverend Kimuli Bob" },
+    { time: "01:00 PM - 02:30 PM", program: "News", presenter: "Joshua Musaasizi Nsubuga" },
+    { time: "01:30 PM - 02:30 PM", program: "Lunch Hour", presenter: "DJ Binyanyanyanya" },
+    { time: "02:30 PM - 04:30 PM", program: "Xmas Extra", presenter: "Fresh Teacher" },
+    { time: "04:30 PM - 05:30 PM", program: "Xmas Vibes", presenter: "Selector Kiwa" },
+    { time: "07:00 PM - 08:00 PM", program: "Song Request", presenter: "Dj Jesse Paul" },
+    { time: "08:00 PM - 09:00 PM", program: "News Hour", presenter: "Kimuli Bob" },
+    { time: "09:00 PM - 10:00 PM", program: "Advertisements", presenter: "Fresh Teacher" },
+    { time: "10:00 PM - 11:00 PM", program: "Christmas Wishes", presenter: "MC Jose" },
+    { time: "11:00 PM - 12:00 AM", program: "Gospel Music", presenter: "Dj Kabaalu" }
+];
 
-            // Define an array to store audio elements for each program
-            var audioElements = {};
-            var audioPath = ""; // Update this path based on your project structure
-        
-             // Map each program to its corresponding audio file
-        var programAudioMap = {
-            "Day1_AfterLunch Groove": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
-            "Day1_Work Break": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/congratulations.mp3",
-            "Day1_Night Sessions": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
-            // ... other programs for Day 1
 
-            "Day2_AfterLunch Groove": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
-            "Day2_Work Break": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/congratulations.mp3",
-            "Day2_Night Sessions": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
-            // ... other programs for Day 2
+          // Function to dynamically generate the program table
+          function generateProgramTable() {
+            var table = document.getElementById("programTable");
 
-            // Add mappings for other days
-        };
-        
-            // Function to initialize audio elements for each program
-            function initializeAudioElements() {
-                var table = document.getElementById("programTable");
-                var rows = table.getElementsByTagName("tr");
-        
-                for (var i = 1; i < rows.length; i++) {
-                    var row = rows[i];
-                    var programName = row.cells[1].innerText;
-                    var audioFileName = programAudioMap[programName];
-                    var audioSource = audioPath + audioFileName;
-        
-                    var audio = new Audio();
-                    audio.src = audioSource;
-        
-                    // Store each audio element in the array
-                    audioElements[programName] = audio;
-                }
-            }
-        
-            // Call the function to initialize audio elements
-            initializeAudioElements();
-            
-        var currentProgram = ""; // Keep track of the current playing program
-        
-            // Function to update the sticky player source and controls
-            function updateStickyPlayer(programName) {
-                var audioPlayer = document.getElementById("audioPlayer");
-                var audio = audioElements[programName];
-        
-                if (currentProgram !== programName) {
-                    audioPlayer.pause(); // Pause the currently playing audio
-                    audioPlayer.src = audio.src; // Set the source for the sticky player
-                    audioPlayer.load(); // Reload the audio player with the new source
-                    audioPlayer.play(); // Start playing the audio
-                    currentProgram = programName; // Update the current program
-                }
-        
-                // Update player controls
-                document.getElementById("stickyPlayer").style.display = "block"; // Show the sticky player
-            }
-        
-            // Function to hide the sticky player when no program is playing
-            function hideStickyPlayer() {
-                document.getElementById("stickyPlayer").style.display = "none";
-            }
-        
-            // Function to set the volume of the audio player
-            function setVolume(volume) {
-                var audioPlayer = document.getElementById("audioPlayer");
-                audioPlayer.volume = volume;
-            }
-        
-            // Update sticky player controls and visibility based on the program status
-            function updateStickyPlayerControls(programName) {
-                var table = document.getElementById("programTable");
-                var rows = table.getElementsByTagName("tr");
-        
-                for (var i = 1; i < rows.length; i++) {
-                    var row = rows[i];
-                    var timeCell = row.cells[0];
-        
-                    var programTime = timeCell.innerText.split(' - ');
-                    var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
-                    var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
-                    var currentTime = new Date();
-        
-                    if (currentTime >= startTime && currentTime <= endTime) {
-                        var programName = row.cells[1].innerText;
-                        updateStickyPlayer(programName);
-                        return;
-                    }
-                }
-        
-                // If no program is currently playing, hide the sticky player
-                hideStickyPlayer();
-            }
-        
-            
-        
-            function updateProgramStatus() {
-                var table = document.getElementById("programTable");
-                var rows = table.getElementsByTagName("tr");
-        
-                for (var i = 1; i < rows.length; i++) {
-                    var row = rows[i];
-                    var timeCell = row.cells[0];
-                    var statusCell = row.cells[3];
-        
-                    var programName = row.cells[1].innerText;
-                    var programTime = timeCell.innerText.split(' - ');
-                    var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
-                    var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
-                    var currentTime = new Date();
-        
-                    if (currentTime < startTime) {
-                        row.className = "upcoming";
-                        statusCell.innerText = "Upcoming";
-                    } else if (currentTime >= startTime && currentTime <= endTime) {
-                        row.className = "current";
-                        statusCell.innerText = "LIVE";
-                    } else {
-                        row.className = "finished";
-                        statusCell.innerText = "Ended";
-                    }
-                }
-            }
-        
-            // Update program status and sticky player controls every 10 seconds
-            setInterval(function () {
-                updateProgramStatus();
-                updateStickyPlayerControls();
-            }, 10000);
-        
-            // Initial update
-            updateProgramStatus();
+            programData.forEach(function (program) {
+                var row = table.insertRow(-1);
+                var timeCell = row.insertCell(0);
+                var programCell = row.insertCell(1);
+                var presenterCell = row.insertCell(2);
+                var statusCell = row.insertCell(3);
 
-            
+                timeCell.textContent = program.time;
+                programCell.textContent = program.program;
+                presenterCell.textContent = program.presenter;
+                statusCell.textContent = "Upcoming"; // Default status, adjust as needed
+                statusCell.className = "upcoming"; // Default class, adjust as needed
+            });
+        }
+
+        // Call the function to generate the program table
+        generateProgramTable();
         </script>
         
+        <br><br><br><br><br>
+       <div id="stickyPlayer">
+            <audio id="audioPlayer" controls autoplay>
+                <!-- No source element here -->
+            </audio>
+        </div>
+    
+<!-- Job Posts Section -->
+<div class="container mt-4 text-center">
+    <h1 class="text-center text-danger">Advertisements</h1>
+    <div id="jobPosts" class="row mt-4"></div>
+</div>
+<br><br><br><br><br>
+
+<!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    var jobData = 
+    [
+    {
+        "message": "A very experienced Grade 3 female teacher proficient in handling English for P.1 and P.2 is seeking a vacancy. Areas of interest include Kawempe, Katooke, Bwaise, Maganjo, Wabweru, Kagoma, Wamala, Ttula, and Kazo. Contact: 0787838746, 0708360636."
+    },
+    {
+        "message": "Two teachers specializing in English need vacancies. Positions available are for a P.7 teacher and a P.1/P.2 English/Literature teacher. Contact: 0702728087. Preferably looking to work in Katooke, Lugoba, or Kawempe."
+    },
+    {
+        "message": "Available for Science and Math upper positions with 10 years of experience in Kampala. Contact: 0784582151, 0754502497."
+    },
+    {
+        "message": "A teacher of English for upper classes is needed at a school in Wakiso. For more information, contact: 0702040675, 0773558865."
+    },
+    {
+        "message": "A female teacher capable of teaching Maths, Science, and IRE is searching for a job within Wakiso, Entebbe, Kampala, and Mpigi. For more information, contact: 0705698449, 0779403314."
+    },
+    {
+        "message": "Two primary school teachers specializing in English and SST, as well as Maths and Science, are urgently needed. Two nursery teachers are also required to work in Wakiso town. For more details, contact: 0705810647."
+    },
+    {
+        "message": "Two qualified and experienced teachers are urgently needed to fill existing vacancies at a primary school in Kira Municipality, Wakiso District. Positions available are for English & SST (Upper) and Nursery (over 7 years experience). Having a Diploma and leadership experience is an added advantage. Contact: 0752649519."
+    },
+    {
+        "message": "Lower primary teachers, SST, and Science teachers for upper primary are urgently needed. Salary: Upper 700k, lower 500k plus other incentives. Submit your applications, academic qualifications, and CVs. Interviews will be conducted on Mon, 18th Dec 2023, at 9:00 am. For more info, contact the director on 0701533795."
+    },
+    {
+        "message": "A Nursery and Primary school based in Luwero is looking for 2 Lower Primary Teachers to teach English, Maths, Lit B, and RE, and 2 Upper primary Teachers to teach Maths and Science. Minimum qualification Grade 3 teaching certificate. Any interested candidates, please send CVs to stphilipluweero@gmail.com or WhatsApp on 0789619479. Interviews will be held on Friday, 15th December."
+    },
+    {
+        "message": "A teacher of Science and Mathematics from Eastern is looking for a serious school in the areas of Wakiso-Gayaza, Kampala, and Mukono. For more information, reach him on 0780492753, 0701567719."
+    },
+    {
+        "message": "An upper (P:5 to P.7) teacher for Mathematics and Science with 10 years of experience in P7 teaching is looking for a teaching vacancy in 2024 in Districts of Kampala, Wakiso, Mukono, Luwero, and Mbale. Reach me on 0783861096, 0784582151, or 0754502497."
+    },
+    {
+        "message": "A teacher of Science and Mathematics is seeking a job in areas within Kampala, Wakiso, or Mukono. Reach him on 0779943506, 0758142338, 0785676840 (WhatsApp). Thanks for the cooperation."
+    },
+    {
+        "message": "Ibnu Taimia Quran Memorisation Nursery and Primary School has the following job openings:\n- Nursery teachers (3)\n- Lower primary: English, Math, Lit 1, Lit 2\n- Teacher competent in teaching two subjects for Lower Primary: Kiswahili and IRE\n- Upper primary: SST, English, Math\n- Cleaner (2)\n- Askari (2)\nFor any inquiry, WhatsApp: 0758945179 or 0783551204. Apply in advance."
+    },
+    {
+        "message": "Two primary school teachers specializing in English and SST, as well as Maths and Science, are needed to work in Wakiso town. Contact: 0705810647 for more details."
+    },
+    {
+        "message": "Two qualified and experienced teachers are urgently needed to fill existing vacancies at a primary school in Kira Municipality, Wakiso District. Positions available are for English & SST (Upper) and Nursery (over 7 years experience). Having a Diploma and leadership experience is an added advantage. Contact: 0752649519."
+    },
+    {
+        "message": "A very experienced Grade 3 female teacher proficient in handling English for P.1 and P.2 is seeking a vacancy. Areas of interest include Kawempe, Katooke, Bwaise, Maganjo, Wabweru, Kagoma, Wamala, Ttula, and Kazo. Contact: 0787838746, 0708360636."
+    },
+    {
+        "message": "The following teachers are needed to work around Wakiso: Divinity teacher, Entrepreneurship teacher. Call 0704684640."
+    },
+    {
+        "message": "Two Female Nurses are needed urgently. One at Masajja and one at Kajjansi, both on Entebbe road. Should be registered, have two years of experience. Accommodation and Feeding Provided. Salary 300,000/= per month. Interested Nurses, WhatsApp +256754135148."
+    },
+    {
+        "message": "Somebody with training skills for a guitar and keyboard, ready to train others at Wobulenzi, is highly needed. Call or inbox: 0741418285, 0782587561."
+    },
+    {
+        "message": "A mathematics upper primary result-oriented teacher is needed. The school is in the areas of Katwe Kibuye. WhatsApp 0703567160 or call 0774960449. Thanks."
+    },
+    {
+        "message": "A science upper teacher is needed to work in Wakiso. Those interested may apply now on 0706383624."
+    },
+    {
+        "message": "Good teachers are needed: Lower - 2 teachers, Upper - 4 teachers, especially in MTC, Science, and English. Attractive salary. Please contact 0774834434."
+    },
+    {
+        "message": "A new school needs teachers urgently for Nursery section and P1 to P7. Also, positions for a head teacher, bursar, secretary, matron, cooks, and cleaner. WhatsApp your details to 0701653414"
+    },
+    {
+        "message": "Blessing Nursery and Primary School is in need of a teacher who can handle P.1 & P.2. For more information, call 0789471321 or 0786428232. The school is found in Kafo, Nakasongola."
+    },
+    {
+        "message": "Two Teachers of English for upper and middle primary are needed to work in a good school in Nansana. The salary is attractive. Call the head teacher on 0701985020 for more details."
+    },
+    {
+        "message": "A science upper teacher is needed to work in Wakiso. Those interested may apply now on 0706383624."
+    },
+    {
+        "message": "Teachers needed in Kabowa Nyanama. A school is in need of the following teachers: 1. English P.3 and P.4, 2. English (upper primary), 3. SST (upper Primary). One who can competently double as DoS is encouraged to call. For P.3 and P.4, the preference is a lady. Please connect a friend. 0705686132."
+    }
+
+        // Add more job posts as needed
+    ];
+
+    
+  // Function to render job posts dynamically
+function renderJobPosts() {
+    var jobPostsContainer = document.getElementById('jobPosts');
+
+    jobData.forEach(function (job) {
+        var cardDiv = document.createElement('div');
+        cardDiv.className = 'col-md-6 mb-4';
+        cardDiv.style.backgroundColor = '#343a40'; // Replace '#your-color' with your desired color code
+
+        var card = document.createElement('div');
+        card.className = 'card bg-success';
+
+        var cardBody = document.createElement('div');
+        cardBody.className = 'card-body';
+
+        var cardTitle = document.createElement('h5');
+        cardTitle.className = 'card-title';
+
+        var cardText = document.createElement('p');
+        cardText.className = 'card-text card-message'; // Added class for styling
+        cardText.textContent = job.message;
+
+        cardBody.appendChild(cardTitle);
+        cardBody.appendChild(cardText);
+
+        card.appendChild(cardBody);
+        cardDiv.appendChild(card);
+
+        jobPostsContainer.appendChild(cardDiv);
+    });
+}
+
+// Call the function to render job posts
+renderJobPosts();
+
+
+        // Function to update the current time in 12-hour format in EAT zone
+        function updateTime() {
+            var currentTimeElement = document.getElementById("currentTime");
+            var currentTime = new Date();
+            
+            // Set the time zone to East Africa Time (EAT)
+            var options = { timeZone: 'Africa/Kampala' };
+            var formattedTime = currentTime.toLocaleTimeString('en-US', options);
+
+            // Update the content of the element
+            currentTimeElement.innerText = "Current Time ~ " + formattedTime;
+
+            // Update every second
+            setTimeout(updateTime, 1000);
+        }
+
+        // Initial call to start the timer
+        updateTime();
+
+        // Define an array to store audio elements for each program
+        var audioElements = {};
+        var audioPath = ""; // Update this path based on your project structure
+    
+        // Map each program to its corresponding audio file
+        var programAudioMap = {
+            "AfterLunch Groove": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
+            "Work Break": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/congratulations.mp3",
+            "Night Sessions": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
+            "Church Service": "https://s5.voscast.com:9905/EMMANDUSO",
+            "News": "https://s5.voscast.com:9905/EMMANDUSO",
+            "Lunch Hour": "Nonstop.mp3",
+            "Xmas Extra": "https://s5.voscast.com:9905/EMMANDUSO",
+            "Xmas Vibes": "Nonstop.mp3",
+            "News Hour": "https://s5.voscast.com:9905/EMMANDUSO",
+            "Song Request": "Nonstop.mp3",
+            "Advertisements": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
+            "Christmas Wishes": "Nonstop.mp3",
+            "Gospel Music": "https://s5.voscast.com:9905/EMMANDUSO",
+    
+            // Add mappings for other programs
+        };
+    
+        // Function to initialize audio elements for each program
+        function initializeAudioElements() {
+            var table = document.getElementById("programTable");
+            var rows = table.getElementsByTagName("tr");
+    
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var programName = row.cells[1].innerText;
+                var audioFileName = programAudioMap[programName];
+                var audioSource = audioPath + audioFileName;
+    
+                var audio = new Audio();
+                audio.src = audioSource;
+    
+                // Store each audio element in the array
+                audioElements[programName] = audio;
+            }
+        }
+    
+        // Call the function to initialize audio elements
+        initializeAudioElements();
         
-        </body>
-        </html>
+    var currentProgram = ""; // Keep track of the current playing program
+    
+        // Function to update the sticky player source and controls
+        function updateStickyPlayer(programName) {
+            var audioPlayer = document.getElementById("audioPlayer");
+            var audio = audioElements[programName];
+    
+            if (currentProgram !== programName) {
+                audioPlayer.pause(); // Pause the currently playing audio
+                audioPlayer.src = audio.src; // Set the source for the sticky player
+                audioPlayer.load(); // Reload the audio player with the new source
+                audioPlayer.play(); // Start playing the audio
+                currentProgram = programName; // Update the current program
+            }
+    
+            // Update player controls
+            document.getElementById("stickyPlayer").style.display = "block"; // Show the sticky player
+        }
+    
+        // Function to hide the sticky player when no program is playing
+        function hideStickyPlayer() {
+            document.getElementById("stickyPlayer").style.display = "none";
+        }
+    
+        // Function to set the volume of the audio player
+        function setVolume(volume) {
+            var audioPlayer = document.getElementById("audioPlayer");
+            audioPlayer.volume = volume;
+        }
+    
+        // Update sticky player controls and visibility based on the program status
+        function updateStickyPlayerControls(programName) {
+            var table = document.getElementById("programTable");
+            var rows = table.getElementsByTagName("tr");
+    
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var timeCell = row.cells[0];
+    
+                var programTime = timeCell.innerText.split(' - ');
+                var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
+                var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
+                var currentTime = new Date();
+    
+                if (currentTime >= startTime && currentTime <= endTime) {
+                    var programName = row.cells[1].innerText;
+                    updateStickyPlayer(programName);
+                    return;
+                }
+            }
+    
+            // If no program is currently playing, hide the sticky player
+            hideStickyPlayer();
+        }
+    
+        
+    
+        function updateProgramStatus() {
+            var table = document.getElementById("programTable");
+            var rows = table.getElementsByTagName("tr");
+    
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var timeCell = row.cells[0];
+                var statusCell = row.cells[3];
+    
+                var programName = row.cells[1].innerText;
+                var programTime = timeCell.innerText.split(' - ');
+                var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
+                var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
+                var currentTime = new Date();
+    
+                if (currentTime < startTime) {
+                    row.className = "upcoming";
+                    statusCell.innerText = "Upcoming";
+                } else if (currentTime >= startTime && currentTime <= endTime) {
+                    row.className = "current";
+                    statusCell.innerText = "LIVE";
+                } else {
+                    row.className = "finished";
+                    statusCell.innerText = "Ended";
+                }
+            }
+        }
+    
+        // Update program status and sticky player controls every 10 seconds
+        setInterval(function () {
+            updateProgramStatus();
+            updateStickyPlayerControls();
+        }, 10000);
+    
+        // Initial update
+        updateProgramStatus();
+
+        
+    </script>
+    
+    
+    </body>
+    </html>
