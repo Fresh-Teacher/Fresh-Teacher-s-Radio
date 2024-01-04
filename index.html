@@ -215,8 +215,8 @@
         <script>
             // Program data for different days
             var programData = {
-                day1: [
-                { time: "12:00 AM - 06:00 AM", program: "Xmas Muzic", presenter: "DJ Sserudigo" },
+                Monday: [
+    { time: "12:00 AM - 06:00 AM", program: "Xmas Muzic", presenter: "DJ Sserudigo" },
     { time: "06:00 AM - 08:00 AM", program: "Wake Up", presenter: "Omulangira Ndausi" },
     { time: "08:00 AM - 08:30 AM", program: "News", presenter: "Natasha Nats" },
     { time: "08:30 AM - 09:30 AM", program: "Advertisements", presenter: "Omulongo Kato" },
@@ -232,7 +232,7 @@
     { time: "11:00 PM - 12:00 AM", program: "Gospel Music", presenter: "Dj Kabaalu" }
    // Add more programs for Day 1
                 ],
-                day2: [
+                Tuesday: [
                 { time: "12:00 AM - 06:00 AM", program: "Morning Beats", presenter: "DJ MorningStar" },
                     { time: "06:00 AM - 08:00 AM", program: "Early Riser", presenter: "Morning Person" },
                     { time: "12:00 AM - 06:00 AM", program: "Morning Beats", presenter: "DJ MorningStar" },
@@ -246,16 +246,41 @@
     
             // Audio elements for each respective day
             var audioElements = {
-                day1: {
-                    "Xmas Muzic": "audio_path/day1/Xmas_Muzic.mp3",
-                    "Wake Up": "audio_path/day1/Wake_Up.mp3",
+                Monday: {
+                    "Xmas Muzic": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
+                    "Wake Up": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/congratulations.mp3",
                     // Add more audio sources for Day 1
                 },
-                day2: {
-                    "Morning Beats": "audio_path/day2/Morning_Beats.mp3",
-                    "Early Riser": "audio_path/day2/Early_Riser.mp3",
+                Tuesday: {
+                    "Morning Beats": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
+                    "Early Riser": "https://s5.voscast.com:9905/EMMANDUSO",
                     // Add more audio sources for Day 2
                 },
+                Wednesday: {
+                    "Xmas Muzic": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
+                    "Wake Up": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/congratulations.mp3",
+                    // Add more audio sources for Day 1
+                },
+                Thursday: {
+                    "Morning Beats": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
+                    "Early Riser": "https://s5.voscast.com:9905/EMMANDUSO",
+                    // Add more audio sources for Day 2
+                },
+                Friday: {
+                    "Xmas Muzic": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
+                    "Wake Up": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/congratulations.mp3",
+                    // Add more audio sources for Day 1
+                },
+                Saturday: {
+                    "Morning Beats": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
+                    "Early Riser": "https://s5.voscast.com:9905/EMMANDUSO",
+                    // Add more audio sources for Day 2
+                },
+                Sunday: {
+                    "Xmas Muzic": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
+                    "Wake Up": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/congratulations.mp3",
+                    // Add more audio sources for Day 1
+                }
                 // Add more days as needed
             };
     
@@ -298,21 +323,21 @@
                 initializeAudioElements(day, dayAudioSources);
             }
     
-            // Function to initialize audio elements for the specified day
-            function initializeAudioElements(day, audioSources) {
-                var audioElements = {};
-    
-                for (var program in audioSources) {
-                    if (audioSources.hasOwnProperty(program)) {
-                        var audio = new Audio();
-                        audio.src = audioSources[program];
-                        audioElements[program] = audio;
-                    }
-                }
-    
-                updateStickyPlayerControls(day);
-            }
+// Function to initialize audio elements for the specified day
+function initializeAudioElements(day, audioSources) {
+    // Clear existing audio elements for the day
+    audioElements[day] = {};
 
+    for (var program in audioSources) {
+        if (audioSources.hasOwnProperty(program)) {
+            var audio = new Audio();
+            audio.src = audioSources[program];
+            audioElements[day][program] = audio;
+        }
+    }
+
+    updateStickyPlayerControls(day);
+}
                     // Function to get a formatted date string
         function getFormattedDate(date) {
             var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -320,7 +345,7 @@
         }
     
             // Call the function to generate the program table for Day 1 (you can change the day as needed)
-            generateProgramTable("day1");
+            generateProgramTable("Monday");
         </script>
         
         <br><br><br><br><br>
@@ -363,22 +388,40 @@
     
         // Map each program to its corresponding audio file
         var programAudioMap = {
-            "AfterLunch Groove": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
-            "Work Break": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/congratulations.mp3",
-            "Night Sessions": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
-            "Church Service": "https://s5.voscast.com:9905/EMMANDUSO",
-            "News": "https://s5.voscast.com:9905/EMMANDUSO",
-            "Lunch Hour": "Nonstop.mp3",
-            "Xmas Extra": "https://s5.voscast.com:9905/EMMANDUSO",
-            "Xmas Vibes": "Nonstop.mp3",
-            "News Hour": "https://s5.voscast.com:9905/EMMANDUSO",
-            "Song Request": "Nonstop.mp3",
-            "Advertisements": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
-            "Christmas Wishes": "Nonstop.mp3",
-            "Gospel Music": "https://s5.voscast.com:9905/EMMANDUSO",
-    
-            // Add mappings for other programs
-        };
+    "Monday": {
+        "Morning Show": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
+        "News Hour": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/congratulations.mp3",
+        // Add more programs for Monday
+    },
+    "Tuesday": {
+        "Music Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
+        "Talk Show": "https://s5.voscast.com:9905/EMMANDUSO",
+        // Add more programs for Tuesday
+    },
+    // Add entries for other days of the week
+    "Wednesday": {
+        "Music Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
+        "Talk Show": "https://s5.voscast.com:9905/EMMANDUSO",
+       
+    },
+    "Thursday": {
+        "Music Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
+        "Talk Show": "https://s5.voscast.com:9905/EMMANDUSO",
+           },
+    "Friday": {
+        "Music Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
+        "Talk Show": "https://s5.voscast.com:9905/EMMANDUSO",
+           },
+    "Saturday": {
+        "Music Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
+        "Talk Show": "https://s5.voscast.com:9905/EMMANDUSO",
+           },
+    "Sunday": {
+        "Music Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/tried.mp3",
+        "Talk Show": "https://s5.voscast.com:9905/EMMANDUSO",
+           }
+};
+
     
         // Function to initialize audio elements for each program
         function initializeAudioElements() {
