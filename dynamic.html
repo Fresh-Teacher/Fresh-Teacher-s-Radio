@@ -53,7 +53,9 @@
         }
 
         @keyframes blink {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 1;
             }
 
@@ -296,48 +298,21 @@
                 hideStickyPlayer();
             }
 
-            // Function to update the sticky player source and controls
-            function updateStickyPlayer(programName) {
+            // Initialize the sticky player controls
+            function initializeStickyPlayer() {
                 var audioPlayer = document.getElementById('sticky-player');
                 var audioSource = document.getElementById('audio-source');
 
-                // If the current program is different, update the source and controls
-                if (programName !== currentProgram) {
-                    currentProgram = programName;
+                audioPlayer.addEventListener('ended', function () {
+                    // When the audio ends, update the program status and sticky player controls
+                    updateProgramStatus();
+                });
 
-                    // Use the audio element from the array
-                    var dayKey = "Day" + (getCurrentDayIndex() + 1);
-                    var audio = audioElements[dayKey][currentProgram];
-
-                    // Set the audio source and play
-                    audioSource.src = audio.src;
-                    audioPlayer.load();
-                    audioPlayer.play();
-                }
+                audioPlayer.addEventListener('pause', function () {
+                    // When the audio is paused, update the program status and sticky player controls
+                    updateProgramStatus();
+                });
             }
-
-            // Function to hide the sticky player if no program is currently playing
-            function hideStickyPlayer() {
-                var audioPlayer = document.getElementById('sticky-player');
-
-            audioPlayer.pause();
-            audioPlayer.style.display = "none";
-        }
-
-        // Initialize the sticky player controls
-        function initializeStickyPlayer() {
-            var audioPlayer = document.getElementById('sticky-player');
-            var audioSource = document.getElementById('audio-source');
-
-            audioPlayer.addEventListener('ended', function () {
-                // When the audio ends, update the program status and sticky player controls
-                updateProgramStatus();
-            });
-
-            audioPlayer.addEventListener('pause', function () {
-                // When the audio is paused, update the program status and sticky player controls
-                updateProgramStatus();
-            });
         }
 
         // Call the initializations
@@ -346,7 +321,8 @@
     </script>
 
     <!-- Sticky Player -->
-    <div id="sticky-player" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #f1f1f1; padding: 10px; display: none;">
+    <div id="sticky-player"
+        style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #f1f1f1; padding: 10px; display: none;">
         <audio id="audio-source" controls style="width: 100%;">
             Your browser does not support the audio element.
         </audio>
