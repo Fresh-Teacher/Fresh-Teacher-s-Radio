@@ -87,15 +87,33 @@
             [
                 { time: "12:00 AM - 06:00 AM", program: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
                 { time: "06:00 AM - 08:00 AM", program: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                // ... add more programs for Day 1
+                // ... add more programs for Day 3
             ],
             // Day 4 programs
             [
                 { time: "12:00 AM - 06:00 AM", program: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
                 { time: "06:00 AM - 08:00 AM", program: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-                // ... add more programs for Day 1
+                // ... add more programs for Day 4
             ],
-            // ... add more arrays for additional days
+            // Day 5 programs
+            [
+                { time: "12:00 AM - 06:00 AM", program: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
+                { time: "06:00 AM - 08:00 AM", program: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
+                // ... add more programs for Day 5
+            ],
+            // Day 6 programs
+            [
+                { time: "12:00 AM - 06:00 AM", program: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
+                { time: "06:00 AM - 08:00 AM", program: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
+                // ... add more programs for Day 6
+            ],
+            // Day 7 programs
+            [
+                { time: "12:00 AM - 06:00 AM", program: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
+                { time: "06:00 AM - 08:00 AM", program: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
+                // ... add more programs for Day 7
+            ],
+
         ];
 
         var audioPath = ""; // Update this path based on your project structure
@@ -122,6 +140,21 @@
                 // Add mappings for other programs on Day 3
             },
             "Day4": {
+                "Midnight Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Midnight%20Mix.mp3",
+                "Dawn Crew": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Dawn%20Crew.mp3",
+                // Add mappings for other programs on Day 4
+            },
+            "Day5": {
+                "Midnight Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Midnight%20Mix.mp3",
+                "Dawn Crew": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Dawn%20Crew.mp3",
+                // Add mappings for other programs on Day 4
+            },
+            "Day6": {
+                "Midnight Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Midnight%20Mix.mp3",
+                "Dawn Crew": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Dawn%20Crew.mp3",
+                // Add mappings for other programs on Day 4
+            },
+            "Day7": {
                 "Midnight Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Midnight%20Mix.mp3",
                 "Dawn Crew": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Dawn%20Crew.mp3",
                 // Add mappings for other programs on Day 4
@@ -195,96 +228,98 @@
             var currentDate = new Date();
             var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             var currentDay = days[currentDate.getDay()];
-            
+
             // Adjust for zero-based indexing in programData array
             return days.indexOf(currentDay);
         }
 
-        // Display only the table for the current day
-        var currentDayIndex = getCurrentDayIndex();
-        var currentProgramTable = generateProgramTable(currentDayIndex);
-        document.write(currentProgramTable);
+        // Function to display the table for the current day
+        function displayCurrentDayTable() {
+            var currentDayIndex = getCurrentDayIndex();
+            var currentProgramTable = generateProgramTable(currentDayIndex);
+            document.write(currentProgramTable);
 
-        // Function to update the program status and sticky player controls every 10 seconds
-        function updateProgramStatus() {
-            var table = document.querySelector('table');
-            var rows = table.getElementsByTagName("tr");
+            // Function to update the program status and sticky player controls every 10 seconds
+            function updateProgramStatus() {
+                var table = document.querySelector('table');
+                var rows = table.getElementsByTagName("tr");
 
-            for (var i = 1; i < rows.length; i++) {
-                var row = rows[i];
-                var timeCell = row.cells[0];
-                var statusCell = row.cells[3];
+                for (var i = 1; i < rows.length; i++) {
+                    var row = rows[i];
+                    var timeCell = row.cells[0];
+                    var statusCell = row.cells[3];
 
-                var programName = row.cells[1].innerText;
-                var programTime = timeCell.innerText.split(' - ');
-                var startTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Nairobi" }) + " " + programTime[0]);
-                var endTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Nairobi" }) + " " + programTime[1]);
-                var currentTime = new Date();
-
-                if (currentTime < startTime) {
-                    row.className = "upcoming";
-                    statusCell.innerText = "Upcoming";
-                } else if (currentTime >= startTime && currentTime <= endTime) {
-                    row.className = "current";
-                    statusCell.innerText = "LIVE";
-                } else {
-                    row.className = "finished";
-                    statusCell.innerText = "Ended";
-                }
-            }
-
-            // Update sticky player controls
-            updateStickyPlayerControls();
-        }
-
-        // Function to update the sticky player controls and visibility
-        function updateStickyPlayerControls() {
-            var table = document.querySelector('table');
-            var rows = table.getElementsByTagName("tr");
-
-            for (var i = 1; i < rows.length; i++) {
-                var row = rows[i];
-                var timeCell = row.cells[0];
-
-                var programTime = timeCell.innerText.split(' - ');
-                var startTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Nairobi" }) + " " + programTime[0]);
-                var endTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Nairobi" }) + " " + programTime[1]);
-                var currentTime = new Date();
-
-                if (currentTime >= startTime && currentTime <= endTime) {
                     var programName = row.cells[1].innerText;
-                    updateStickyPlayer(programName);
-                    return;
+                    var programTime = timeCell.innerText.split(' - ');
+                    var startTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Nairobi" }) + " " + programTime[0]);
+                    var endTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Nairobi" }) + " " + programTime[1]);
+                    var currentTime = new Date();
+
+                    if (currentTime < startTime) {
+                        row.className = "upcoming";
+                        statusCell.innerText = "Upcoming";
+                    } else if (currentTime >= startTime && currentTime <= endTime) {
+                        row.className = "current";
+                        statusCell.innerText = "LIVE";
+                    } else {
+                        row.className = "finished";
+                        statusCell.innerText = "Ended";
+                    }
+                }
+
+                // Update sticky player controls
+                updateStickyPlayerControls();
+            }
+
+            // Function to update the sticky player controls and visibility
+            function updateStickyPlayerControls() {
+                var table = document.querySelector('table');
+                var rows = table.getElementsByTagName("tr");
+
+                for (var i = 1; i < rows.length; i++) {
+                    var row = rows[i];
+                    var timeCell = row.cells[0];
+
+                    var programTime = timeCell.innerText.split(' - ');
+                    var startTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Nairobi" }) + " " + programTime[0]);
+                    var endTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Nairobi" }) + " " + programTime[1]);
+                    var currentTime = new Date();
+
+                    if (currentTime >= startTime && currentTime <= endTime) {
+                        var programName = row.cells[1].innerText;
+                        updateStickyPlayer(currentDayIndex, programName);
+                        return;
+                    }
+                }
+
+                // If no program is currently playing, hide the sticky player
+                hideStickyPlayer();
+            }
+
+            // Function to update the sticky player source and controls
+            function updateStickyPlayer(programName) {
+                var audioPlayer = document.getElementById('sticky-player');
+                var audioSource = document.getElementById('audio-source');
+
+                // If the current program is different, update the source and controls
+                if (programName !== currentProgram) {
+                    currentProgram = programName;
+
+                    // Use the audio element from the array
+                    var dayKey = "Day" + (getCurrentDayIndex() + 1);
+                    var audio = audioElements[dayKey][currentProgram];
+
+                    // Set the audio source and play
+                    audioSource.src = audio.src;
+                    audioPlayer.load();
+                    audioPlayer.play();
                 }
             }
 
-            // If no program is currently playing, hide the sticky player
-            hideStickyPlayer();
-        }
+            // Function to hide the sticky player if no program is currently playing
+            function hideStickyPlayer() {
+                var audioPlayer = document.getElementById('sticky-player');
 
-        // Function to update the sticky player source and controls
-        function updateStickyPlayer(programName) {
-            var audioPlayer = document.getElementById('sticky-player');
-            var audioSource = document.getElementById('audio-source');
-
-            // If the current program is different, update the source and controls
-            if (programName !== currentProgram) {
-                currentProgram = programName;
-
-                // Use the audio element from the array
-                var dayKey = "Day" + (getCurrentDayIndex() + 1);
-                var audio = audioElements[dayKey][currentProgram];
-
-                // Set the audio source and play
-                audioSource.src = audio.src;
-                audioPlayer.load();
-                audioPlayer.play();
-            }
-        }
-
-        // Function to hide the sticky player if no program is currently playing
-        function hideStickyPlayer() {
-            var audioPlayer = document.getElementById('sticky-player');
             audioPlayer.pause();
             audioPlayer.style.display = "none";
         }
