@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Radio Program Schedule</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #3d6800;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #95ff00;
+        }
+
+        td.upcoming,
+        td.current,
+        td.finished {
+            background-color: inherit;
+        }
+
+        header {
+            background-color: rgb(0, 176, 65);
+            color: white;
+            padding: 0.1px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+
+        .finished {
+            background-color: #e57373;
+        }
+
+        .current {
+            background-color: #81c784;
+            animation: blink 2s infinite;
+        }
+
+        .upcoming {
+            background-color: #64b5f6;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Dynamic Radio Program Schedule</h1>
+    </header>
+<br><br><br>
+<script>
+    var programData = [
+        // Day 1 programs
+        [
+            { time: "12:00 AM - 06:00 AM", program: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
+            { time: "06:00 AM - 08:00 AM", program: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
+            // ... add more programs for Day 1
+        ],
+        // Day 2 programs
+        [
+            { time: "12:00 AM - 06:00 AM", program: "Midnight Mix", presenter: "DJ Sserudigo", status: "Upcoming" },
+            { time: "06:00 AM - 08:00 AM", program: "Dawn Crew", presenter: "Omulangira Ndausi", status: "Upcoming" },
+            // ... add more programs for Day 2
+        ],
+        // ... add more arrays for additional days
+    ];
+
+    var audioPath = ""; // Update this path based on your project structure
+    var currentProgram = ""; // Keep track of the current playing program
+
+    // Define an array to store audio elements for each program
+    var audioElements = {};
+
+    // Map each program to its corresponding audio file
+    var programAudioMap = {
+        "Xmas Muzic": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Xmas%20Muzic.mp3",
+        "Wake Up": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Wake%20Up.mp3",
+        "Midnight Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Midnight%20Mix.mp3",
+        "Dawn Crew": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Dawn%20Crew.mp3",
+        // Add mappings for other programs
+    };
+
+    function initializeAudioElements() {
+        for (var i = 0; i < programData.length; i++) {
+            for (var j = 0; j < programData[i].length; j++) {
+                var programName = programData[i][j].program;
+                var audioFileName = programAudioMap[programName];
+                var audioSource = audioPath + audioFileName;
+
+                var audio = new Audio();
+                audio.src = audioSource;
+
+                // Store each audio element in the array
+                audioElements[programName] = audio;
+            }
+        }
+    }
+
+    function updateStickyPlayer(programName) {
+        var audioPlayer = document.getElementById('sticky-player');
+        var audioSource = document.getElementById('audio-source');
+
+        // If the current program is different, update the source and controls
+        if (programName !== currentProgram) {
+            currentProgram = programName;
+
+            // Use the audio element from the array
+            var audio = audioElements[currentProgram];
+
+            // Set the audio source and play
+            audioSource.src = audio.src;
+            audioPlayer.load();
+            audioPlayer.play();
+        }
+    }
+
+    // Call the function to initialize audio elements
+    initializeAudioElements();
+
+        function generateProgramTable(dayIndex) {
+            var programs = programData[dayIndex];
+
+            var tableHTML = '<table>';
+            tableHTML += '<tr><th>Time</th><th>Program</th><th>Presenter</th><th>Status</th></tr>';
+
+            for (var i = 0; i < programs.length; i++) {
+                tableHTML += '<tr>';
+                tableHTML += `<td>${programs[i].time}</td>`;
+                tableHTML += `<td>${programs[i].program}</td>`;
+                tableHTML += `<td>${programs[i].presenter}</td>`;
+                tableHTML += `<td class="${programs[i].status.toLowerCase()}">${programs[i].status}</td>`;
+                tableHTML += '</tr>';
+            }
+
+            tableHTML += '</table>';
+            return tableHTML;
+        }
+
+        for (var i = 0; i < programData.length; i++) {
+            var programTable = generateProgramTable(i);
+            document.write(programTable);
+        }
+
+        // Function to update the program status and sticky player controls every 10 seconds
+        function updateProgramStatus() {
+            var table = document.querySelector('table');
+            var rows = table.getElementsByTagName("tr");
+
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var timeCell = row.cells[0];
+                var statusCell = row.cells[3];
+
+                var programName = row.cells[1].innerText;
+                var programTime = timeCell.innerText.split(' - ');
+                var startTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Nairobi" }) + " " + programTime[0]);
+                var endTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Nairobi" }) + " " + programTime[1]);
+                var currentTime = new Date();
+
+                if (currentTime < startTime) {
+                    row.className = "upcoming";
+                    statusCell.innerText = "Upcoming";
+                } else if (currentTime >= startTime && currentTime <= endTime) {
+                    row.className = "current";
+                    statusCell.innerText = "LIVE";
+                } else {
+                    row.className = "finished";
+                    statusCell.innerText = "Ended";
+                }
+            }
+
+            // Update sticky player controls
+            updateStickyPlayerControls();
+        }
+
+        // Function to update the sticky player controls and visibility
+        function updateStickyPlayerControls() {
+            var table = document.querySelector('table');
+            var rows = table.getElementsByTagName("tr");
+
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var timeCell = row.cells[0];
+
+                var programTime = timeCell.innerText.split(' - ');
+                var startTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Nairobi" }) + " " + programTime[0]);
+                var endTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Nairobi" }) + " " + programTime[1]);
+                var currentTime = new Date();
+
+                if (currentTime >= startTime && currentTime <= endTime) {
+                    var programName = row.cells[1].innerText;
+                    updateStickyPlayer(programName);
+                    return;
+                }
+            }
+
+            // If no program is currently playing, hide the sticky player
+            hideStickyPlayer();
+        }
+
+        // Function to update the sticky player source and controls
+        function updateStickyPlayer(programName) {
+            var audioPlayer = document.getElementById('sticky-player');
+            var audioSource = document.getElementById('audio-source');
+
+            // If the current program is different, update the source and controls
+            if (programName !== currentProgram) {
+                currentProgram = programName;
+
+                // Construct the audio path based on your project structure
+                var audioFilePath = audioPath + currentProgram.replace(/\s/g, '-') + '.mp3';
+
+                audioSource.src = audioFilePath;
+                audioPlayer.load();
+                audioPlayer.play();
+            }
+        }
+
+        // Function to hide the sticky player if no program is currently playing
+        function hideStickyPlayer() {
+            var audioPlayer = document.getElementById('sticky-player');
+            audioPlayer.pause();
+            audioPlayer.style.display = "none";
+        }
+
+        // Initialize the sticky player controls
+        function initializeStickyPlayer() {
+            var audioPlayer = document.getElementById('sticky-player');
+            var audioSource = document.getElementById('audio-source');
+
+            audioPlayer.addEventListener('ended', function () {
+                // When the audio ends, update the program status and sticky player controls
+                updateProgramStatus();
+            });
+
+            audioPlayer.addEventListener('pause', function () {
+                // When the audio is paused, update the program status and sticky player controls
+                updateProgramStatus();
+            });
+        }
+
+        // Call the initializations
+        initializeStickyPlayer();
+        setInterval(updateProgramStatus, 10000); // Update every 10 seconds
+    </script>
+
+    <!-- Sticky Player -->
+    <div id="sticky-player" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #f1f1f1; padding: 10px; display: none;">
+        <audio id="audio-source" controls style="width: 100%;">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+</body>
+
+</html>
