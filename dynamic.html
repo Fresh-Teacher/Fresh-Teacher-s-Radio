@@ -83,15 +83,27 @@
                 { time: "06:00 AM - 08:00 AM", program: "Dawn Crew", presenter: "Omulangira Ndausi", status: "Upcoming" },
                 // ... add more programs for Day 2
             ],
+            // Day 3 programs
+            [
+                { time: "12:00 AM - 06:00 AM", program: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
+                { time: "06:00 AM - 08:00 AM", program: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
+                // ... add more programs for Day 1
+            ],
+            // Day 4 programs
+            [
+                { time: "12:00 AM - 06:00 AM", program: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
+                { time: "06:00 AM - 08:00 AM", program: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
+                // ... add more programs for Day 1
+            ],
             // ... add more arrays for additional days
         ];
-    
+
         var audioPath = ""; // Update this path based on your project structure
         var currentProgram = ""; // Keep track of the current playing program
-    
+
         // Define an array to store audio elements for each day and program
         var audioElements = {};
-    
+
         // Map each day to its corresponding program audio map
         var programAudioMap = {
             "Day1": {
@@ -104,9 +116,19 @@
                 "Dawn Crew": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Dawn%20Crew.mp3",
                 // Add mappings for other programs on Day 2
             },
+            "Day3": {
+                "Midnight Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Midnight%20Mix.mp3",
+                "Dawn Crew": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Dawn%20Crew.mp3",
+                // Add mappings for other programs on Day 3
+            },
+            "Day4": {
+                "Midnight Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Midnight%20Mix.mp3",
+                "Dawn Crew": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Dawn%20Crew.mp3",
+                // Add mappings for other programs on Day 4
+            },
             // Add mappings for other days
         };
-    
+
         function initializeAudioElements() {
             for (var dayIndex = 0; dayIndex < programData.length; dayIndex++) {
                 for (var i = 0; i < programData[dayIndex].length; i++) {
@@ -114,10 +136,10 @@
                     var dayKey = "Day" + (dayIndex + 1);
                     var audioFileName = programAudioMap[dayKey][programName];
                     var audioSource = audioPath + audioFileName;
-    
+
                     var audio = new Audio();
                     audio.src = audioSource;
-    
+
                     // Store each audio element in the array
                     if (!audioElements[dayKey]) {
                         audioElements[dayKey] = {};
@@ -126,26 +148,26 @@
                 }
             }
         }
-    
+
         function updateStickyPlayer(dayIndex, programName) {
             var audioPlayer = document.getElementById('sticky-player');
             var audioSource = document.getElementById('audio-source');
-    
+
             // If the current program is different, update the source and controls
             if (programName !== currentProgram) {
                 currentProgram = programName;
-    
+
                 // Use the audio element from the array
                 var dayKey = "Day" + (dayIndex + 1);
                 var audio = audioElements[dayKey][currentProgram];
-    
+
                 // Set the audio source and play
                 audioSource.src = audio.src;
                 audioPlayer.load();
                 audioPlayer.play();
             }
         }
-    
+
         // Call the function to initialize audio elements
         initializeAudioElements();
 
@@ -168,10 +190,20 @@
             return tableHTML;
         }
 
-        for (var i = 0; i < programData.length; i++) {
-            var programTable = generateProgramTable(i);
-            document.write(programTable);
+        // Function to get the current day index
+        function getCurrentDayIndex() {
+            var currentDate = new Date();
+            var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            var currentDay = days[currentDate.getDay()];
+            
+            // Adjust for zero-based indexing in programData array
+            return days.indexOf(currentDay);
         }
+
+        // Display only the table for the current day
+        var currentDayIndex = getCurrentDayIndex();
+        var currentProgramTable = generateProgramTable(currentDayIndex);
+        document.write(currentProgramTable);
 
         // Function to update the program status and sticky player controls every 10 seconds
         function updateProgramStatus() {
@@ -239,10 +271,12 @@
             if (programName !== currentProgram) {
                 currentProgram = programName;
 
-                // Construct the audio path based on your project structure
-                var audioFilePath = audioPath + currentProgram.replace(/\s/g, '-') + '.mp3';
+                // Use the audio element from the array
+                var dayKey = "Day" + (getCurrentDayIndex() + 1);
+                var audio = audioElements[dayKey][currentProgram];
 
-                audioSource.src = audioFilePath;
+                // Set the audio source and play
+                audioSource.src = audio.src;
                 audioPlayer.load();
                 audioPlayer.play();
             }
