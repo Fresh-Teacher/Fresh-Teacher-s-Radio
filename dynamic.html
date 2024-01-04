@@ -68,75 +68,86 @@
     <header>
         <h1>Dynamic Radio Program Schedule</h1>
     </header>
-<br><br><br>
-<script>
-    var programData = [
-        // Day 1 programs
-        [
-            { time: "12:00 AM - 06:00 AM", program: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
-            { time: "06:00 AM - 08:00 AM", program: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
-            // ... add more programs for Day 1
-        ],
-        // Day 2 programs
-        [
-            { time: "12:00 AM - 06:00 AM", program: "Midnight Mix", presenter: "DJ Sserudigo", status: "Upcoming" },
-            { time: "06:00 AM - 08:00 AM", program: "Dawn Crew", presenter: "Omulangira Ndausi", status: "Upcoming" },
-            // ... add more programs for Day 2
-        ],
-        // ... add more arrays for additional days
-    ];
-
-    var audioPath = ""; // Update this path based on your project structure
-    var currentProgram = ""; // Keep track of the current playing program
-
-    // Define an array to store audio elements for each program
-    var audioElements = {};
-
-    // Map each program to its corresponding audio file
-    var programAudioMap = {
-        "Xmas Muzic": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Xmas%20Muzic.mp3",
-        "Wake Up": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Wake%20Up.mp3",
-        "Midnight Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Midnight%20Mix.mp3",
-        "Dawn Crew": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Dawn%20Crew.mp3",
-        // Add mappings for other programs
-    };
-
-    function initializeAudioElements() {
-        for (var i = 0; i < programData.length; i++) {
-            for (var j = 0; j < programData[i].length; j++) {
-                var programName = programData[i][j].program;
-                var audioFileName = programAudioMap[programName];
-                var audioSource = audioPath + audioFileName;
-
-                var audio = new Audio();
-                audio.src = audioSource;
-
-                // Store each audio element in the array
-                audioElements[programName] = audio;
+    <br><br><br><br><br><br>
+    <script>
+        var programData = [
+            // Day 1 programs
+            [
+                { time: "12:00 AM - 06:00 AM", program: "Xmas Muzic", presenter: "DJ Sserudigo", status: "Upcoming" },
+                { time: "06:00 AM - 08:00 AM", program: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
+                // ... add more programs for Day 1
+            ],
+            // Day 2 programs
+            [
+                { time: "12:00 AM - 06:00 AM", program: "Midnight Mix", presenter: "DJ Sserudigo", status: "Upcoming" },
+                { time: "06:00 AM - 08:00 AM", program: "Dawn Crew", presenter: "Omulangira Ndausi", status: "Upcoming" },
+                // ... add more programs for Day 2
+            ],
+            // ... add more arrays for additional days
+        ];
+    
+        var audioPath = ""; // Update this path based on your project structure
+        var currentProgram = ""; // Keep track of the current playing program
+    
+        // Define an array to store audio elements for each day and program
+        var audioElements = {};
+    
+        // Map each day to its corresponding program audio map
+        var programAudioMap = {
+            "Day1": {
+                "Xmas Muzic": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Xmas%20Muzic.mp3",
+                "Wake Up": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Wake%20Up.mp3",
+                // Add mappings for other programs on Day 1
+            },
+            "Day2": {
+                "Midnight Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Midnight%20Mix.mp3",
+                "Dawn Crew": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Dawn%20Crew.mp3",
+                // Add mappings for other programs on Day 2
+            },
+            // Add mappings for other days
+        };
+    
+        function initializeAudioElements() {
+            for (var dayIndex = 0; dayIndex < programData.length; dayIndex++) {
+                for (var i = 0; i < programData[dayIndex].length; i++) {
+                    var programName = programData[dayIndex][i].program;
+                    var dayKey = "Day" + (dayIndex + 1);
+                    var audioFileName = programAudioMap[dayKey][programName];
+                    var audioSource = audioPath + audioFileName;
+    
+                    var audio = new Audio();
+                    audio.src = audioSource;
+    
+                    // Store each audio element in the array
+                    if (!audioElements[dayKey]) {
+                        audioElements[dayKey] = {};
+                    }
+                    audioElements[dayKey][programName] = audio;
+                }
             }
         }
-    }
-
-    function updateStickyPlayer(programName) {
-        var audioPlayer = document.getElementById('sticky-player');
-        var audioSource = document.getElementById('audio-source');
-
-        // If the current program is different, update the source and controls
-        if (programName !== currentProgram) {
-            currentProgram = programName;
-
-            // Use the audio element from the array
-            var audio = audioElements[currentProgram];
-
-            // Set the audio source and play
-            audioSource.src = audio.src;
-            audioPlayer.load();
-            audioPlayer.play();
+    
+        function updateStickyPlayer(dayIndex, programName) {
+            var audioPlayer = document.getElementById('sticky-player');
+            var audioSource = document.getElementById('audio-source');
+    
+            // If the current program is different, update the source and controls
+            if (programName !== currentProgram) {
+                currentProgram = programName;
+    
+                // Use the audio element from the array
+                var dayKey = "Day" + (dayIndex + 1);
+                var audio = audioElements[dayKey][currentProgram];
+    
+                // Set the audio source and play
+                audioSource.src = audio.src;
+                audioPlayer.load();
+                audioPlayer.play();
+            }
         }
-    }
-
-    // Call the function to initialize audio elements
-    initializeAudioElements();
+    
+        // Call the function to initialize audio elements
+        initializeAudioElements();
 
         function generateProgramTable(dayIndex) {
             var programs = programData[dayIndex];
