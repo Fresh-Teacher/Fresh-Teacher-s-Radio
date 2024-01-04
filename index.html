@@ -201,103 +201,56 @@
             <div id="currentTime"></div>
         </header>
     
-        <br><br><table id="programTable">
+        <br><br>    <table id="programTable">
             <tr>
                 <th>Time</th>
                 <th>Program</th>
                 <th>Presenter</th>
                 <th>Status</th>
             </tr>
-            <tr>
-                <td>12:00 AM - 06:00 AM</td>
-                <td>Xmas Muzic</td>
-                <td>DJ Sserudigo</td>
-                <td class="upcoming">Upcoming</td>
-            </tr>
-            <tr>
-                <td>06:00 AM - 08:00 AM</td>
-                <td>Wake Up</td>
-                <td>Omulangira Ndausi</td>
-                <td class="upcoming">Upcoming</td>
-            </tr>
-            <tr>
-                <td>08:00 AM - 08:30 AM</td>
-                <td>News</td>
-                <td>Natasha Nats</td>
-                <td class="upcoming">Upcoming</td>
-            </tr>
-            <tr>
-                <td>08:30 AM - 09:30 AM</td>
-                <td>Advertisements</td>
-                <td>Omulongo Kato</td>
-                <td class="upcoming">Upcoming</td>
-            </tr>
-            <tr>
-                <td>09:30 AM - 1:00 PM</td>
-                <td>Church Service</td>
-                <td>Reverend Kimuli Bob</td>
-                <td class="upcoming">Upcoming</td>
-            </tr>
-            <tr>
-                <td>01:00 PM - 02:30 PM</td>
-                <td>News</td>
-                <td>Joshua Musaasizi Nsubuga</td>
-                <td class="upcoming">Upcoming</td>
-            </tr>
-            <tr>
-                <td>01:30 PM - 02:30 PM</td>
-                <td>Lunch Hour</td>
-                <td>DJ Binyanyanyanya</td>
-                <td class="upcoming">Upcoming</td>
-            </tr>
-            <tr>
-                <td>02:30 PM - 04:30 PM</td>
-                <td>Xmas Extra</td>
-                <td>Fresh Teacher</td>
-                <td class="upcoming">Upcoming</td>
-            </tr>
-            <tr>
-                <td>04:30 PM - 05:30 PM</td>
-                <td>Xmas Vibes</td>
-                <td>Selector Kiwa</td>
-                <td class="upcoming">Upcoming</td>
-            </tr>
-            <tr>
-                <td>07:00 PM - 08:00PM</td>
-                <td>Song Request</td>
-                <td>Dj Jesse Paul</td>
-                <td class="upcoming">Upcoming</td>
-            </tr>
-            <tr>
-                <td>08:00 PM - 09:00 PM</td>
-                <td>News Hour</td>
-                <td>Kimuli Bob</td>
-                <td class="upcoming">Upcoming</td>
-            </tr>
-            <tr>
-                <td>09:00 PM - 10:00 PM</td>
-                <td>Advertisements</td>
-                <td>Fresh Teacher</td>
-                <td class="upcoming">Upcoming</td>
-            </tr> 
-                   <tr>
-                <td>10:00 PM - 11:00 PM</td>
-                <td>Christmas Wishes</td>
-                <td>MC Jose</td>
-                <td class="upcoming">Upcoming</td>
-            </tr>
-            <tr>
-                <td>11:00 PM - 12:00 AM</td>
-                <td>Gospel Music</td>
-                <td>Dj Kabaalu</td>
-                <td class="upcoming">Upcoming</td>
-            </tr>
-            
-            
-            
-            <!-- Add more programs as needed -->
-    
         </table>
+        <script>
+                    // Program data
+                    var programData = [
+    { time: "12:00 AM - 06:00 AM", program: "Xmas Muzic", presenter: "DJ Sserudigo" },
+    { time: "06:00 AM - 08:00 AM", program: "Wake Up", presenter: "Omulangira Ndausi" },
+    { time: "08:00 AM - 08:30 AM", program: "News", presenter: "Natasha Nats" },
+    { time: "08:30 AM - 09:30 AM", program: "Advertisements", presenter: "Omulongo Kato" },
+    { time: "09:30 AM - 1:00 PM", program: "Church Service", presenter: "Reverend Kimuli Bob" },
+    { time: "01:00 PM - 02:30 PM", program: "News", presenter: "Joshua Musaasizi Nsubuga" },
+    { time: "01:30 PM - 02:30 PM", program: "Lunch Hour", presenter: "DJ Binyanyanyanya" },
+    { time: "02:30 PM - 04:30 PM", program: "Xmas Extra", presenter: "Fresh Teacher" },
+    { time: "04:30 PM - 05:30 PM", program: "Xmas Vibes", presenter: "Selector Kiwa" },
+    { time: "07:00 PM - 08:00 PM", program: "Song Request", presenter: "Dj Jesse Paul" },
+    { time: "08:00 PM - 09:00 PM", program: "News Hour", presenter: "Kimuli Bob" },
+    { time: "09:00 PM - 10:00 PM", program: "Advertisements", presenter: "Fresh Teacher" },
+    { time: "10:00 PM - 11:00 PM", program: "Christmas Wishes", presenter: "MC Jose" },
+    { time: "11:00 PM - 12:00 AM", program: "Gospel Music", presenter: "Dj Kabaalu" }
+];
+
+
+          // Function to dynamically generate the program table
+          function generateProgramTable() {
+            var table = document.getElementById("programTable");
+
+            programData.forEach(function (program) {
+                var row = table.insertRow(-1);
+                var timeCell = row.insertCell(0);
+                var programCell = row.insertCell(1);
+                var presenterCell = row.insertCell(2);
+                var statusCell = row.insertCell(3);
+
+                timeCell.textContent = program.time;
+                programCell.textContent = program.program;
+                presenterCell.textContent = program.presenter;
+                statusCell.textContent = "Upcoming"; // Default status, adjust as needed
+                statusCell.className = "upcoming"; // Default class, adjust as needed
+            });
+        }
+
+        // Call the function to generate the program table
+        generateProgramTable();
+        </script>
         
         <br><br><br><br><br>
        <div id="stickyPlayer">
@@ -321,7 +274,7 @@
 <script>
     var jobData = 
     [
-    {
+  {
         "message": "A school in Bombo is in need of teachers: 1 teacher for SST upper, 1 teacher for P1 class, 1 teacher for P2 class, and 1 matron of 35 years and above. Interested individuals can call 0778326871."
     },
     {
@@ -1694,7 +1647,6 @@
 {
     "message": "Two teachers for mathematics and SST are urgently needed in a big school in Kampala. Diploma required. Salary: 700k and above, weekly allowance: 15k, all meals provided, house allowance: free. Interested individuals can call 0778326871 or inbox for more details."
 }
-
         // Add more job posts as needed
     ];
 
