@@ -234,6 +234,57 @@
     // Add more program entries as needed
 ];
 
+      // Define an array to store audio elements for each program
+      var audioElements = {};
+        var audioPath = ""; // Update this path based on your project structure
+    
+        // Map each program to its corresponding audio file
+        var programAudioMap = {
+            "Wake Up": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/School%20Music%20Ads.mp3",
+"AfterLunch": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/School%20Music%20Ads.mp3",
+            "Morning Vibez": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/ALL%20LOVE%20SONGS%20IN%202023%20UGANDAN%20MUSIC%20NONSTOP%20BY%20DEEJ%20BOAZ.mp3",
+            "Dawn": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/BEST%20OF%20DECEMBER%20NEW%20UGANDAN%20MUSIC%202023%20NONSTOP%201KMIX%20Vol%2018%20MIXED%20BY%20DJ%20JIMMY%20256%20FT%20DJ%20DREEZY%20256.mp3",
+            "Work Crew": "https://s5.voscast.com:9905/EMMANDUSO",
+   "Gandaalo": "https://s5.voscast.com:9905/EMMANDUSO",
+            "Xul Tymz": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/School%20Music%20Ads.mp3",
+            "Lunch Hour": "Nonstop.mp3",
+            "Xmas Nite": "https://s5.voscast.com:9905/EMMANDUSO",
+            "Xmas Vibes": "Nonstop.mp3",
+            "News Hour": "https://s5.voscast.com:9905/EMMANDUSO",
+            "Song Request": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/x2mate.com%20-%20END%20OF%20YEAR%202023%20UGANDAN%20VIDEO%20NONSTOP__NEW_UGANDAN_%20MUSIC_2023%20TO%202024%20VIDEO%20UG%20MIX__DJ_ONE_EZRA_%20(128%20kbps).mp3",
+            "Advertisements": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
+            "Christmas Wishes": "Nonstop.mp3",
+            "Gospel Music": "Nonstop.mp3",
+                "Advertisements": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Advert2(15-46-41.193)%5B1%5D.mp3",
+                    "Adverts": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Advert3%5B1%5D.mp3",
+                    "Ads": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Advert_1%5B1%5D.mp3",
+                        "Midnight Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/x2mate.com%20-%20Dj%20Ramecca%20x%20Dj%20V.I.P%20UG%20-Wintermix%20(Ug%20End%20Of%20July%20Mixtape%202023)%20Vol%2066%20New%20Ugandan%20Music%20Nonstop%20(128%20kbps).mp3",
+
+            // Add mappings for other programs
+        };
+    
+        // Function to initialize audio elements for each program
+        function initializeAudioElements() {
+            var table = document.getElementById("programTable");
+            var rows = table.getElementsByTagName("tr");
+    
+            for (var i = 1; i < rows.length; i++) {
+                var row = rows[i];
+                var programName = row.cells[1].innerText;
+                var audioFileName = programAudioMap[programName];
+                var audioSource = audioPath + audioFileName;
+    
+                var audio = new Audio();
+                audio.src = audioSource;
+    
+                // Store each audio element in the array
+                audioElements[programName] = audio;
+            }
+        }
+    
+        // Call the function to initialize audio elements
+        initializeAudioElements();
+        
  // Function to dynamically generate the program table
  function generateProgramTable() {
             var table = document.getElementById("programTable");
@@ -254,6 +305,7 @@
 
         // Call the function to generate the program table
         generateProgramTable();
+
         </script>
     
 <!-- Professional Job Posts Section with Enhanced Disclaimer (Red Font) -->
@@ -1710,56 +1762,7 @@ renderJobPosts();
         // Initial call to start the timer
         updateTime();
 
-        // Define an array to store audio elements for each program
-        var audioElements = {};
-        var audioPath = ""; // Update this path based on your project structure
-    
-        // Map each program to its corresponding audio file
-        var programAudioMap = {
-            "Wake Up": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/School%20Music%20Ads.mp3",
-"AfterLunch": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/School%20Music%20Ads.mp3",
-            "Morning Vibez": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/ALL%20LOVE%20SONGS%20IN%202023%20UGANDAN%20MUSIC%20NONSTOP%20BY%20DEEJ%20BOAZ.mp3",
-            "Dawn": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/BEST%20OF%20DECEMBER%20NEW%20UGANDAN%20MUSIC%202023%20NONSTOP%201KMIX%20Vol%2018%20MIXED%20BY%20DJ%20JIMMY%20256%20FT%20DJ%20DREEZY%20256.mp3",
-            "Work Crew": "https://s5.voscast.com:9905/EMMANDUSO",
-   "Gandaalo": "https://s5.voscast.com:9905/EMMANDUSO",
-            "Xul Tymz": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/School%20Music%20Ads.mp3",
-            "Lunch Hour": "Nonstop.mp3",
-            "Xmas Nite": "https://s5.voscast.com:9905/EMMANDUSO",
-            "Xmas Vibes": "Nonstop.mp3",
-            "News Hour": "https://s5.voscast.com:9905/EMMANDUSO",
-            "Song Request": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/x2mate.com%20-%20END%20OF%20YEAR%202023%20UGANDAN%20VIDEO%20NONSTOP__NEW_UGANDAN_%20MUSIC_2023%20TO%202024%20VIDEO%20UG%20MIX__DJ_ONE_EZRA_%20(128%20kbps).mp3",
-            "Advertisements": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Voice%20002.mp3",
-            "Christmas Wishes": "Nonstop.mp3",
-            "Gospel Music": "Nonstop.mp3",
-                "Advertisements": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Advert2(15-46-41.193)%5B1%5D.mp3",
-                    "Adverts": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Advert3%5B1%5D.mp3",
-                    "Ads": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Advert_1%5B1%5D.mp3",
-                        "Midnight Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/x2mate.com%20-%20Dj%20Ramecca%20x%20Dj%20V.I.P%20UG%20-Wintermix%20(Ug%20End%20Of%20July%20Mixtape%202023)%20Vol%2066%20New%20Ugandan%20Music%20Nonstop%20(128%20kbps).mp3",
-
-            // Add mappings for other programs
-        };
-    
-        // Function to initialize audio elements for each program
-        function initializeAudioElements() {
-            var table = document.getElementById("programTable");
-            var rows = table.getElementsByTagName("tr");
-    
-            for (var i = 1; i < rows.length; i++) {
-                var row = rows[i];
-                var programName = row.cells[1].innerText;
-                var audioFileName = programAudioMap[programName];
-                var audioSource = audioPath + audioFileName;
-    
-                var audio = new Audio();
-                audio.src = audioSource;
-    
-                // Store each audio element in the array
-                audioElements[programName] = audio;
-            }
-        }
-    
-        // Call the function to initialize audio elements
-        initializeAudioElements();
+  
         
     var currentProgram = ""; // Keep track of the current playing program
     
