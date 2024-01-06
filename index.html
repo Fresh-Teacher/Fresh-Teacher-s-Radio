@@ -416,6 +416,34 @@ const day2programAudioMap = {
   // Add more programs for Tuesday...
 };
     
+ // Function to dynamically populate the table for a given day
+ function populateTable(programData) {
+            const tableBody = document.getElementById("tableBody");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            programData.forEach(program => {
+                const row = tableBody.insertRow();
+                const cellTime = row.insertCell(0);
+                const cellProgram = row.insertCell(1);
+                const cellPresenter = row.insertCell(2);
+                const cellStatus = row.insertCell(3);
+
+                cellTime.innerHTML = program.time;
+                cellProgram.innerHTML = program.program;
+                cellPresenter.innerHTML = program.presenter;
+                cellStatus.innerHTML = program.status;
+            });
+        }
+
+        // Call the function to populate the table for Day 1 initially
+        populateTable(day1programData);
+
+        // Function to switch to Day 2 programs when Day 1 ends
+        function switchToDay2() {
+            populateTable(day2programData);
+        }
+
+
         // Function to initialize audio elements for each program
         function initializeAudioElements() {
             var table = document.getElementById("programTable");
@@ -523,12 +551,16 @@ const day2programAudioMap = {
             
             // Reset the currentProgram variable to allow Day 2 programs to start
             currentProgram = "";
+
+            // Switch to Day 2 programs
+            switchToDay2();
         } else {
             row.className = "finished";
             statusCell.innerText = "Ended";
         }
     }
 }
+
 
     
         // Update program status and sticky player controls every 10 seconds
