@@ -228,6 +228,7 @@
           </table>
 
           <script>
+            // Audio map for Monday
             const day1programData = [
             { time: "12:00 AM - 06:00 AM", program: "Xmas Nite", presenter: "DJ Sserudigo", status: "Upcoming" },
          { time: "06:00 AM - 06:20 AM", program: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
@@ -266,8 +267,51 @@
          { time: "07:40 PM - 08:00 PM", program: "Ads", presenter: "Fresh Teacher", status: "Upcoming" },
          { time: "08:00 PM - 08:20 PM", program: "Gospel Music", presenter: "Dj Kabaalu", status: "Upcoming" },
          { time: "08:20 PM - 11:59 PM", program: "News", presenter: "CBS", status: "Upcoming" },
-          // Add more programs as needed
+                    // Add more programs for Day 1...
+
  ];
+
+ // Program data for Day 2
+const day2ProgramData = [
+{ time: "12:00 AM - 06:00 AM", program: "Xmas Nite", presenter: "DJ Sserudig", status: "Upcoming" },
+         { time: "06:00 AM - 06:20 AM", program: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
+         { time: "06:20 AM - 06:40 AM", program: "Morning Vibez", presenter: "Dee Jay Boaz", status: "Upcoming" },
+         { time: "06:40 AM - 07:00 AM", program: "Dawn", presenter: "Omulongo Kato", status: "Upcoming" },
+         { time: "07:00 AM - 07:20 AM", program: "Work Crew", presenter: "Kimuli Bob", status: "Upcoming" },
+         { time: "07:20 AM - 07:40 AM", program: "Advertisements", presenter: "Joshua Musaasizi Nsubuga", status: "Upcoming" },
+         { time: "07:40 AM - 08:00 AM", program: "Dawn", presenter: "DJ Binyanyanyanya", status: "Upcoming" },
+         { time: "08:00 AM - 08:20 AM", program: "Adverts", presenter: "Fresh Teacher", status: "Upcoming" },
+         { time: "08:20 AM - 08:40 AM", program: "Wake Up", presenter: "Dj VIP", status: "Upcoming" },
+         { time: "08:40 AM - 09:00 AM", program: "Ads", presenter: "Fresh Teacher", status: "Upcoming" },
+         { time: "09:00 AM - 09:20 AM", program: "Xul Tymz", presenter: "Kimuli Bob", status: "Upcoming" },
+         { time: "09:20 AM - 10:20 AM", program: "Xmas Vibes", presenter: "Fresh Teacher", status: "Upcoming" },
+         { time: "10:20 AM - 11:00 AM", program: "News", presenter: "Fresh Teacher", status: "Upcoming" },
+         { time: "11:00 AM - 11:20 AM", program: "Advertisements", presenter: "Dj Ramecca", status: "Upcoming" },
+         { time: "11:20 AM - 11:40 AM", program: "Adverts", presenter: "Fresh Teacher", status: "Upcoming" },
+         { time: "12:00 PM - 12:20 PM", program: "Ads", presenter: "Fresh Teacher", status: "Upcoming" },
+         { time: "12:20 PM - 01:00 PM", program: "Gospel Music", presenter: "Dj Kabaalu", status: "Upcoming" },
+         { time: "01:00 PM - 02:00 PM", program: "News", presenter: "CBS", status: "Upcoming" },
+         { time: "02:00 PM - 02:20 PM", program: "AfterLunch", presenter: "DJ Sserudigo", status: "Upcoming" },
+         { time: "02:20 PM - 02:20 PM", program: "Wake Up", presenter: "Omulangira Ndausi", status: "Upcoming" },
+         { time: "02:20 PM - 03:20 PM", program: "Gandaalo", presenter: "Omulangira Ndausi", status: "Upcoming" },
+         { time: "03:20 PM - 03:40 PM", program: "Morning Vibez", presenter: "Dee Jay Boaz", status: "Upcoming" },
+         { time: "03:40 PM - 04:00 PM", program: "Dawn", presenter: "Omulongo Kato", status: "Upcoming" },
+         { time: "04:00 PM - 04:20 PM", program: "Work Crew", presenter: "Kimuli Bob", status: "Upcoming" },
+         { time: "04:20 PM - 04:40 PM", program: "Advertisements", presenter: "Joshua Musaasizi Nsubuga", status: "Upcoming" },
+         { time: "04:40 PM - 05:00 PM", program: "Dawn", presenter: "DJ Binyanyanyanya", status: "Upcoming" },
+         { time: "05:00 PM - 05:20 PM", program: "Adverts", presenter: "Fresh Teacher", status: "Upcoming" },
+         { time: "05:20 PM - 05:40 PM", program: "Wake Up", presenter: "Dj VIP", status: "Upcoming" },
+         { time: "05:40 PM - 06:00 PM", program: "Ads", presenter: "Fresh Teacher", status: "Upcoming" },
+         { time: "06:00 PM - 06:20 PM", program: "Xul Tymz", presenter: "Kimuli Bob", status: "Upcoming" },
+         { time: "06:20 PM - 06:40 PM", program: "Xmas Vibes", presenter: "Fresh Teacher", status: "Upcoming" },
+         { time: "06:40 PM - 07:00 PM", program: "News", presenter: "Fresh Teacher", status: "Upcoming" },
+         { time: "07:00 PM - 07:20 PM", program: "Advertisements", presenter: "Dj Ramecca", status: "Upcoming" },
+         { time: "07:20 PM - 07:40 PM", program: "Adverts", presenter: "Fresh Teacher", status: "Upcoming" },
+         { time: "07:40 PM - 08:00 PM", program: "Ads", presenter: "Fresh Teacher", status: "Upcoming" },
+         { time: "08:00 PM - 08:20 PM", program: "Gospel Music", presenter: "Dj Kabaalu", status: "Upcoming" },
+         { time: "08:20 PM - 11:59 PM", program: "News", presenter: "CBS", status: "Upcoming" },
+           // Add more programs for Day 2...
+];
 
  // Function to dynamically populate the table
  function populateTable() {
@@ -340,7 +384,7 @@
         var audioElements = {};
         var audioPath = ""; // Update this path based on your project structure
     
-        // Map each program to its corresponding audio file
+        // Audio map for Monday
         var day1programAudioMap = {
             "Wake Up": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/School%20Music%20Ads.mp3",
 "AfterLunch": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/School%20Music%20Ads.mp3",
@@ -362,15 +406,14 @@
                     "Ads": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Advert_1%5B1%5D.mp3",
                         "Midnight Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/x2mate.com%20-%20Dj%20Ramecca%20x%20Dj%20V.I.P%20UG%20-Wintermix%20(Ug%20End%20Of%20July%20Mixtape%202023)%20Vol%2066%20New%20Ugandan%20Music%20Nonstop%20(128%20kbps).mp3",
 
-            // Add mappings for other programs
         };
 
-        // Audio map for Day 2
+        // Audio map for Tuesday
 const day2programAudioMap = {
   "Wake Up": "https://example.com/day2/wake_up_audio.mp3",
   "AfterLunch": "https://example.com/day2/after_lunch_audio.mp3",
   "Morning Vibez": "https://example.com/day2/morning_vibez_audio.mp3",
-  // Add more programs for Day 2...
+  // Add more programs for Tuesday...
 };
     
         // Function to initialize audio elements for each program
@@ -453,32 +496,40 @@ const day2programAudioMap = {
         
     
         function updateProgramStatus() {
-            var table = document.getElementById("programTable");
-            var rows = table.getElementsByTagName("tr");
-    
-            for (var i = 1; i < rows.length; i++) {
-                var row = rows[i];
-                var timeCell = row.cells[0];
-                var statusCell = row.cells[3];
-    
-                var programName = row.cells[1].innerText;
-                var programTime = timeCell.innerText.split(' - ');
-                var startTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[0]);
-                var endTime = new Date(new Date().toLocaleDateString("en-US", {timeZone: "Africa/Nairobi"}) + " " + programTime[1]);
-                var currentTime = new Date();
-    
-                if (currentTime < startTime) {
-                    row.className = "upcoming";
-                    statusCell.innerText = "Upcoming";
-                } else if (currentTime >= startTime && currentTime <= endTime) {
-                    row.className = "current";
-                    statusCell.innerText = "LIVE";
-                } else {
-                    row.className = "finished";
-                    statusCell.innerText = "Ended";
-                }
-            }
+    var table = document.getElementById("programTable");
+    var rows = table.getElementsByTagName("tr");
+
+    for (var i = 1; i < rows.length; i++) {
+        var row = rows[i];
+        var timeCell = row.cells[0];
+        var statusCell = row.cells[3];
+
+        var programName = row.cells[1].innerText;
+        var programTime = timeCell.innerText.split(' - ');
+        var startTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Kampala" }) + " " + programTime[0]);
+        var endTime = new Date(new Date().toLocaleDateString("en-US", { timeZone: "Africa/Kampala" }) + " " + programTime[1]);
+        var currentTime = new Date();
+
+        if (currentTime < startTime) {
+            row.className = "upcoming";
+            statusCell.innerText = "Upcoming";
+        } else if (currentTime >= startTime && currentTime <= endTime) {
+            row.className = "current";
+            statusCell.innerText = "LIVE";
+        } else if (currentTime > endTime && i === rows.length - 1) {
+            // Last program of Day 1 has ended, trigger start of Day 2
+            row.className = "finished";
+            statusCell.innerText = "Ended";
+            
+            // Reset the currentProgram variable to allow Day 2 programs to start
+            currentProgram = "";
+        } else {
+            row.className = "finished";
+            statusCell.innerText = "Ended";
         }
+    }
+}
+
     
         // Update program status and sticky player controls every 10 seconds
         setInterval(function () {
