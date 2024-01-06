@@ -242,7 +242,7 @@
          { time: "08:40 AM - 09:00 AM", program: "Ads", presenter: "Fresh Teacher", status: "Upcoming" },
          { time: "09:00 AM - 09:20 AM", program: "Xul Tymz", presenter: "Kimuli Bob", status: "Upcoming" },
          { time: "09:20 AM - 10:20 AM", program: "Xmas Vibes", presenter: "Fresh Teacher", status: "Upcoming" },
-         { time: "10:20 AM - 11:00 AM", program: "News", presenter: "Fresh Teacher", status: "Upcoming" },
+         { time: "10:20 AM - 11:00 AM", program: "Ads", presenter: "Fresh Teacher", status: "Upcoming" },
          { time: "11:00 AM - 11:20 AM", program: "Advertisements", presenter: "Dj Ramecca", status: "Upcoming" },
          { time: "11:20 AM - 11:40 AM", program: "Adverts", presenter: "Fresh Teacher", status: "Upcoming" },
          { time: "12:00 PM - 12:20 PM", program: "Ads", presenter: "Fresh Teacher", status: "Upcoming" },
@@ -388,6 +388,8 @@ const day2ProgramData = [
         // Audio map for Monday
         var day1programAudioMap = {
             "Wake Up": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/School%20Music%20Ads.mp3",
+            "News": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/School%20Music%20Ads.mp3",
+
 "AfterLunch": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/School%20Music%20Ads.mp3",
             "Morning Vibez": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/ALL%20LOVE%20SONGS%20IN%202023%20UGANDAN%20MUSIC%20NONSTOP%20BY%20DEEJ%20BOAZ.mp3",
             "Dawn": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/BEST%20OF%20DECEMBER%20NEW%20UGANDAN%20MUSIC%202023%20NONSTOP%201KMIX%20Vol%2018%20MIXED%20BY%20DJ%20JIMMY%20256%20FT%20DJ%20DREEZY%20256.mp3",
@@ -404,7 +406,7 @@ const day2ProgramData = [
             "Gospel Music": "Nonstop.mp3",
                 "Advertisements": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Advert2(15-46-41.193)%5B1%5D.mp3",
                     "Adverts": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Advert3%5B1%5D.mp3",
-                    "Ads": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/Advert_1%5B1%5D.mp3",
+                    "Ads": "congratulations.mp3",
                         "Midnight Mix": "https://github.com/Fresh-Teacher/Fresh-FM/raw/main/x2mate.com%20-%20Dj%20Ramecca%20x%20Dj%20V.I.P%20UG%20-Wintermix%20(Ug%20End%20Of%20July%20Mixtape%202023)%20Vol%2066%20New%20Ugandan%20Music%20Nonstop%20(128%20kbps).mp3",
 
         };
@@ -480,15 +482,25 @@ function switchToDay(day) {
     initializeAudioElements();
 }
 
+// Function to initialize audio elements for Day 1 programs
+function initializeDay1AudioElements() {
+    initializeAudioElements(day1programAudioMap);
+}
+
+// Function to initialize audio elements for Day 2 programs
+function initializeDay2AudioElements() {
+    initializeAudioElements(day2programAudioMap);
+}
+
 // Function to initialize audio elements for each program
-function initializeAudioElements() {
+function initializeAudioElements(audioMap) {
     var table = document.getElementById("programTable");
     var rows = table.getElementsByTagName("tr");
 
     for (var i = 1; i < rows.length; i++) {
         var row = rows[i];
         var programName = row.cells[1].innerText;
-        var audioFileName = day1programAudioMap[programName];
+        var audioFileName = audioMap[programName];
         var audioSource = audioPath + audioFileName;
 
         var audio = new Audio();
@@ -499,6 +511,11 @@ function initializeAudioElements() {
     }
 }
 
+// Call the functions to initialize audio elements for both days
+initializeDay1AudioElements();
+initializeDay2AudioElements();
+
+
 var currentProgram = ""; // Keep track of the current playing program
 
 // Function to update the sticky player source and controls
@@ -506,17 +523,23 @@ function updateStickyPlayer(programName) {
     var audioPlayer = document.getElementById("audioPlayer");
     var audio = audioElements[programName];
 
-    if (currentProgram !== programName) {
-        audioPlayer.pause(); // Pause the currently playing audio
-        audioPlayer.src = audio.src; // Set the source for the sticky player
-        audioPlayer.load(); // Reload the audio player with the new source
-        audioPlayer.play(); // Start playing the audio
-        currentProgram = programName; // Update the current program
-    }
+    if (audio && audio.src) {  // Check if 'audio' is defined and has a valid 'src'
+        if (currentProgram !== programName) {
+            audioPlayer.pause(); // Pause the currently playing audio
+            audioPlayer.src = audio.src; // Set the source for the sticky player
+            audioPlayer.load(); // Reload the audio player with the new source
+            audioPlayer.play(); // Start playing the audio
+            currentProgram = programName; // Update the current program
+        }
 
-    // Update player controls
-    document.getElementById("stickyPlayer").style.display = "block"; // Show the sticky player
+        // Update player controls
+        document.getElementById("stickyPlayer").style.display = "block"; // Show the sticky player
+    } else {
+        // Handle the case where the 'audio' object or its 'src' property is undefined
+        console.error("Audio or audio.src is undefined for program:", programName);
+    }
 }
+
 
 // Function to hide the sticky player when no program is playing
 function hideStickyPlayer() {
