@@ -27,6 +27,7 @@
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="nara24 fm" />
         <meta property="og:image:type" content="image/png" />
+        
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -191,6 +192,60 @@
                 max-width: calc(100% - 30px);
             }
         }
+
+ /* Style for the green button */
+ #scrollToAdvertisementsBtn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            background-color: #28a745; /* Green color */
+            color: #fff; /* White text */
+            border: 2px solid #218838; /* Darker green border */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Hover effect - slightly darken the background and add a shadow */
+        #scrollToAdvertisementsBtn:hover {
+            background-color: #218838; /* Darker green on hover */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes shakeUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25%, 75% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+.animated-button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    color: #fff;
+    background-color: #28a745; /* Green color, you can change it */
+    border-radius: 5px;
+    animation: shakeUpDown 1s infinite; /* Adjust the duration as needed */
+}
+
+.animated-button:hover {
+    animation: none; /* Stop the animation on hover */
+}
+
+
         </style>
     </head>
     <br><br><br>
@@ -199,8 +254,13 @@
         <header>
             <h1>Fresh Teacher's Radio 📻</h1>
             <div id="currentTime"></div>
-        </header>
-    
+        </header><br><br><br><br>
+
+    <!-- Add the button here, above the table -->
+    <center>
+        <button id="scrollToAdvertisementsBtn" class="animated-button">Go to Job Advertisements  👇</button>
+    </center>
+
         <br><br><table id="programTable">
             <tr>
                 <th>Time</th>
@@ -450,11 +510,33 @@
             </audio>
         </div>
      
+
 <!-- Professional Job Posts Section with Enhanced Disclaimer (Red Font) -->
-<div class="container mt-4 text-center">
+<div id="advertisementsHeading" class="container mt-4 text-center">
     <h1 class="text-center">ADVERTISEMENTS</h1>
-    <p class="text-danger font-weight-bold"><font color="red"><strong><em>Please be advised that the job postings on this page are forwarded as received. The website administrator assumes no liability for any engagements between employees and employers. We urge all users to exercise utmost caution to avoid potential fraud. <span class="font-weight-bold"><p></p>DO NOT</span> disclose sensitive information until you have meticulously verified the credibility of the other party.</em></p></font></strong></p>
-    <div id="jobPosts" class="row mt-4"></div>
+    <p class="text-danger font-weight-bold">
+        <font color="red">
+            <strong>
+                <em>Please be advised that the job postings on this page are forwarded as received. The website administrator assumes no liability for any engagements between employees and employers. We urge all users to exercise utmost caution to avoid potential fraud.
+                    <span class="font-weight-bold">
+                        <p></p>DO NOT</span> disclose sensitive information until you have meticulously verified the credibility of the other party.</em></p>
+        </font>
+    </strong>
+    <!-- Move the jobPosts div inside the container div -->
+    <div class="row mt-4">
+        <div id="jobPosts"></div>
+    </div>
+</div>
+
+
+<!-- JavaScript code for smooth scrolling -->
+<script>
+    document.getElementById('scrollToAdvertisementsBtn').addEventListener('click', function () {
+        document.querySelector('#advertisementsHeading').scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+</script>
 
     <script>
           var jobData = 
