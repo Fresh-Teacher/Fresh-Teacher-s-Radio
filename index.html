@@ -314,26 +314,28 @@ const day2ProgramData = [
        // Add more programs for Day 2...
 ];
 
- // Function to dynamically populate the table
- function populateTable() {
-   const tableBody = document.getElementById("tableBody");
+  // Function to dynamically populate the table
+  function populateTable() {
+    const tableBody = document.getElementById("tableBody");
 
-   day1programData.forEach(program => {
-     const row = tableBody.insertRow();
-     const cellTime = row.insertCell(0);
-     const cellProgram = row.insertCell(1);
-     const cellPresenter = row.insertCell(2);
-     const cellStatus = row.insertCell(3);
+    const allPrograms = [...day1programData, ...day2ProgramData]; // Concatenate both days
 
-     cellTime.innerHTML = program.time;
-     cellProgram.innerHTML = program.program;
-     cellPresenter.innerHTML = program.presenter;
-     cellStatus.innerHTML = program.status;
-   });
- }
+    allPrograms.forEach(program => {
+      const row = tableBody.insertRow();
+      const cellTime = row.insertCell(0);
+      const cellProgram = row.insertCell(1);
+      const cellPresenter = row.insertCell(2);
+      const cellStatus = row.insertCell(3);
 
- // Call the function to populate the table
- populateTable();
+      cellTime.innerHTML = program.time;
+      cellProgram.innerHTML = program.program;
+      cellPresenter.innerHTML = program.presenter;
+      cellStatus.innerHTML = program.status;
+    });
+  }
+
+  // Call the function to populate the table
+  populateTable();
          </script>
         
         <br><br><br><br><br>
