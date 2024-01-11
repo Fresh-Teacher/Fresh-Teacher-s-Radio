@@ -1030,7 +1030,18 @@
             
             
             <!-- Add more programs as needed -->
-    
+
+                          <script>
+                // Get all the <td> elements with program names and update their content
+                var programCells = document.querySelectorAll('#programTable td:nth-child(2)');
+            
+                programCells.forEach(function (cell) {
+                  var originalText = cell.innerText;
+                  var programName = originalText.split(' (')[0]; // Extract program name without the number
+                  cell.innerText = programName;
+                });
+              </script>
+              
         </table>
         
         <br><br><br><br><br>
