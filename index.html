@@ -543,6 +543,19 @@
             opacity: .08;
             background-image: url(https://africavotes.com/public/img/social/whatsapp.webp)
         }
+              td.program-name {
+    /* Assuming 'program-name' is the class for the program names */
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+td.program-name span {
+    /* Assuming the numbers are enclosed in a span element within the program name */
+    display: none;
+}
+
         </style>
     </head>
     <br><br><br>
@@ -965,13 +978,15 @@
                 <td>Fresh Teacher</td>
                 <td class="upcoming">Upcoming</td>
             </tr>
+<tr>
+    <td>09:00 PM - 09:20 PM</td>
+    <td class="program-name">Binyanyanyanya <span>(23)</span></td>
+    <td>Fresh Teacher</td>
+    <td class="upcoming">Upcoming</td>
+</tr>
 
-            <tr>
-                <td>09:00 PM - 09:20 PM</td>
-                <td>Binyanyanyanya (23)</td>
-                <td>Fresh Teacher</td>
-                <td class="upcoming">Upcoming</td>
-            </tr>
+
+
 
             <tr>
                 <td>09:20 PM - 09:40 PM</td>
